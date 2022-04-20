@@ -91,6 +91,11 @@ class Person{
     this.firstName = firstName;
     this.lastName = lastName;
   }
+
+  public static void main(String[] args) {
+    // Erstellung eines Objektes vom Typ Person
+    Person p = new Person("Sepp", "Huber");
+  }
 }
 ```
 
@@ -99,5 +104,39 @@ Klasse *Person* mit 2 Eigenschaften (firstName, lastName).
 ## Konstruktor
 
 Wird verwendet um eine Instanz einer Klasse zu erstellen, die definierten Parameter des Konstruktors können verwendet werden um die Eigenschaften des Objektes zu setzen.
+
+### Standardkonstruktor
+
+Falls kein anderer Konstruktor definiert ist, wird ein Standardkonstruktor erzeugt. Er hat keine Parameter und die Eigenschaften des Objektes entsprechen den Default-Werten.
+
+```java
+class Person {
+  private String firstName; // Default für String = ""
+  private boolean test; // Default für boolean = false
+
+  // Default Konstruktor enspricht
+  // public Person() {
+  // }
+
+  public static void main(String[] args) {
+    // Verwendung des Default-Konstruktors
+    Person p = new Person();
+    // p.firstName entspricht ""
+    // p.test entspricht false
+  }
+}
+```
+
+## Sichtbarkeit
+
+definiert wer von wo auf das Element zugreifen kann.
+Es gibt folgende Sichtbarkeiten:
+
+- private --> nur in der gleichen Klasse sichtbar
+- public --> von überall sichtbar
+- (protected) --> sichtbar im gleichen Package und Subklassen
+- default --> entspricht für uns derzeit protected
+
+## Überladen von Funktionen
 
 tbc...
