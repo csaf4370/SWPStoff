@@ -19,11 +19,11 @@ Alle Typen in CamelCase start mit:
 
 ## Enums
 
-Wird verwendet um einen Datentyp zu erstellen, der nur die definierten Werte annehmen kann.
+Wird verwendet, um einen Datentyp zu erstellen, der nur die definierten Werte annehmen kann.
 
 ```java
 // Definition
-public enum HimmelsRichtung{
+public enum HimmelsRichtung {
   NORDEN,
   OSTEN,
   SUEDEN,
@@ -38,7 +38,7 @@ public static void main(String[] args) {
 
 ### switch-case Anweisung
 
-Wird verwendet um mögliche Fälle zu behandlen. Kann mit  If-Abfragen ersetzt werden.
+Wird verwendet, um mögliche Fälle zu behandlen. Kann mit If-Abfragen ersetzt werden.
 
 ```java
 public void printHimmelsRichtung(HimmelsRichtung hr) {
@@ -52,7 +52,7 @@ public void printHimmelsRichtung(HimmelsRichtung hr) {
 public void printHimmelsRichtungIf(HimmelsRichtung hr) {
   if (hr == NORDEN) {
     System.out.println("Norden");
-  } else if ( hr == SUEDEN) {
+  } else if (hr == SUEDEN) {
     System.out.println("Sueden");
   } else {
     System.out.println("was anderes als Norden und Sueden");
@@ -76,13 +76,13 @@ Durch definieren eines "Bauplans", werden Eigenschaften und Funktionen eines Obj
 
 ```java
 // in Datein Person.java
-class Person{
+class Person {
   // Eigenschaften/Attribute
   private String firstName;
   private String lastName;
 
   // Methoden (Funktionen der Klasse)
-  public void printFirstName(){
+  public void printFirstName() {
     System.out.println(this.firstName);
   }
 
@@ -98,6 +98,6 @@ Klasse *Person* mit 2 Eigenschaften (firstName, lastName).
 
 ## Konstruktor
 
-Wird verwendet um eine Instanz einer Klasse zu erstellen, die definierten Parameter des Konstruktors können verwendet werden um die Eigenschaften des Objektes zu setzen.
+Wird verwendet, um eine Instanz einer Klasse zu erstellen. Die definierten Parameter des Konstruktors können verwendet werden, um die Eigenschaften des Objektes zu setzen.
 
 tbc...
