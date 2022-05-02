@@ -139,4 +139,56 @@ Es gibt folgende Sichtbarkeiten:
 
 ## Überladen von Funktionen
 
-tbc...
+Funktionen und Konstruktoren dürfen den gleichen Namen haben, müssen sich aber über die Parameter unterscheiden. Nur das ändern des Rückgabetyps reicht nicht.
+
+```java
+class Person{
+  private int age;
+  private String fname;
+
+  // Konstruktor 1
+  public Person() {
+    this.age = 12;
+    this.fname = "unbestimmt";
+  }
+
+  // Konstruktor 2
+  public Person( int age ) {
+    this.age = age;
+    this.fname = "Sepp";
+  }
+
+  // Konstruktor 3
+  public Person( int age, String fname ) {
+    this.age = age;
+    this.fname = fname;
+  }
+
+  public static void main(String[] args) {
+    Person p1 = new Person(); 
+    // Konstruktor 1 || age=12, fname="unbestimmt"
+    Person p2 = new Person(18); 
+    // Konstruktor 2 || age=18, fname="Sepp"
+    Person p3 = new Person(17, "Martin"); 
+    // Konstruktor 3 || age=17, fname="Martin"
+  }
+
+  // Funktoniert auch für normale Funktionen
+  void ueTest(){
+    System.out.println("test");
+  }
+
+  // ueberladen der Funktion
+  void ueTest(int parameter){
+    System.out.println("test " + parameter);
+  }
+
+  // funktioniert nicht, weil Unterscheidung nur über Rückgabetyp, Parameter sind gleich wie vorhandene Funktion
+  int ueTest(int parameter){
+    return 42;
+  }
+}
+
+
+
+```
