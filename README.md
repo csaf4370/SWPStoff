@@ -36,6 +36,50 @@ public static void main(String[] args) {
 }
 ```
 
+Weiters können Enums mit zusätzlichen Attributen ergänzt werden.
+
+```java
+// in Datei Artikel.java
+public enum Artikel {
+	MAUS(324454),
+	LAPTOP(4334);
+	
+  // wird verwendet um die Nummer des Enums zu speichern
+	private int nummer;
+	
+	Artikel(int i) {
+		nummer = i;
+	}
+	
+	public int getNummer() {
+		return this.nummer;
+	}
+
+  // falls wir einen Enum von einer Nummer erzeugen wollen können wir uns eine Funktion definieren
+  public static Artikel fromNummer(int nummer) {
+		switch (nummer) {
+		case 324454:
+			return MAUS;
+		case 4334:
+			return LAPTOP;
+		default:
+			return MAUS;
+		}
+	}
+	
+	public static void main(String[] args) {
+		Artikel a = MAUS; // entspricht logisch: MAUS(324454)
+		System.out.println(a.getNummer());
+		
+		Artikel a2 = LAPTOP; // entspricht logisch: LAPTOP(4334)
+		System.out.println(a2.getNummer());
+
+    Artikel a3 = Artikel.fromNummer(4334);
+		System.out.println(a3);
+	}
+}
+```
+
 ### switch-case Anweisung
 
 Wird verwendet, um mögliche Fälle zu behandlen. Kann mit If-Abfragen ersetzt werden.
