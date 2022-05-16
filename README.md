@@ -232,7 +232,37 @@ class Person{
     return 42;
   }
 }
+```
 
+## Zufallszahlen (Random)
+Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu erzeugen.
 
+```java
+import java.util.Random; // wichtig
 
+public class Main {
+	public static void main(String[] args) {
+    // Erstellen eines int
+		Random rand = new Random();
+		int randomZahl = rand.nextInt(10); // Zahl zwischen 0 und 10 exclusive
+		
+		Random rand = new Random();
+		int bound = 1000; // wie weit - exclusive dieser Zahl
+		int randomZahl = rand.nextInt(bound) + 10;
+		System.out.println(randomZahl); // Zahl zwischen 10 - 110 exclusive
+		
+		double randDouble = rand.nextDouble();
+		System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
+		
+//		Ziel ist es einen Double von 10.0 - 20.0 zu machen
+		int randomZahl2 = rand.nextInt(9) + 10;
+		double randDouble2 = rand.nextDouble();
+		double res = randDouble2 + randomZahl2;
+		System.out.println(res);
+		
+		//Alternative
+		double randDouble3 = rand.nextDouble()*10.0 + 10.0;
+		System.out.println(randDouble3);
+	}
+}
 ```
