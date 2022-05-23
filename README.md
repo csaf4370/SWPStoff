@@ -272,8 +272,8 @@ public class Person {
 
 ```
 
-
 ## Zufallszahlen (Random)
+
 Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu erzeugen.
 
 ```java
@@ -288,7 +288,7 @@ public class Main {
 		Random rand = new Random();
 		int bound = 1000; // wie weit - exclusive dieser Zahl
 		int randomZahl = rand.nextInt(bound) + 10;
-		System.out.println(randomZahl); // Zahl zwischen 10 - 110 exclusive
+		System.out.println(randomZahl); // Zahl zwischen 10 - 1010 exclusive
 		
 		double randDouble = rand.nextDouble();
 		System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
