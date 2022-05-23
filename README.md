@@ -234,6 +234,45 @@ class Person{
 }
 ```
 
+## Keyword *static*
+
+Wird verwendet um am "Bauplan" der Klasse, Funktionen und Eigenschaften zu definieren, welche ohne Objekt verwendet werden können. Alle Objekte der Klasse können auf statische Funktionen und Variablen zugreifen. Statische Variablen gibt es nur einmal (alle sehen den gleichen Wert).
+
+```java
+public class Person {
+
+  private String name;
+
+  private static int anzErstellt; // ist gültig für Bauplan und alle Objekte
+
+  public static int getAnzErstellt() {
+    return anzErstellt;
+  }
+
+  // Konstruktor: erhöht Anzahl erstellter Personen um 1
+  Person() {
+    anzErstellt++;
+    this.name = "Sepp";
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+
+  public static void main(String[] args) {
+    Person martin = new Person();
+    // hier ist anzErstellt == 1
+    Person sepp = new Person();
+    // hier ist anzErstellt == 2
+    System.out.println(Person.getAnzErstellt()); // von Bauplan
+
+    System.out.println(sepp.getName()); // von Objekt
+  }
+
+```
+
+
 ## Zufallszahlen (Random)
 Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu erzeugen.
 
