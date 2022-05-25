@@ -1,8 +1,23 @@
 # SWP2Stoff
 
-## coding guidelines
+# Table of Contents
 
-### CamelCase
+1. [coding guidelines](#coding-guidelines)
+    - [CamelCase](#camelcase)
+2. [Enums](#enums)
+    - [switch-case Anweisung](#switch-case-anweisung)
+3. [Objektorientierte Programmierung](#objektorientierte-programmierung)
+    - [Konstruktor](#konstruktor)
+        - [Standardkonstruktor](#standardkonstruktor)
+    - [Sichtbarkeit](#sichtbarkeit)
+    - [Überladen von Funktionen](#überladen-von-funktionen)
+    - [Keyword static](#keyword-static)
+    - [Zufallszahlen (Random)](#zufallszahlen-random)
+
+
+# coding guidelines
+
+## CamelCase
 
 Start abhängig von Typ, jedes weitere Wort groß.
 
@@ -17,7 +32,7 @@ Alle Typen in CamelCase start mit:
 - Methoden klein
 - Enum Groß (Werte alle UPPERCASE)
 
-## Enums
+# Enums
 
 Wird verwendet, um einen Datentyp zu erstellen, der nur die definierten Werte annehmen kann.
 
@@ -80,7 +95,7 @@ public enum Artikel {
 }
 ```
 
-### switch-case Anweisung
+## switch-case Anweisung
 
 Wird verwendet, um mögliche Fälle zu behandlen. Kann mit If-Abfragen ersetzt werden.
 
