@@ -1,6 +1,6 @@
 # SWP2Stoff
 
-# Table of Contents
+## Table of Contents
 
 1. [coding guidelines](#coding-guidelines)
     - [CamelCase](#camelcase)
