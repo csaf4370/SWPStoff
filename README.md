@@ -130,8 +130,8 @@ Falls das **break** vergessen wird, fällt die Auswertung durch => darunter lieg
 
 # Objektorientierte Programmierung
 
-dient zur besseren Strukturierung von Programmmen.
-Durch definieren eines "Bauplans", werden Eigenschaften und Funktionen eines Objektes definiert.
+Dient zur besseren Strukturierung von Programmmen.
+Durch Definieren eines "Bauplans", werden Eigenschaften und Funktionen eines Objektes definiert.
 
 ```java
 // in Datein Person.java
@@ -188,7 +188,7 @@ class Person {
 
 ## Sichtbarkeit
 
-definiert wer von wo auf das Element zugreifen kann.
+Definiert, wer von wo auf das Element zugreifen kann.
 Es gibt folgende Sichtbarkeiten:
 
 - private --> nur in der gleichen Klasse sichtbar
@@ -198,7 +198,7 @@ Es gibt folgende Sichtbarkeiten:
 
 ## Überladen von Funktionen
 
-Funktionen und Konstruktoren dürfen den gleichen Namen haben, müssen sich aber über die Parameter unterscheiden. Nur das ändern des Rückgabetyps reicht nicht.
+Funktionen und Konstruktoren dürfen den gleichen Namen haben, müssen sich aber über die Parameter unterscheiden. Nur das Ändern des Rückgabetyps reicht nicht.
 
 ```java
 class Person{
@@ -212,13 +212,13 @@ class Person{
   }
 
   // Konstruktor 2
-  public Person( int age ) {
+  public Person(int age) {
     this.age = age;
     this.fname = "Sepp";
   }
 
   // Konstruktor 3
-  public Person( int age, String fname ) {
+  public Person(int age, String fname) {
     this.age = age;
     this.fname = fname;
   }
@@ -233,17 +233,17 @@ class Person{
   }
 
   // Funktoniert auch für normale Funktionen
-  void ueTest(){
+  void ueTest() {
     System.out.println("test");
   }
 
   // ueberladen der Funktion
-  void ueTest(int parameter){
+  void ueTest(int parameter) {
     System.out.println("test " + parameter);
   }
 
   // funktioniert nicht, weil Unterscheidung nur über Rückgabetyp, Parameter sind gleich wie vorhandene Funktion
-  int ueTest(int parameter){
+  int ueTest(int parameter) {
     return 42;
   }
 }
@@ -251,7 +251,7 @@ class Person{
 
 ## Keyword *static*
 
-Wird verwendet um am "Bauplan" der Klasse, Funktionen und Eigenschaften zu definieren, welche ohne Objekt verwendet werden können. Alle Objekte der Klasse können auf statische Funktionen und Variablen zugreifen. Statische Variablen gibt es nur einmal (alle sehen den gleichen Wert).
+Wird verwendet, um am "Bauplan" der Klasse, Funktionen und Eigenschaften zu definieren, welche ohne Objekt verwendet werden können. Alle Objekte der Klasse können auf statische Funktionen und Variablen zugreifen. Statische Variablen gibt es nur einmal (alle sehen den gleichen Wert).
 
 ```java
 public class Person {
@@ -308,13 +308,13 @@ public class Main {
 		double randDouble = rand.nextDouble();
 		System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
 		
-//		Ziel ist es einen Double von 10.0 - 20.0 zu machen
+    // Ziel ist es einen Double von 10.0 - 20.0 zu machen
 		int randomZahl2 = rand.nextInt(9) + 10;
 		double randDouble2 = rand.nextDouble();
 		double res = randDouble2 + randomZahl2;
 		System.out.println(res);
 		
-		//Alternative
+		// Alternative
 		double randDouble3 = rand.nextDouble()*10.0 + 10.0;
 		System.out.println(randDouble3);
 	}
