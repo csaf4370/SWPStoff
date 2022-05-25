@@ -56,42 +56,42 @@ Weiters können Enums mit zusätzlichen Attributen ergänzt werden.
 ```java
 // in Datei Artikel.java
 public enum Artikel {
-	MAUS(324454),
-	LAPTOP(4334);
-	
+  MAUS(324454),
+  LAPTOP(4334);
+  
   // wird verwendet um die Nummer des Enums zu speichern
-	private int nummer;
-	
-	Artikel(int i) {
-		nummer = i;
-	}
-	
-	public int getNummer() {
-		return this.nummer;
-	}
+  private int nummer;
+  
+  Artikel(int i) {
+    nummer = i;
+  }
+  
+  public int getNummer() {
+    return this.nummer;
+  }
 
   // falls wir einen Enum von einer Nummer erzeugen wollen können wir uns eine Funktion definieren
   public static Artikel fromNummer(int nummer) {
-		switch (nummer) {
-		case 324454:
-			return MAUS;
-		case 4334:
-			return LAPTOP;
-		default:
-			return MAUS;
-		}
-	}
-	
-	public static void main(String[] args) {
-		Artikel a = MAUS; // entspricht logisch: MAUS(324454)
-		System.out.println(a.getNummer());
-		
-		Artikel a2 = LAPTOP; // entspricht logisch: LAPTOP(4334)
-		System.out.println(a2.getNummer());
+    switch (nummer) {
+    case 324454:
+      return MAUS;
+    case 4334:
+      return LAPTOP;
+    default:
+      return MAUS;
+    }
+  }
+  
+  public static void main(String[] args) {
+    Artikel a = MAUS; // entspricht logisch: MAUS(324454)
+    System.out.println(a.getNummer());
+    
+    Artikel a2 = LAPTOP; // entspricht logisch: LAPTOP(4334)
+    System.out.println(a2.getNummer());
 
     Artikel a3 = Artikel.fromNummer(4334);
-		System.out.println(a3);
-	}
+    System.out.println(a3);
+  }
 }
 ```
 
@@ -295,28 +295,28 @@ Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu er
 import java.util.Random; // wichtig
 
 public class Main {
-	public static void main(String[] args) {
+  public static void main(String[] args) {
     // Erstellen eines int
-		Random rand = new Random();
-		int randomZahl = rand.nextInt(10); // Zahl zwischen 0 und 10 exclusive
-		
-		Random rand = new Random();
-		int bound = 1000; // wie weit - exclusive dieser Zahl
-		int randomZahl = rand.nextInt(bound) + 10;
-		System.out.println(randomZahl); // Zahl zwischen 10 - 1010 exclusive
-		
-		double randDouble = rand.nextDouble();
-		System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
-		
+    Random rand = new Random();
+    int randomZahl = rand.nextInt(10); // Zahl zwischen 0 und 10 exclusive
+    
+    Random rand = new Random();
+    int bound = 1000; // wie weit - exclusive dieser Zahl
+    int randomZahl = rand.nextInt(bound) + 10;
+    System.out.println(randomZahl); // Zahl zwischen 10 - 1010 exclusive
+    
+    double randDouble = rand.nextDouble();
+    System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
+    
     // Ziel ist es einen Double von 10.0 - 20.0 zu machen
-		int randomZahl2 = rand.nextInt(9) + 10;
-		double randDouble2 = rand.nextDouble();
-		double res = randDouble2 + randomZahl2;
-		System.out.println(res);
-		
-		// Alternative
-		double randDouble3 = rand.nextDouble()*10.0 + 10.0;
-		System.out.println(randDouble3);
-	}
+    int randomZahl2 = rand.nextInt(9) + 10;
+    double randDouble2 = rand.nextDouble();
+    double res = randDouble2 + randomZahl2;
+    System.out.println(res);
+    
+    // Alternative
+    double randDouble3 = rand.nextDouble()*10.0 + 10.0;
+    System.out.println(randDouble3);
+  }
 }
 ```
