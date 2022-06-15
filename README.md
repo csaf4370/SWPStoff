@@ -2,17 +2,20 @@
 
 ## Table of Contents
 
-1. [coding guidelines](#coding-guidelines)
-    - [CamelCase](#camelcase)
-2. [Enums](#enums)
-    - [switch-case Anweisung](#switch-case-anweisung)
-3. [Objektorientierte Programmierung](#objektorientierte-programmierung)
-    - [Konstruktor](#konstruktor)
-        - [Standardkonstruktor](#standardkonstruktor)
-    - [Sichtbarkeit](#sichtbarkeit)
-    - [Überladen von Funktionen](#überladen-von-funktionen)
-    - [Keyword static](#keyword-static)
-    - [Zufallszahlen (Random)](#zufallszahlen-random)
+- [SWP2Stoff](#swp2stoff)
+  - [Table of Contents](#table-of-contents)
+- [coding guidelines](#coding-guidelines)
+  - [CamelCase](#camelcase)
+- [Enums](#enums)
+  - [switch-case Anweisung](#switch-case-anweisung)
+- [Objektorientierte Programmierung](#objektorientierte-programmierung)
+  - [Konstruktor](#konstruktor)
+    - [Standardkonstruktor](#standardkonstruktor)
+  - [Sichtbarkeit](#sichtbarkeit)
+  - [Kapselung](#kapselung)
+  - [Überladen von Funktionen](#überladen-von-funktionen)
+  - [Keyword *static*](#keyword-static)
+  - [Zufallszahlen (Random)](#zufallszahlen-random)
 
 
 # coding guidelines
@@ -195,6 +198,28 @@ Es gibt folgende Sichtbarkeiten:
 - public --> von überall sichtbar
 - (protected) --> sichtbar im gleichen Package und Subklassen
 - default --> entspricht für uns derzeit protected
+
+## Kapselung
+
+Wird verwendet, um Eigenschaften einer Klasse mit Hilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte gesetzt bzw. ausgelesen werden.
+
+```java
+class Person{
+  // Eigenschaften privat
+  private int age;
+
+  // Getter von age
+  public int getAge() {
+    return this.age;
+  }
+
+  // Setter von age
+  public void setAge(int val) {
+    this.age = val;
+  }
+}
+
+```
 
 ## Überladen von Funktionen
 
