@@ -201,7 +201,7 @@ Es gibt folgende Sichtbarkeiten:
 
 ## Kapselung
 
-Wird verwendet, um Eigenschaften einer Klasse mit Hilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte gesetzt bzw. ausgelesen werden.
+Wird verwendet, um Eigenschaften einer Klasse mit Hilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte ausgelesen bzw. gesetzt werden.
 
 ```java
 class Person{
