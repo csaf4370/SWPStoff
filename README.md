@@ -1,11 +1,12 @@
-# SWP2Stoff
+# SWPStoff
 
 ## Table of Contents
 
-- [SWP2Stoff](#swp2stoff)
+- [SWPStoff](#swpstoff)
   - [Table of Contents](#table-of-contents)
 - [coding guidelines](#coding-guidelines)
   - [CamelCase](#camelcase)
+- [String formatierung mit printf](#string-formatierung-mit-printf)
 - [Enums](#enums)
   - [switch-case Anweisung](#switch-case-anweisung)
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
@@ -34,6 +35,27 @@ Alle Typen in CamelCase start mit:
 - Eigenschaften klein
 - Methoden klein
 - Enum Groß (Werte alle UPPERCASE)
+
+# String formatierung mit printf
+
+Alternativ zu der Ausgabe auf der Konsole zu ```println``` gibt es die Funktion ```printf```.
+Sie ermöglicht das schreiben eines kompletten Strings mit *Platzhaltern*.
+
+```java
+public void print() {
+		System.out.println("Schüler: " + this.vName + " " + this.nName);
+		System.out.printf("Schüler: %s %s", this.vName, this.nName);
+	}
+```
+
+Auffällig sind die *Ersetzungsmarken* im String. In unserem Beispiel verwenden wir ```%s``` um
+einen String auszugeben.
+
+Die häufig verwendeten sind:
+
+- %s String
+- %d Integer
+- %f Float / Double
 
 # Enums
 
