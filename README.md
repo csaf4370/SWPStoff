@@ -16,7 +16,11 @@
   - [Kapselung](#kapselung)
   - [Überladen von Funktionen](#überladen-von-funktionen)
   - [Keyword *static*](#keyword-static)
-  - [Zufallszahlen (Random)](#zufallszahlen-random)
+  - [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
+  - [Vererbung](#vererbung)
+    - [Keyword *abstract*](#keyword-abstract)
+    - [Annotation *@Override*](#annotation-override)
+- [Zufallszahlen (Random)](#zufallszahlen-random)
 
 
 # coding guidelines
@@ -56,6 +60,7 @@ Die häufig verwendeten sind:
 - %s String
 - %d Integer
 - %f Float / Double
+- %n Newline -ersetzt \n
 
 # Enums
 
@@ -334,7 +339,159 @@ public class Person {
 
 ```
 
-## Zufallszahlen (Random)
+## DRY - Don't Repeat Yourself
+
+Vermeide gleichen oder ähnlichen Code um Fehler zu vermeiden und den Code übersichtlicher und nachvollziehbarer zu gestalten.
+
+```java
+// import java.util.Random;
+// import java.util.Arrays;
+
+public static void einPaarZahlen(){
+  Random rand = new Random();
+  int ersteZahlen[] = new int[3];
+  for (int i = 0; i < 3; i++) {
+    ersteZahlen[i] = rand.nextInt(10);
+  }
+  int zweiteZahlen[] = new int[5];
+  for (int i = 0; i < 5; i++) {
+    zweiteZahlen[i] = rand.nextInt(10);
+  }
+  int dritteZahlen[] = new int[10];
+  for (int i = 0; i < 10; i++) {
+    dritteZahlen[i] = rand.nextInt(10);
+  }
+  // .. mache was mit den 3 Variablen ... zB:
+  int sumOfArrays[] = new int[3];
+  for (int i = 0; i < 3; i++) {
+    int sum = 0;
+    sum += ersteZahlen[i];
+    sum += zweiteZahlen[i];
+    sum += dritteZahlen[i];
+    sumOfArrays[i] = sum;
+  }
+  System.out.println(Arrays.toString(sumOfArrays));
+}
+
+// nach dem DRY- Optimierung
+
+private static int[] createRandomArray(int length){
+  Random rand = new Random();
+  int zahlenA[] = new int[length];
+  for (int i = 0; i < length; i++) {
+    zahlenA[i] = rand.nextInt(10);
+  }
+  return zahlenA;
+}
+
+public static void einPaarZahlen(){
+  int ersteZahlen[] = createRandomArray(3);
+  int zweiteZahlen[] = createRandomArray(5);
+  int dritteZahlen[] = createRandomArray(10)
+  // .. mache was mit den 3 Variablen ... zB:
+  int sumOfArrays[] = new int[3];
+  for (int i = 0; i < 3; i++) {
+    int sum = 0;
+    sum += ersteZahlen[i];
+    sum += zweiteZahlen[i];
+    sum += dritteZahlen[i];
+    sumOfArrays[i] = sum;
+  }
+  System.out.println(Arrays.toString(sumOfArrays));
+}
+```
+
+## Vererbung
+
+Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden um Fehler zu vermeiden und dem *DRY*-Prinzip zu folgen.
+Um von Klassen erben zu können, wird das keyword *extends* verwendet.
+
+### Keyword *abstract*
+
+Markiert die Klasse, dass sie nicht instanziiert werden kann(es kann kein Objekt dieser Klasse erzeugt werden).
+
+### Annotation *@Override*
+
+Steht über einer Funktion, welche überschrieben werden soll. Es kann auch ohne *@Override* überschrieben werden. *@Override* erstellt einen Vertrag, dass genau die Signatur der Funktion entsprechen muss. Ohne diesem Keyword, läuft man Gefahr, dass wenn die Signatur einer Methode der Vaterklasse sich verändert, ich die Methode nur überlade und nicht überschreibe.
+
+```java
+// Fahrzeug.java
+// Erstellen einer Klasse welche vererbt werden soll. - abstract
+public abstract class Fahrzeug {
+
+	private int ps;
+	private int baujahr;
+	private double currentVelocity;
+	
+	public Fahrzeug(int ps, int baujahr) {
+		this.ps = ps;
+		this.baujahr = baujahr;
+		this.currentVelocity = 0.0;
+	}
+	
+	public void accelerate() {
+		this.currentVelocity += this.ps/10.0;
+	}
+
+	public int getPs() {
+		return ps;
+	}
+
+	public int getBaujahr() {
+		return baujahr;
+	}
+
+	public double getCurrentVelocity() {
+		return currentVelocity;
+	}
+	
+	protected void setCurrentVelocity(double v) {
+		this.currentVelocity = v;
+	}
+}
+
+// Auto.java
+// Subklasse (Klasse die von Vaterklasse erbt)
+public class Auto extends Fahrzeug{
+	
+	private String marke;
+
+	public Auto(int ps, int baujahr, String marke) {
+		super(ps, baujahr);
+		this.marke = marke;
+	}
+
+	public String getMarke() {
+		return marke;
+	}
+}
+
+// Traktor.java
+// erbt ebenfalls von Fahrzeug
+public class Traktor extends Fahrzeug {
+	private double zugKraft;
+	
+	public Traktor(int ps, int baujahr, double zugKraft) {
+		super(ps, baujahr);
+		this.zugKraft = zugKraft;
+	}
+
+	public double getZugKraft() {
+		return zugKraft;
+	}
+	
+	@Override
+	public void accelerate() {
+		this.setCurrentVelocity( this.getCurrentVelocity() + this.getPs()/40.0);
+//		this.currentVelocity += this.getPs()/40.0;
+	}
+
+}
+
+```
+
+
+# Zufallszahlen (Random)
 
 Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu erzeugen.
 
