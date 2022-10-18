@@ -17,6 +17,7 @@
   - [Überladen von Funktionen](#überladen-von-funktionen)
   - [Keyword *static*](#keyword-static)
   - [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
+  - [ArrayList](#arraylist)
   - [Vererbung](#vererbung)
     - [Keyword *abstract*](#keyword-abstract)
     - [Annotation *@Override*](#annotation-override)
@@ -399,6 +400,29 @@ public static void einPaarZahlen(){
   }
   System.out.println(Arrays.toString(sumOfArrays));
 }
+```
+
+## ArrayList
+
+Wird benötigt um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet.
+
+```java
+	public static void main(String[] args) {
+		// Benutzer gibt beliebig viele Zahlen en
+		// werden in Array gespeichert
+		ArrayList<Integer> inputsArray = new ArrayList<Integer>();
+		int input = 0;
+		Scanner scan = new Scanner(System.in);
+		while (input != -1) {
+			input = scan.nextInt();
+			inputsArray.add(input); // erweitern um eine Stelle
+		}
+    // hiert wird size() anstatt length verwendet
+		for (int i = 0; i < inputsArray.size(); i++) {
+			System.out.println(inputsArray.get(i));			
+		}
+	}
+
 ```
 
 ## Vererbung
