@@ -12,6 +12,7 @@
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
   - [Konstruktor](#konstruktor)
     - [Standardkonstruktor](#standardkonstruktor)
+  - [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
   - [Sichtbarkeit](#sichtbarkeit)
   - [Kapselung](#kapselung)
   - [Überladen von Funktionen](#überladen-von-funktionen)
@@ -216,6 +217,34 @@ class Person {
   }
 }
 ```
+
+## toString() Methoden - Ausgabe eines Objektes
+
+Wenn man versucht eine Objekt einer selbst-definierten Klasse auszugeben wird man meist mit einer Ausgabe ala.
+```Auto@677327b6``` überrascht. Um die Ausgabe zu verbessern, ist es möglich in der jeweiligen Klasse eine *toString()*-Methode zu erstellen, welche einen String zurück, welche das Objekt beschreibt.
+
+```java
+class Auto{
+  private String marke;
+  private int baujahr;
+
+  public Auto(String marke, int baujahr){
+    this.marke = marke;
+    this.baujahr = baujahr;
+  }
+
+  @Override
+  public String toString(){
+    return "Auto: " + this.marke + " Baujahr: " + this.baujahr;
+  }
+
+  public static void main(String[] args) {
+    Auto a = new Auto("Ford Escort", 1988);
+    System.out.println(a); // gibt aus: Auto: Ford Escort Baujahr: 1988
+  }
+}
+```
+
 
 ## Sichtbarkeit
 
