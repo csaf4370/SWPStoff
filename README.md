@@ -404,25 +404,55 @@ public static void einPaarZahlen(){
 
 ## ArrayList
 
-Wird benötigt um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet.
+Wird benötigt um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet. **Wichtig**: eine ArrayList kann nur Objektdatentypen (keine primitive Datentypen) speichern. Java stellt für genau diesen Zweck *Wrapperklassen* zur Verfügung. *Integer* beinhaltet einen *int*, oder *Float* beinhaltet einen *float*, usw.
 
 ```java
-	public static void main(String[] args) {
-		// Benutzer gibt beliebig viele Zahlen en
-		// werden in Array gespeichert
-		ArrayList<Integer> inputsArray = new ArrayList<Integer>();
-		int input = 0;
-		Scanner scan = new Scanner(System.in);
-		while (input != -1) {
-			input = scan.nextInt();
-			inputsArray.add(input); // erweitern um eine Stelle
-		}
-    // hiert wird size() anstatt length verwendet
-		for (int i = 0; i < inputsArray.size(); i++) {
-			System.out.println(inputsArray.get(i));			
-		}
-	}
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class Main {
+  public static void main(String[] args) {
+    // Benutzer gibt beliebig viele Zahlen en
+    // werden in Array gespeichert
+    ArrayList<Integer> inputsArray = new ArrayList<Integer>();
+    int input = 0;
+    Scanner scan = new Scanner(System.in);
+    while (input != -1) {
+      input = scan.nextInt();
+      inputsArray.add(input); // erweitern um eine Stelle
+    }
+    // hiert wird size() anstatt length verwendet
+    for (int i = 0; i < inputsArray.size(); i++) {
+      System.out.println(inputsArray.get(i));
+    }
+  }
+}
+```
+
+weiteres Beispiel:
+
+```java
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    ArrayList<String> al = new ArrayList<String>();
+    String vorName = "";
+    boolean cont = false;
+    do {
+      cont = false;
+      vorName = scan.nextLine();
+      if (!("".equals(vorName))) {
+        al.add(vorName);
+        cont = true;
+      }
+    } while ( cont == true );
+    System.out.println(al);
+    System.out.printf("Die Laenge der Arraylist %s is %d", al, al.size());
+  }
+}
 ```
 
 ## Vererbung
