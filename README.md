@@ -163,19 +163,21 @@ Falls das **break** vergessen wird, fällt die Auswertung durch => darunter lieg
 
 # forEach Schleife
 
+Ist eine Kurzform der normalen for-schleife und kann verwendet werden, wenn die Zählvariable (meist *i*) nicht gebraucht wird.
+
 ```java
 // Tiere ist eine Klasse mit name als Attribut
 
-public static void main(String[] args) {
+public static void printHundeRasse(ArrayList<Tier> tiere) {
   for (Tier t : tiere) { // forEach loop
-			System.out.println(t.getName());
-		}
+    System.out.println(t.getName());
+  }
 
-		// equivalent
-		for (int i = 0; i < tiere.size(); i++) {
-			Tier t = tiere.get(i);
-			System.out.println(t.getName());
-		}
+  // equivalent
+  for (int i = 0; i < tiere.size(); i++) {
+    Tier t = tiere.get(i); // normaler Array tiere[i]
+    System.out.println(t.getName());
+  }
 }
 ```
 
@@ -598,6 +600,25 @@ public class Traktor extends Fahrzeug {
 wird verwendet um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse ***gecastet*** werden kann, also ob die Klasse des Objekts dem gecasteten entpricht bzw. in der Vererbungshirarchie anzutreffen ist.
 
 ```java
+// in Tier.java
+public class Tier{
+  protected String name;
+
+  public String getName(){
+    return this.name;
+  }
+}
+
+// in Hund.java
+public class Hund extends Tier{
+  private String rasse;
+
+  public String getRasse(){
+    return this.rasse;
+  }
+}
+
+// in Klasse Main.java
 import java.util.ArrayList;
 
 public class Main {
@@ -612,7 +633,7 @@ public class Main {
 			}
 		}
 
-//		// alternative 
+		// alternative 
 		for (int i = 0; i < tiere.size(); i++) {
 			Tier t = tiere.get(i);
 			if (t instanceof Hund) {
