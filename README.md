@@ -9,6 +9,7 @@
 - [String formatierung mit printf](#string-formatierung-mit-printf)
 - [Enums](#enums)
   - [switch-case Anweisung](#switch-case-anweisung)
+- [forEach Schleife](#foreach-schleife)
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
   - [Konstruktor](#konstruktor)
     - [Standardkonstruktor](#standardkonstruktor)
@@ -22,6 +23,7 @@
   - [Vererbung](#vererbung)
     - [Keyword *abstract*](#keyword-abstract)
     - [Annotation *@Override*](#annotation-override)
+    - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
 
 
@@ -158,6 +160,24 @@ public static void main(String[] args) {
 ```
 
 Falls das **break** vergessen wird, fällt die Auswertung durch => darunter liegende Code-Zeilen werden ausgeführt.
+
+# forEach Schleife
+
+```java
+// Tiere ist eine Klasse mit name als Attribut
+
+public static void main(String[] args) {
+  for (Tier t : tiere) { // forEach loop
+			System.out.println(t.getName());
+		}
+
+		// equivalent
+		for (int i = 0; i < tiere.size(); i++) {
+			Tier t = tiere.get(i);
+			System.out.println(t.getName());
+		}
+}
+```
 
 
 # Objektorientierte Programmierung
@@ -571,6 +591,65 @@ public class Traktor extends Fahrzeug {
 
 }
 
+```
+
+### instanceof - überprüfen der Klasse bzw. der Vaterklasse
+
+wird verwendet um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse ***gecastet*** werden kann, also ob die Klasse des Objekts dem gecasteten entpricht bzw. in der Vererbungshirarchie anzutreffen ist.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+
+	public static void printHundeRasse(ArrayList<Tier> tiere) {
+		for (Tier t : tiere) { // forEach loop
+			if (t instanceof Hund) {
+				Hund h = (Hund) t; // cast (umwandlung) zu Hund
+				System.out.println(h.getRasse());
+			} else {
+				System.out.println("leider keine Rasse vorhanden (kein Hund)");
+			}
+		}
+
+//		// alternative 
+		for (int i = 0; i < tiere.size(); i++) {
+			Tier t = tiere.get(i);
+			if (t instanceof Hund) {
+				Hund h = (Hund) t; // cast (umwandlung) zu Hund
+				System.out.println(h.getRasse());
+			} else {
+				System.out.println("leider keine Rasse vorhanden (kein Hund)");
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Katze> katzen = new ArrayList<Katze>();
+		Katze schmusi = new Katze("Schmusi", "10.10.2010");
+		katzen.add(schmusi);
+
+		ArrayList<Hund> hunde = new ArrayList<Hund>();
+		Hund kratzi = new Hund("Kratzi", "10.10.2010", "Rotweiler");
+		hunde.add(kratzi);
+
+		ArrayList<Tier> tiere = new ArrayList<Tier>();
+
+		tiere.add(schmusi);
+		tiere.add(kratzi);
+
+		System.out.println(tiere);
+
+		// geht nicht = abstract
+//		Tier t = new Tier("tiere=i", "1.1.1111");
+
+		printHundeRasse(tiere);
+
+		kratzi.getRasse();
+
+	}
+
+}
 ```
 
 
