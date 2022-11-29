@@ -21,6 +21,7 @@
   - [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
   - [ArrayList](#arraylist)
   - [Vererbung](#vererbung)
+    - [*super*-Keyword](#super-keyword)
     - [Keyword *abstract*](#keyword-abstract)
     - [Annotation *@Override*](#annotation-override)
     - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
@@ -511,6 +512,76 @@ public class Main {
 Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden um Fehler zu vermeiden und dem *DRY*-Prinzip zu folgen.
 Um von Klassen erben zu können, wird das keyword *extends* verwendet.
 
+### *super*-Keyword
+
+*super* ruft den Konstruktor der vererbten Klasse auf.
+Falls eine Methode der Vaterklasse aufgerufen werden soll, obwohl die aktuelle Klasse die Methode überschrieben hat, kann man mit 
+
+```java
+super.methodenName(...)
+```
+
+die ursprüngliche Methode aufrufen.
+
+```java
+\\ in Tier.java
+public abstract class Tier {
+	
+	private String name;
+	private String gebTag;
+	
+	public String getName() {
+		return name;
+	}
+	public String getGebTag() {
+		return gebTag;
+	}
+	
+	public Tier(String name, String gebTag) {
+		this.name = name;
+		this.gebTag = gebTag;
+	}
+
+  public String gibLaut(){
+    return "tierGeräusch";
+  }
+}
+
+\\in Hund.java
+public class Hund extends Tier {
+	
+	private String rasse;
+	
+	public Hund(String name, String gebTag, String rasse) {
+		super(name, gebTag); // Aufruf des Konstruktors der Vaterklasse
+		this.rasse = rasse;
+	}
+
+	public String getRasse() {
+		return rasse;
+	}
+
+  @Override
+  public String gibLaut(){
+    return "wuff";
+  }
+
+  public String gibLautVonVater(){
+    return super.gibLaut();
+  }
+}
+
+\\ in Main.java
+public class Main {
+  public static void main(String[] args) {
+    Hund hund = new Hund("Hansi","1.1.2010","Pudel");
+    hund.gibLaut(); // gibt aus: wuff
+    hund.gibLautVonVater(); // gibt aus: tierGeräusch
+  }
+}
+
+```
+
 ### Keyword *abstract*
 
 Markiert die Klasse, dass sie nicht instanziiert werden kann(es kann kein Objekt dieser Klasse erzeugt werden).
@@ -601,11 +672,21 @@ wird verwendet um während der Laufzeit zu überprüfen ob, das Objekt in eine b
 
 ```java
 // in Tier.java
-public class Tier{
+public abstract class Tier{
   protected String name;
+  protected String geburtsDatum;
+
+  public getGeburtsDatum() { 
+    return this.geburtsDatum; 
+  }
 
   public String getName(){
     return this.name;
+  }
+
+  public Tier(String name, String geburtsDatum){
+    this.name = name;
+    this.geburtsDatum = geburtsDatum;
   }
 }
 
@@ -615,6 +696,19 @@ public class Hund extends Tier{
 
   public String getRasse(){
     return this.rasse;
+  }
+
+  public Hund(String name, String geburtsDatum, String rasse){
+    super(name, geburtsDatum);
+    this.rasse = rasse;
+  }
+}
+
+// in Katze.java
+public class Katze extends Tier{
+
+  public Katze(String name, String geburtsDatum){
+    super(name, geburtsDatum);
   }
 }
 
