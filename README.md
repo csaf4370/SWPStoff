@@ -27,6 +27,7 @@
     - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
   - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
+  - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
 
 
 # coding guidelines
@@ -807,5 +808,45 @@ public class Main {
     double randDouble3 = rand.nextDouble()*10.0 + 10.0;
     System.out.println(randDouble3);
   }
+}
+```
+
+## Spieleprogrammierung mit Processing
+
+erstes Spiel ... Pong (start)
+
+```java
+ int posX = 0;
+ int posY = 0;
+ int accX = 1;
+ int accY = 1;
+ int accSpeed = 5;
+ 
+void setup() {
+  size(640, 360); 
+  noStroke();
+  rectMode(CENTER);
+}
+
+void draw() {
+
+  fill(255, 204);
+  
+  if (posX > 640) {
+   accX = -accSpeed; 
+  }
+  if (posX <= 0) {
+   accX = +accSpeed; 
+  }
+  if (posY > 360) {
+   accY = -accSpeed; 
+  }
+  if (posY <= 0) {
+   accY = +accSpeed; 
+  }
+  
+  posX = posX + accX;
+  posY = posY + accY;
+  circle(posX, posY, 10);
 }
 ```
