@@ -25,6 +25,7 @@
     - [Keyword *abstract*](#keyword-abstract)
     - [Annotation *@Override*](#annotation-override)
     - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
+  - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
 
 
@@ -767,6 +768,13 @@ public class Main {
 }
 ```
 
+## UML - unified modeling language (class diagram)
+
+Wird verwendet um eine einheitliche "Sprache" zu definieren, welche uns erlaubt programmiersprachenunabhängig Klassen und ihre Beziehungen zu beschreiben.
+
+![Beispiel Vererbung](diagrams/inheritance.png)
+
+Hier wird eine abstrakte Klasse Kreatur definiert. Die Klasse Mensch erbt von ihr und die Klasse mein erzeugt ein Objekt der Klasse Mensch.
 
 # Zufallszahlen (Random)
 
