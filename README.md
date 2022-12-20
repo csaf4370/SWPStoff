@@ -1,3 +1,8 @@
+---
+author: "Martin Schoepf"
+lang: "de-AT"
+---
+
 # SWPStoff
 
 ## Table of Contents
@@ -40,14 +45,14 @@ Start abhängig von Typ, jedes weitere Wort groß.
 String firstName;
 ```
 
-Alle Typen in CamelCase start mit:
+Alle Typen in CamelCase starten mit:
 
 - Klassenname groß
 - Eigenschaften klein
 - Methoden klein
 - Enum Groß (Werte alle UPPERCASE)
 
-# String formatierung mit printf
+# String Formatierung mit `printf`
 
 Alternativ zu der Ausgabe auf der Konsole zu ```println``` gibt es die Funktion ```printf```.
 Sie ermöglicht das schreiben eines kompletten Strings mit *Platzhaltern*.
@@ -59,7 +64,7 @@ public void print() {
 	}
 ```
 
-Auffällig sind die *Ersetzungsmarken* im String. In unserem Beispiel verwenden wir ```%s``` um
+Auffällig sind die *Ersetzungsmarken* im String. In unserem Beispiel verwenden wir ```%s```, um
 einen String auszugeben.
 
 Die häufig verwendeten sind:
@@ -134,7 +139,7 @@ public enum Artikel {
 
 ## switch-case Anweisung
 
-Wird verwendet, um mögliche Fälle zu behandlen. Kann mit If-Abfragen ersetzt werden.
+Wird verwendet, um mögliche Fälle zu behandeln. Kann mit If-Abfragen ersetzt werden.
 
 ```java
 public void printHimmelsRichtung(HimmelsRichtung hr) {
@@ -166,7 +171,7 @@ Falls das **break** vergessen wird, fällt die Auswertung durch => darunter lieg
 
 # forEach Schleife
 
-Ist eine Kurzform der normalen for-schleife und kann verwendet werden, wenn die Zählvariable (meist *i*) nicht gebraucht wird.
+Ist eine Kurzform der normalen for-Schleife und kann verwendet werden, wenn die Zählvariable (meist *i*) nicht gebraucht wird.
 
 ```java
 // Tiere ist eine Klasse mit name als Attribut
@@ -187,7 +192,7 @@ public static void printHundeRasse(ArrayList<Tier> tiere) {
 
 # Objektorientierte Programmierung
 
-Dient zur besseren Strukturierung von Programmmen.
+Dient zur besseren Strukturierung von Programmen.
 Durch Definieren eines "Bauplans", werden Eigenschaften und Funktionen eines Objektes definiert.
 
 ```java
@@ -245,7 +250,7 @@ class Person {
 
 ## toString() Methoden - Ausgabe eines Objektes
 
-Wenn man versucht eine Objekt einer selbst-definierten Klasse auszugeben wird man meist mit einer Ausgabe ala.
+Wenn man versucht ein Objekt einer selbst-definierten Klasse auszugeben, wird man meist mit einer Ausgabe à la.
 ```Auto@677327b6``` überrascht. Um die Ausgabe zu verbessern, ist es möglich in der jeweiligen Klasse eine *toString()*-Methode zu erstellen, welche einen String zurück, welche das Objekt beschreibt.
 
 ```java
@@ -283,7 +288,7 @@ Es gibt folgende Sichtbarkeiten:
 
 ## Kapselung
 
-Wird verwendet, um Eigenschaften einer Klasse mit Hilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte ausgelesen bzw. gesetzt werden.
+Wird verwendet, um Eigenschaften einer Klasse mithilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte ausgelesen bzw. gesetzt werden.
 
 ```java
 class Person{
@@ -458,7 +463,7 @@ public static void einPaarZahlen(){
 
 ## ArrayList
 
-Wird benötigt um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet. **Wichtig**: eine ArrayList kann nur Objektdatentypen (keine primitive Datentypen) speichern. Java stellt für genau diesen Zweck *Wrapperklassen* zur Verfügung. *Integer* beinhaltet einen *int*, oder *Float* beinhaltet einen *float*, usw.
+Wird benötigt, um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet. **Wichtig**: eine ArrayList kann nur Objektdatentypen (keine primitiven Datentypen) speichern. Java stellt für genau diesen Zweck *Wrapperklassen* zur Verfügung. *Integer* beinhaltet einen *int*, oder *Float* beinhaltet einen *float*, usw.
 
 ```java
 import java.util.ArrayList;
@@ -511,7 +516,7 @@ public class Main {
 
 ## Vererbung
 
-Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden um Fehler zu vermeiden und dem *DRY*-Prinzip zu folgen.
+Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden, um Fehler zu vermeiden und dem *DRY*-Prinzip zu folgen.
 Um von Klassen erben zu können, wird das keyword *extends* verwendet.
 
 ### *super*-Keyword
@@ -670,7 +675,7 @@ public class Traktor extends Fahrzeug {
 
 ### instanceof - überprüfen der Klasse bzw. der Vaterklasse
 
-wird verwendet um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse ***gecastet*** werden kann, also ob die Klasse des Objekts dem gecasteten entpricht bzw. in der Vererbungshirarchie anzutreffen ist.
+Wird verwendet, um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse ***gecastet*** werden kann, also ob die Klasse des Objekts dem gecasteten entspricht bzw. in der Vererbungshirarchie anzutreffen ist.
 
 ```java
 // in Tier.java
