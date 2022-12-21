@@ -55,7 +55,7 @@ Alle Typen in CamelCase starten mit:
 # String Formatierung mit `printf`
 
 Alternativ zu der Ausgabe auf der Konsole zu ```println``` gibt es die Funktion ```printf```.
-Sie ermöglicht das schreiben eines kompletten Strings mit *Platzhaltern*.
+Sie ermöglicht das Schreiben eines kompletten Strings mit *Platzhaltern*.
 
 ```java
 public void print() {
