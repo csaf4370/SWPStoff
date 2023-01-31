@@ -855,3 +855,80 @@ void draw() {
   circle(posX, posY, 10);
 }
 ```
+
+## Thanks
+
+```java
+float x = 50;
+float y = 50;
+float angle = 45;
+float force = 100;
+boolean shooting = false; // indicator if ball is in the air
+int startTime = 0; // start time of fire
+float g = 9.81; // gravity
+
+void setup() {
+  size(640, 360);
+  noStroke();
+  background(0);
+}
+
+float getVxt(float angle) {
+  return force * cos(radians(angle));
+}
+
+float getVyt(float angle, float t) {
+  return -g*t + force * sin(radians(angle));
+}
+
+float getX(float t, float x0, float angle){
+  return getVxt(angle)*t+x0;
+}
+
+float getY(float t, float y0, float angle){
+  return -g/2 * t*t + getVyt(angle,t)*t + y0;
+}
+
+void keyPressed() {
+  if (key == 'd') {
+    angle += 3;
+  } else if (key == 'a') {
+    angle -= 3;
+  } else if (keyCode == RIGHT) {
+    x += 3;
+  } else if (keyCode == LEFT) {
+    x -= 3;
+  } else if (key == 'w') {
+    force += 10;
+  }else if (key == 's') {
+    force -= 10;
+  } else if (key == ' ') {
+    shooting = true;
+    startTime = millis();
+  }
+}
+
+void draw() {
+  background(0);
+  color(128);
+  scale(1, -1);
+  translate(0, -height);
+  rectMode(CENTER);
+  rect(x, y, 30, 30);
+  stroke(128);
+  float lineEndX = acos(radians(angle))*100+x+15;
+  float lineEndY = asin(radians(angle))*100+y+15;
+  println(angle,lineEndX, lineEndY);
+  line(x+15,y+15,lineEndX,lineEndY);
+  
+  text(force,width-100, height-100);
+  
+  if (shooting) {
+    float deltaT = millis() - startTime;
+    float newX = getX(deltaT/1000.0,x,angle);
+    float newY = getY(deltaT/1000.0,y,angle);
+    println("newX", newX, deltaT, angle, newY);
+    circle(newX,newY,30);
+  }
+}
+```
