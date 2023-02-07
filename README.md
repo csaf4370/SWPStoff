@@ -932,3 +932,168 @@ void draw() {
   }
 }
 ```
+
+### Thanks after DRY
+
+```java
+// main
+Tank tank1 = new Tank(50, 50);
+Tank tank2 = new Tank(400, 50);
+Tank currentTank = tank1;
+Bullet bullet;
+
+void setup() {
+  size(640, 360);
+  noStroke();
+  background(0);
+}
+
+Tank getOtherTank(){
+  if (currentTank == tank1) {
+    return tank2;
+  } else {
+    return tank1;
+  }
+}
+
+void switchTank() {
+  if (currentTank == tank1) {
+    currentTank = tank2;
+  } else {
+    currentTank = tank1;
+  }
+}
+
+void keyPressed() {
+  if (key == 'd') {
+    currentTank.angle += 3;
+  } else if (key == 'a') {
+    currentTank.angle -= 3;
+  } else if (keyCode == RIGHT) {
+    currentTank.x += 3;
+  } else if (keyCode == LEFT) {
+    currentTank.x -= 3;
+  } else if (key == 'w') {
+    currentTank.force += 10;
+  } else if (key == 's') {
+    currentTank.force -= 10;
+  } else if (key == ' ') {
+    bullet = new Bullet(currentTank.angle, currentTank.force, currentTank.turretX, currentTank.turretY);
+  }
+}
+
+void draw() {
+  background(0);
+  color(128);
+  scale(1, -1);
+  translate(0, -height);
+  rectMode(CENTER);
+
+  tank1.draw();
+  tank2.draw();
+
+  if (bullet != null) {
+    bullet.draw();
+  }
+}
+
+// Tank
+class Tank {
+  float x = 50;
+  float y = 50;
+  float angle = 45;
+  float force = 100;
+  final float width_ = 30;
+  final float height_ = 30;
+  float turretX = 0;
+  float turretY = 0;
+
+  Tank(float x, float y, float angle, float force) {
+    this.x = x;
+    this.y = y;
+    this.angle = angle;
+    this.force = force;
+  }
+
+  Tank(float x, float y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  void draw() {
+    rect(x, y, width_, height_);
+    stroke(128);
+    turretX = cos(radians(angle))*50+x;
+    turretY = sin(radians(angle))*50+y;
+    //println(angle, lineEndX, lineEndY);
+    line(x, y, turretX, turretY);
+
+    translate(0, height);
+    scale(1, -1);
+    textSize(60);
+    text(force, x, height-300);
+    scale(1, -1);
+    translate(0, -height);
+  }
+}
+
+
+// Bullet
+class Bullet {
+  int startTime = 0; // start time of fire
+  final float g = 9.81; // gravity
+  float angle = 0;
+  float force = 0;
+  float x0 = 0;
+  float y0 = 0;
+  float x = 0;
+  float y = 0;
+  float width_ = 15;
+
+  Bullet(float angle, float force, float x0, float y0) {
+    this.angle = angle;
+    this.force = force;
+    this.x0 = x0;
+    this.y0 = y0;
+    this.startTime = millis();
+  }
+
+  float getVxt(float angle) {
+    return force * cos(radians(angle));
+  }
+
+  float getVyt(float angle, float t) {
+    return -g*t + force * sin(radians(angle));
+  }
+
+  float getX(float t, float x0, float angle) {
+    return getVxt(angle)*t+x0;
+  }
+
+  float getY(float t, float y0, float angle) {
+    return -g/2 * t*t + getVyt(angle, t)*t + y0;
+  }
+
+  void draw() {
+    float deltaT = millis() - startTime;
+    x = getX(deltaT/1000.0, x0, angle);
+    y = getY(deltaT/1000.0, y0, angle);
+    //println("newX", x, deltaT, angle, y);
+    circle(x, y, width_);
+    Tank ot = getOtherTank();
+    if ( ((x >= ot.x - ot.width_/2.0) && (x <= ot.x + ot.width_/2.0))
+      && ((y >= ot.y - ot.height_/2.0) && (y <= ot.y + ot.height_/2.0)) ) {
+      println("hit");
+      exit();
+      bullet = null;
+      switchTank();
+    }
+
+    if ( x > 655 || x <-width_ / 2.0 || y < -width_ / 2.0 ) {
+      bullet = null;
+      switchTank();
+    }
+  }
+}
+  
+```
