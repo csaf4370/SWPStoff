@@ -100,14 +100,14 @@ Weiters können Enums mit zusätzlichen Attributen ergänzt werden.
 public enum Artikel {
   MAUS(324454),
   LAPTOP(4334);
-  
+
   // wird verwendet um die Nummer des Enums zu speichern
   private int nummer;
-  
+
   Artikel(int i) {
     nummer = i;
   }
-  
+
   public int getNummer() {
     return this.nummer;
   }
@@ -123,11 +123,11 @@ public enum Artikel {
       return MAUS;
     }
   }
-  
+
   public static void main(String[] args) {
     Artikel a = MAUS; // entspricht logisch: MAUS(324454)
     System.out.println(a.getNummer());
-    
+
     Artikel a2 = LAPTOP; // entspricht logisch: LAPTOP(4334)
     System.out.println(a2.getNummer());
 
@@ -336,11 +336,11 @@ class Person{
   }
 
   public static void main(String[] args) {
-    Person p1 = new Person(); 
+    Person p1 = new Person();
     // Konstruktor 1 || age=12, fname="unbestimmt"
-    Person p2 = new Person(18); 
+    Person p2 = new Person(18);
     // Konstruktor 2 || age=18, fname="Sepp"
-    Person p3 = new Person(17, "Martin"); 
+    Person p3 = new Person(17, "Martin");
     // Konstruktor 3 || age=17, fname="Martin"
   }
 
@@ -522,7 +522,7 @@ Um von Klassen erben zu können, wird das keyword *extends* verwendet.
 ### *super*-Keyword
 
 *super* ruft den Konstruktor der vererbten Klasse auf.
-Falls eine Methode der Vaterklasse aufgerufen werden soll, obwohl die aktuelle Klasse die Methode überschrieben hat, kann man mit 
+Falls eine Methode der Vaterklasse aufgerufen werden soll, obwohl die aktuelle Klasse die Methode überschrieben hat, kann man mit
 
 ```java
 super.methodenName(...)
@@ -533,17 +533,17 @@ die ursprüngliche Methode aufrufen.
 ```java
 \\ in Tier.java
 public abstract class Tier {
-	
+
 	private String name;
 	private String gebTag;
-	
+
 	public String getName() {
 		return name;
 	}
 	public String getGebTag() {
 		return gebTag;
 	}
-	
+
 	public Tier(String name, String gebTag) {
 		this.name = name;
 		this.gebTag = gebTag;
@@ -556,9 +556,9 @@ public abstract class Tier {
 
 \\in Hund.java
 public class Hund extends Tier {
-	
+
 	private String rasse;
-	
+
 	public Hund(String name, String gebTag, String rasse) {
 		super(name, gebTag); // Aufruf des Konstruktors der Vaterklasse
 		this.rasse = rasse;
@@ -605,13 +605,13 @@ public abstract class Fahrzeug {
 	private int ps;
 	private int baujahr;
 	private double currentVelocity;
-	
+
 	public Fahrzeug(int ps, int baujahr) {
 		this.ps = ps;
 		this.baujahr = baujahr;
 		this.currentVelocity = 0.0;
 	}
-	
+
 	public void accelerate() {
 		this.currentVelocity += this.ps/10.0;
 	}
@@ -627,7 +627,7 @@ public abstract class Fahrzeug {
 	public double getCurrentVelocity() {
 		return currentVelocity;
 	}
-	
+
 	protected void setCurrentVelocity(double v) {
 		this.currentVelocity = v;
 	}
@@ -636,7 +636,7 @@ public abstract class Fahrzeug {
 // Auto.java
 // Subklasse (Klasse die von Vaterklasse erbt)
 public class Auto extends Fahrzeug{
-	
+
 	private String marke;
 
 	public Auto(int ps, int baujahr, String marke) {
@@ -653,7 +653,7 @@ public class Auto extends Fahrzeug{
 // erbt ebenfalls von Fahrzeug
 public class Traktor extends Fahrzeug {
 	private double zugKraft;
-	
+
 	public Traktor(int ps, int baujahr, double zugKraft) {
 		super(ps, baujahr);
 		this.zugKraft = zugKraft;
@@ -662,7 +662,7 @@ public class Traktor extends Fahrzeug {
 	public double getZugKraft() {
 		return zugKraft;
 	}
-	
+
 	@Override
 	public void accelerate() {
 		this.setCurrentVelocity( this.getCurrentVelocity() + this.getPs()/40.0);
@@ -683,8 +683,8 @@ public abstract class Tier{
   protected String name;
   protected String geburtsDatum;
 
-  public getGeburtsDatum() { 
-    return this.geburtsDatum; 
+  public getGeburtsDatum() {
+    return this.geburtsDatum;
   }
 
   public String getName(){
@@ -734,7 +734,7 @@ public class Main {
 			}
 		}
 
-		// alternative 
+		// alternative
 		for (int i = 0; i < tiere.size(); i++) {
 			Tier t = tiere.get(i);
 			if (t instanceof Hund) {
@@ -794,21 +794,21 @@ public class Main {
     // Erstellen eines int
     Random rand = new Random();
     int randomZahl = rand.nextInt(10); // Zahl zwischen 0 und 10 exclusive
-    
+
     Random rand = new Random();
     int bound = 1000; // wie weit - exclusive dieser Zahl
     int randomZahl = rand.nextInt(bound) + 10;
     System.out.println(randomZahl); // Zahl zwischen 10 - 1010 exclusive
-    
+
     double randDouble = rand.nextDouble();
-    System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
-    
+    System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive
+
     // Ziel ist es einen Double von 10.0 - 20.0 zu machen
     int randomZahl2 = rand.nextInt(9) + 10;
     double randDouble2 = rand.nextDouble();
     double res = randDouble2 + randomZahl2;
     System.out.println(res);
-    
+
     // Alternative
     double randDouble3 = rand.nextDouble()*10.0 + 10.0;
     System.out.println(randDouble3);
@@ -826,9 +826,9 @@ erstes Spiel ... Pong (start)
  int accX = 1;
  int accY = 1;
  int accSpeed = 5;
- 
+
 void setup() {
-  size(640, 360); 
+  size(640, 360);
   noStroke();
   rectMode(CENTER);
 }
@@ -836,20 +836,20 @@ void setup() {
 void draw() {
 
   fill(255, 204);
-  
+
   if (posX > 640) {
-   accX = -accSpeed; 
+   accX = -accSpeed;
   }
   if (posX <= 0) {
-   accX = +accSpeed; 
+   accX = +accSpeed;
   }
   if (posY > 360) {
-   accY = -accSpeed; 
+   accY = -accSpeed;
   }
   if (posY <= 0) {
-   accY = +accSpeed; 
+   accY = +accSpeed;
   }
-  
+
   posX = posX + accX;
   posY = posY + accY;
   circle(posX, posY, 10);
@@ -920,9 +920,9 @@ void draw() {
   float lineEndY = asin(radians(angle))*100+y+15;
   println(angle,lineEndX, lineEndY);
   line(x+15,y+15,lineEndX,lineEndY);
-  
+
   text(force,width-100, height-100);
-  
+
   if (shooting) {
     float deltaT = millis() - startTime;
     float newX = getX(deltaT/1000.0,x,angle);
@@ -1095,5 +1095,5 @@ class Bullet {
     }
   }
 }
-  
+
 ```
