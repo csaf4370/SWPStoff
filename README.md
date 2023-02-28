@@ -36,6 +36,8 @@ lang: "de-AT"
   - [Thanks](#thanks)
     - [Thanks after DRY](#thanks-after-dry)
 - [git basics](#git-basics)
+    - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
+    - [Ignorieren von Dateien](#ignorieren-von-dateien)
 
 
 # coding guidelines
@@ -1126,3 +1128,13 @@ Um Änderungen von `remote` Repository in mein System zu holen, wir der Befehl `
 ### Ablaufdiagram eines typischen Workflows
 
 ![ablauf diagramm](diagrams/git.png)
+
+### Ignorieren von Dateien
+
+um nicht benötigte Dateien (zB. Dateien, welche beim compilieren erzeugt werden) zu ignorieren können wir im Hauptverzeichnis die Datei *.gitignore* erzeugen/editieren.
+
+```
+**.class
+```
+
+ignoriert alle *.class* Dateien.
