@@ -1125,6 +1125,8 @@ Durch `git push` werden die Änderungen meines Repostitories auf das `remote` Re
 
 Um Änderungen von `remote` Repository in mein System zu holen, wir der Befehl `git pull` verwendet.
 
+Jederzeit kann ```git status``` verwendet werden um den aktuellen Status des Repositories abzufragen.
+
 ### Ablaufdiagram eines typischen Workflows
 
 ![ablauf diagramm](diagrams/git.png)
