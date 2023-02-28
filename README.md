@@ -11,7 +11,7 @@ lang: "de-AT"
   - [Table of Contents](#table-of-contents)
 - [coding guidelines](#coding-guidelines)
   - [CamelCase](#camelcase)
-- [String formatierung mit printf](#string-formatierung-mit-printf)
+- [String Formatierung mit `printf`](#string-formatierung-mit-printf)
 - [Enums](#enums)
   - [switch-case Anweisung](#switch-case-anweisung)
 - [forEach Schleife](#foreach-schleife)
@@ -33,6 +33,9 @@ lang: "de-AT"
   - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
   - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
+  - [Thanks](#thanks)
+    - [Thanks after DRY](#thanks-after-dry)
+- [git basics](#git-basics)
 
 
 # coding guidelines
@@ -1097,3 +1100,29 @@ class Bullet {
 }
   
 ```
+
+# git basics
+
+git ist ein Versionsverwaltungssystem, welches uns erlaubt verschiedene Versionen nachvollziehbar zu speichern und es erlaubt uns einfaches Zusammenarbeiten mit anderen Mitarbeitern.
+
+Es existiert (normalerweise) ein `remote` repository auf zb. Github und ein `lokales` auf unserer Festplatte.
+
+Wenn wir ein Repository angelegt haben (zb. auf Github) können wir es mit:
+
+```git clone https://github.com/username/repositoryName``` 
+
+auf unser System clonen.
+
+**Wir müssen uns im git Verzeichnis befinden um folgende Befehle ausführen zu können.**
+
+mit `git add dateiname.endung` können wir Dateien zu den "beobachtenden" Dateien hinzufügen.
+
+mit `git commit -m"nachricht welche in de Logs erscheint"` erzeuge ich einen neuen *Busstop* welcher wie eine Version der Codebasis angesehen werden kann.
+
+Durch `git push` werden die Änderungen meines Repostitories auf das `remote` Repository übertragen.
+
+Um Änderungen von `remote` Repository in mein System zu holen, wir der Befehl `git pull` verwendet.
+
+### Ablaufdiagram eines typischen Workflows
+
+![ablauf diagramm](diagrams/git.png)
