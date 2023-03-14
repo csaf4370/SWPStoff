@@ -38,6 +38,8 @@ lang: "de-AT"
 - [git basics](#git-basics)
     - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
     - [Ignorieren von Dateien](#ignorieren-von-dateien)
+- [Exceptions](#exceptions)
+  - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
 
 
 # coding guidelines
@@ -1140,3 +1142,125 @@ um nicht benötigte Dateien (zB. Dateien, welche beim compilieren erzeugt werden
 ```
 
 ignoriert alle *.class* Dateien.
+
+# Exceptions
+
+Exception entsprechen Ausnahmen, auf die der Benutzer reagieren kann.
+Viele kennen eine der folgenden: *ArrayOutOfBoundsException* oder *NullPointerException*.
+Diese Ausnahmen können entweder mit:
+
+- try/catch
+- throws 
+
+behandelt werden. Mit try/catch werden die Programmzeilen, welche
+eine Exception werden können in einen Block eingeschlossen.
+
+```java
+FileWriter writer = null;
+try {
+	writer = new FileWriter("myFile.txt");
+	writer.write(myString);
+	writer.close();
+	System.out.println("Successfully wrote to the file.");
+} catch (IOException e) {
+	System.out.println("Da ist etwas schief gelaufen.");
+}
+```
+
+hier kann auf den Fehler direkt reagiert werden.
+Falls die Aufgabe des Fehlerbehandelns abgegeben werden soll, kann man 
+die Exception an die aufrufende Funktion weiterreichen --> *throws*
+
+```java
+private static void writeToFile(String what) throws IOException {
+	FileWriter writer = null;
+	writer = new FileWriter("myFile.txt");
+	writer.write(what);
+	writer.close();
+	System.out.println("huhu");
+}
+```
+
+Exceptions erben von *Throwable*, welche eine Vaterklasse von *Error* und
+*Exception* ist. *Error* definiert Fehler, auf die nicht reagiert werden kann/soll.
+
+Man kann Exception einfach als Klasse definieren:
+
+```java
+// in class ToExpensiveException
+public class ToExpensiveException extends Exception {
+
+}
+```
+
+diese kann dann wie folgt verwendet werden:
+
+```java
+public static void throwMeMaybeAnException(int price) throws ToExpensiveException {
+		if (price > 10) {
+			throw new ToExpensiveException(); // hier wird die Exception erzeugt und geworfen
+		}
+	}
+```
+
+## Ein ganzes Beispiel
+
+```java
+// in ToExpensiveException.java
+public class ToExpensiveException extends Exception {
+
+}
+
+```
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+	
+	public static void throwMeMaybeAnException(int price) throws ToExpensiveException {
+		if (price > 10) {
+			throw new ToExpensiveException();
+		}
+	}
+	
+	private static void writeToFile(String what) throws IOException {
+		FileWriter writer = null;
+		writer = new FileWriter("myFile.txt");
+		writer.write(what);
+		writer.close();
+		System.out.println("huhu");
+	}
+	
+	public static void main(String[] args) throws IOException {
+		String myString = "Hello, world!";
+		// Variante try catch
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter("myFile.txt");
+			writer.write(myString);
+			writer.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("Da ist etwas schief gelaufen.");
+		}
+		
+		// Behandlung des Fehlers
+		try {
+			throwMeMaybeAnException(11);
+			System.out.println("Yeah I have something to eat");
+		} catch (ToExpensiveException e) {
+			System.out.println("Sorry inflation!");
+		}
+		
+		try {
+			writeToFile("Servas");
+		} catch (IOException e) {
+			System.out.println("sorry my friend");
+		}
+		
+	}
+
+}
+```
