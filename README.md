@@ -1264,3 +1264,30 @@ public class Main {
 
 }
 ```
+
+### Programm Argumente
+
+Um unser Programm von außen steuern zu können, gibt uns Java(und sogut wie alle anderen Programmiersprachen)
+die Möglichkeit Argument dem Programm beim Start zu übergeben.
+Die passiert über die *main*-Methode mit den Argument *String[] args*.
+Argumente können in Eclipse unter *Run Configurations...* unter *Java Applications* richtiges Programm wählen *Arguments*.
+Die Argumente müssen bei Bedarf in den richtigen Datentyp konvertiert werden.
+Im folgenden Beispiel wird ein *int* von einem String konvertiert.
+
+```java
+public class Main {
+	public static void main(String[] args) {
+		int sum = 0;
+		for (String s : args) {
+			try {
+				int intValue = Integer.parseInt(s); // can throw NumberFormatException
+				sum += intValue;
+			} catch (NumberFormatException e) {
+				System.out.println("Not a number in argument");
+			}
+		}
+		System.out.println("Sum of all arguments: " + sum);
+	}
+
+}
+```
