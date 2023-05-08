@@ -40,6 +40,9 @@ lang: "de-AT"
     - [Ignorieren von Dateien](#ignorieren-von-dateien)
 - [Exceptions](#exceptions)
   - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
+    - [Programm Argumente](#programm-argumente)
+  - [JavaFX](#javafx)
+    - [Maven](#maven)
 
 
 # coding guidelines
@@ -1291,3 +1294,31 @@ public class Main {
 
 }
 ```
+
+## JavaFX
+
+Um Benutzern mehr Komfort zu bieten werden meist Programm-Interaktionen mit GUIs (Graphical User Interfaces) gelöst.
+Java bietet mehrere Möglichkeiten (SWT, AWT, JFace, ...), aber JavaFX wurde gewählt, da es die modernsten Oberflächen
+bauen kann.
+
+Um JavaFX verwenden zu können, müssen wir zusätzliche Bibliotheken installieren. Wir können entweder Bibliotheken selber 
+herunterladen und sie in unseren Projekten dem Build-Path hinzufügen, oder wir verwenden folgende Methode.
+
+### Maven
+
+Maven ist ein Paketmanager für die Programmiersprache Java. Er dient dazu Bibliotheken zentral verfügbar zu machen und
+Abhängigkeiten unserer Programme leichter definieren zu können. Daher können wir in einer Textdatei (pom.xml) eintragen, von
+welchen Bibliotheken unser Programm abhängt. Maven erledigt dann alle schritte welche sonst von Hand nötig wären:
+
+- herunterladen der Dateien
+- eintragen der Bibliotheken im Build-Path
+
+Durch dieses System, können wir also in einer einfachen Textdatei, welche wir auch in unser Versionsverwaltungssystem(git) eintragen können,
+alle Abhängigkeiten einfach definieren. Wenn wir uns an einem anderen Computer befinden, übernimmt Maven wieder den Download und weitere
+Schritte damit wir direkt weiterarbeiten können. 
+
+Um Maven zu installieren, wählen wir die einfache Variante und verwenden [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/release/2023-03/r/eclipse-ide-enterprise-java-and-web-developers)
+
+#### Projekt Setup
+
+Um ein Maven Projekt zu erzeugen, wählen *Neues Maven Projekt*, im folgenden Screen wählen wir... tbc
