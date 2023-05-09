@@ -43,6 +43,8 @@ lang: "de-AT"
     - [Programm Argumente](#programm-argumente)
   - [JavaFX](#javafx)
     - [Maven](#maven)
+      - [Projekt Setup](#projekt-setup)
+      - [Ausführen](#ausführen)
 
 
 # coding guidelines
@@ -1321,4 +1323,10 @@ Um Maven zu installieren, wählen wir die einfache Variante und verwenden [Eclip
 
 #### Projekt Setup
 
-Um ein Maven Projekt zu erzeugen, wählen *Neues Maven Projekt*, im folgenden Screen wählen wir... tbc
+Um ein Maven Projekt zu erzeugen, wählen *Neues Maven Projekt*, im folgenden Screen einfach next und bei Filter geben wir `javafx` ein. Wir wählen in der List darunter dann das Element `com.gluonhq`-`gluonfx-archetype-javafx` mit der Version 0.0.3.
+Im folgenden Fenster geben wir unter `Group ID` den gewünschten Paketnamen an und unter `Artifact Id` den gewünschten Projektnamen. 
+Nach `Finish` und einem Enter im Consolenfenster indem `Y: : ` steht, sollten wir auf der linken Seite das neue Projekt sehen.
+
+#### Ausführen 
+
+Um das Maven Projekt zu starten, gehen wir über das Projektkontextmenü unter `Run As` -> `Maven build`. Darin schreiben wir unter Goals: `clean javafx:run` 
