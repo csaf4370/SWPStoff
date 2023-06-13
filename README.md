@@ -30,6 +30,7 @@ lang: "de-AT"
     - [Keyword *abstract*](#keyword-abstract)
     - [Annotation *@Override*](#annotation-override)
     - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
+    - [Interfaces - Schnittstellen](#interfaces---schnittstellen)
   - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
   - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
@@ -45,6 +46,7 @@ lang: "de-AT"
     - [Maven](#maven)
       - [Projekt Setup](#projekt-setup)
       - [Ausführen](#ausführen)
+    - [SceneBuilder - JavaFX](#scenebuilder---javafx)
 
 
 # coding guidelines
@@ -786,6 +788,12 @@ public class Main {
 }
 ```
 
+### Interfaces - Schnittstellen
+
+Durch die "Einschränkung", dass Java keine Mehrfachvererbung erlaubt, anders als andere Sprachen wie zb. C++, bedient sich Java eines Konzepts namens Interfaces. Diese dienen der Beschreibung was die Klasse erfüllen muss. Daher wird im Interface definiert, dass bestimmte Methoden überschrieben werden müssen. Es können beliebig viele Interfaces implementiert (nicht extended - wie bei (abstrakten) Klassen) werden.
+
+Interfaces könnte man als Verträge verstehen, welche implementierende Klassen erfüllen.
+
 ## UML - unified modeling language (class diagram)
 
 Wird verwendet um eine einheitliche "Sprache" zu definieren, welche uns erlaubt programmiersprachenunabhängig Klassen und ihre Beziehungen zu beschreiben.
@@ -1330,3 +1338,57 @@ Nach `Finish` und einem Enter im Consolenfenster indem `Y: : ` steht, sollten wi
 #### Ausführen 
 
 Um das Maven Projekt zu starten, gehen wir über das Projektkontextmenü unter `Run As` -> `Maven build`. Darin schreiben wir unter Goals: `clean javafx:run` 
+
+### SceneBuilder - JavaFX
+
+Um da Programm besser aufteilen zu können, und Fehler zu vermeiden werden wird das MVC (Model, View, Controller)- Muster verwendet:
+
+- Model: Datenspeicher des Programms 
+- View: JavaFX GUI
+- Controller: Klassen für das reagieren auf Ereignisse (zb. ActionEvent)
+
+Um eine GUI mit JavaFX mit einem SceneBuilder erzeugen zu können, brauchen wir als erstes das Programm: 
+
+[SceneBuilder download](https://gluonhq.com/products/scene-builder/#download)
+
+Dieses Programm wird verwendet um die GUI "zusammen zu klicken". Das Layout (also das Ergebnis) wird in Form einer XML-Datei (.fxml) gespeichert.
+
+![SceneBuilder](scenebuilder.png)
+
+Um die diese Scene verwenden zu können muss:
+
+- Die fxml-Datei in den resources Folder gelegt werden:
+  ![Tree View in Eclipse](javafx-tree.png)
+- ergänzen der pom.xml unter `<dependencies>`um folgende Zeilen:
+  
+  ```xml
+  <dependencies>
+    ...
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>11.0.1</version>
+    </dependency>
+  </dependencies>
+  ```
+
+- ersetzen des `start` codes in der `HelloFx.java` mit folgenden Code:
+
+  ```java
+  public void start(Stage stage) {
+    Parent root = null;
+    try {
+      root = FXMLLoader.load(getClass().getResource("main.fxml"));
+    } catch (IOException e) {
+      System.out.println("could not load main.fxml");
+          
+      e.printStackTrace();
+    }
+    Scene scene = new Scene(root, 640, 480);
+    scene.getStylesheets().add(HelloFX.class.getResource("styles.css").toExternalForm());
+    stage.setScene(scene);
+    stage.show();
+  }
+  ```
+
+Um auf Events reagieren zu können ... fbc...
