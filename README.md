@@ -42,11 +42,16 @@ lang: "de-AT"
 - [Exceptions](#exceptions)
   - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
     - [Programm Argumente](#programm-argumente)
-  - [JavaFX](#javafx)
-    - [Maven](#maven)
-      - [Projekt Setup](#projekt-setup)
-      - [Ausführen](#ausführen)
-    - [SceneBuilder - JavaFX](#scenebuilder---javafx)
+- [JavaFX](#javafx)
+  - [Maven](#maven)
+    - [Projekt Setup](#projekt-setup)
+    - [Ausführen](#ausführen)
+  - [SceneBuilder - JavaFX](#scenebuilder---javafx)
+- [Datenstrukturen](#datenstrukturen)
+- [Bitflags](#bitflags)
+  - [Linked List](#linked-list)
+  - [ArrayList](#arraylist-1)
+  - [Tests mit JUnit](#tests-mit-junit)
 
 
 # coding guidelines
@@ -1305,7 +1310,7 @@ public class Main {
 }
 ```
 
-## JavaFX
+# JavaFX
 
 Um Benutzern mehr Komfort zu bieten werden meist Programm-Interaktionen mit GUIs (Graphical User Interfaces) gelöst.
 Java bietet mehrere Möglichkeiten (SWT, AWT, JFace, ...), aber JavaFX wurde gewählt, da es die modernsten Oberflächen
@@ -1314,7 +1319,7 @@ bauen kann.
 Um JavaFX verwenden zu können, müssen wir zusätzliche Bibliotheken installieren. Wir können entweder Bibliotheken selber 
 herunterladen und sie in unseren Projekten dem Build-Path hinzufügen, oder wir verwenden folgende Methode.
 
-### Maven
+## Maven
 
 Maven ist ein Paketmanager für die Programmiersprache Java. Er dient dazu Bibliotheken zentral verfügbar zu machen und
 Abhängigkeiten unserer Programme leichter definieren zu können. Daher können wir in einer Textdatei (pom.xml) eintragen, von
@@ -1329,17 +1334,17 @@ Schritte damit wir direkt weiterarbeiten können.
 
 Um Maven zu installieren, wählen wir die einfache Variante und verwenden [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/release/2023-03/r/eclipse-ide-enterprise-java-and-web-developers)
 
-#### Projekt Setup
+### Projekt Setup
 
 Um ein Maven Projekt zu erzeugen, wählen *Neues Maven Projekt*, im folgenden Screen einfach next und bei Filter geben wir `javafx` ein. Wir wählen in der List darunter dann das Element `com.gluonhq`-`gluonfx-archetype-javafx` mit der Version 0.0.3.
 Im folgenden Fenster geben wir unter `Group ID` den gewünschten Paketnamen an und unter `Artifact Id` den gewünschten Projektnamen. 
 Nach `Finish` und einem Enter im Consolenfenster indem `Y: : ` steht, sollten wir auf der linken Seite das neue Projekt sehen.
 
-#### Ausführen 
+### Ausführen 
 
 Um das Maven Projekt zu starten, gehen wir über das Projektkontextmenü unter `Run As` -> `Maven build`. Darin schreiben wir unter Goals: `clean javafx:run` 
 
-### SceneBuilder - JavaFX
+## SceneBuilder - JavaFX
 
 Um da Programm besser aufteilen zu können, und Fehler zu vermeiden werden wird das MVC (Model, View, Controller)- Muster verwendet:
 
@@ -1392,3 +1397,222 @@ Um die diese Scene verwenden zu können muss:
   ```
 
 Um auf Events reagieren zu können ... fbc...
+
+# Datenstrukturen
+
+# Bitflags
+
+```java
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		ArrayList<Integer> numbers = new ArrayList<>();
+		ArrayList<Integer> fizz = new ArrayList<>();
+		ArrayList<Integer> buzz = new ArrayList<>();
+		ArrayList<Integer> fizzBuzz = new ArrayList<>();
+		
+		System.out.println("Zahl plz");
+		Scanner scan = new Scanner(System.in);
+		int to = scan.nextInt();
+		
+		System.out.println("Bitshift");
+		int flag = 1 <<2;
+		System.out.println(flag);
+		
+		if ((to & flag) > 0) {
+			System.out.println("YES");
+		}
+		
+		for (int i = 1; i <= to; i++) {
+			
+			int res = 0;
+			int modFizz = i % 3;
+			int modBuzz = i % 5;
+			
+			if (modFizz == 0) {
+				res = 1;
+			}
+			
+			if (modBuzz == 0) {
+				res += 2;
+			}
+			
+			if ((res & 3) == 0) {
+				numbers.add(i);
+			}
+			
+			if ((res & 1) == 1) {
+				fizz.add(i);
+			}
+			if ((res & 2) == 2) {
+				buzz.add(i);
+			}
+			
+			if ((res & 3) == 3) {// 3 ist binaer 11{
+				fizzBuzz.add(i);
+			}
+
+		}
+		System.out.println("numbers: " + numbers);
+		System.out.println("fizz: " + fizz);
+		System.out.println("buzz: " + buzz);
+		System.out.println("fizzBuzz: " + fizzBuzz);
+	}
+}
+```
+
+## Linked List
+
+```java
+public class Node {
+
+	private int value;
+	private Node next;
+
+	public Node(int value) {
+		this.value = value;
+		// next is automatically null
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public Node getNext() {
+		return this.next;
+	}
+}
+```
+
+```java
+public class MyLinkedList {
+	
+	private Node head;
+	
+	public void add(int value) {
+		if (head == null) {
+			head = new Node(value);
+			return;
+		}
+		Node current = head;
+		
+		while (current.getNext() != null) {
+			current = current.getNext();
+		}
+		// current is the last node without a next
+		current.setNext(new Node(value));
+	}
+	
+	public int get(int pos) {
+		Node current = head;
+		for( int i =0; i < pos; i++) {
+			current = current.getNext();
+		}
+		return current.getValue();
+	}
+	
+	public void del(int pos) {
+		if (pos < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		if (pos == 0) {
+			head = head.getNext();
+			return;
+		}
+
+    // delete node for all cases tbc.
+		
+	}
+}
+```
+
+## ArrayList
+
+```java
+public class MyArraylistInteger {
+	int capacity = 8;
+	int[] data = new int[capacity];
+	int index = 0;
+
+	public void add(int val) {
+		if (index + 1 > capacity) {
+			this.capacity *= 2;
+			int[] data2 = new int[this.capacity];
+			for (int i = 0; i < data.length; i++) {
+				data2[i] = this.data[i];
+			}
+			this.data=data2;
+		}
+		this.data[index++] = val;
+	}
+	
+	public int get(int index) {
+		return this.data[index];
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public static void main(String[] args) {
+		MyArraylistInteger mal = new MyArraylistInteger();
+		mal.add(3);
+		mal.add(7);
+		mal.add(10);
+		System.out.println(mal.get(2));
+	}
+}
+```
+
+## Tests mit JUnit
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class TestMyArraylistInteger {
+	MyArraylistInteger mal = new MyArraylistInteger();
+
+	@Test
+	void add_get_same_value() {
+		mal.add(3);
+		assertEquals(mal.get(0), 3);
+	}
+
+	@Test
+	void add_get_same_value2() {
+		mal.add(4);
+		assertEquals(mal.get(0), 4);
+	}
+	
+	@Test
+	void add_over_capacity_increases_capacity() {
+		int oldCap = mal.getCapacity();
+		for (int i = 0; i < 9; i++) {
+			mal.add(i);
+		}
+		int newCap = mal.getCapacity();
+		assertEquals((oldCap < newCap), true);
+	}
+	
+	void printArray() {
+		for (int i = 0; i < mal.getIndex(); i++) {
+			System.out.println(mal.get(i));
+		}
+	}
+}
+```
