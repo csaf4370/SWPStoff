@@ -1398,9 +1398,10 @@ Um die diese Scene verwenden zu können muss:
 
 Um auf Events reagieren zu können ... fbc...
 
-# Datenstrukturen
 
 # Bitflags
+
+Werden häufig in C oder C++ Code effizient zu programmieren. Häufig in Kombination mit Microcontrollern um bestimmte Register zu setzen. In java wenig häufig verwerndet.
 
 ```java
 import java.util.ArrayList;
@@ -1463,7 +1464,18 @@ public class Main {
 }
 ```
 
+# Datenstrukturen
+
+Datenstrukturen dienen dazu Daten abzuspeichern. Es gibt viele verschiedene mit jeweiligen Vor- und Nachteilen. Durch die richtige Wahl der Datenstruktur kann ein Programm viel schneller und effizienter laufen.
+
 ## Linked List
+
+Eine der einfachsten Datenstrukturen ist die Linked List. Man kann sich eine Linked List wie eine Kette vorstellen, an die wir beliebig Glieder hinzufügen können. Das löschen eines Gliedes erfordert, dass das vorhergehende Element auf das nachfolgende (des zu löschenden Elements) umgegebogen werden muss.
+Es wird jeweils eine Node in die Liste eingegügt, welche einen Wert und den Zeiger (next) auf das nächste Element besitzt. Die Liste beinhaltet immer einen Zeiger (head) welcher auf das erste Element zeigt. 
+Von diesem Element werden alle Operationen ausgeführt.
+Bei einer Linked List zeigt eine Node immer nur zu der nächsten Node.
+
+Linked Lists werden sehr selten verwendet, dienen aber aber gute Basisi für weitere (kompliziertere) Datenstrukturen.
 
 ```java
 public class Node {
@@ -1530,13 +1542,120 @@ public class MyLinkedList {
 			return;
 		}
 
-    // delete node for all cases tbc.
+    Node current = this.head;
+    for (int i = 0; i < pos-1; i++) {
+      if (current.getNext() == null) {
+        throw new IndexOutOfBoundsException();
+      }
+      current = current.getNext();
+    }
+    // we are no on Node before the Node we want to delete
+    current.setNext(current.getNext().getNext());
+	}
+}
+```
+
+## Doubly Linked List
+
+Bei der Doubly Linked List wird der Node ein weiteres Attribut hinzugefügt - der Zeiger zur vorigen Node.
+Das ermöglicht uns, dass wir uns nicht nur in eine Richtung bewegen können, sonderen auch zurück gehen können. Nachteil ist, dass mehr Daten (2x Pointer) pro Datenwert, den ich abspeichern will, gebraucht wird. Die Doubly Linked List hat zusätzlich zu dem *head*-Pointer auch einen *tail*-Pointer welcher uns das traversieren (durchgehen) der Daten von hinten ermöglicht.
+
+```java
+public class Node {
+
+	private int value;
+	private Node next;
+  private Node prev;
+
+	public Node(int value) {
+		this.value = value;
+		// next is automatically null
+    // prev is automatically null
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public Node getNext() {
+		return this.next;
+	}
+
+  public void setPrev(Node prev) {
+		this.prev = prev;
+	}
+
+	public Node getPrev() {
+		return this.prev;
+	}
+}
+```
+
+```java
+public class MyDoublyLinkedList {
+	
+	private Node head;
+  private Node tail;
+	
+	public void add(int value) {
+		if (head == null) {
+			head = new Node(value);
+      tail = head;
+			return;
+		}
+		Node current = head;
 		
+		while (current.getNext() != null) {
+			current = current.getNext();
+		}
+		// current is the last node without a next
+		current.setNext(new Node(value));
+    tail = current.getNext();
+	}
+	
+	public int get(int pos) {
+		Node current = head;
+		for( int i =0; i < pos; i++) {
+			current = current.getNext();
+		}
+		return current.getValue();
+	}
+	
+	public void del(int pos) {
+		if (pos < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		if (pos == 0) {
+			head = head.getNext();
+			return;
+		}
+
+    Node current = this.head;
+    for (int i = 0; i < pos-1; i++) {
+      if (current.getNext() == null) {
+        throw new IndexOutOfBoundsException();
+      }
+      current = current.getNext();
+    }
+    // we are no on Node before the Node we want to delete
+    Node afterToDelte = current.getNext().getNext();
+    current.setNext(afterToDelte);
+    afterToDelte.setPrev(current);
 	}
 }
 ```
 
 ## ArrayList
+
+Schon oft verwendet, bauen wir hier unsere eigene Variante. Im Grunde wird ein normaler Array als Datenspeicher verwendet und wenn die Größe nicht mehr ausreicht muss ein neuer (größerer) Array erzeugt werden und die Daten kopiert. Das alles bekommt der Benutzer nicht mit. Für ihn ist das ein Array der beliebig groß werden kann.
 
 ```java
 public class MyArraylistInteger {
@@ -1579,6 +1698,10 @@ public class MyArraylistInteger {
 ```
 
 ## Tests mit JUnit
+
+Um nicht die *main*-Methode verwednen zu müssen um unsere Programme zu testen, haben sich Test-Frameworks etabliert. Sie dienen dazu möglichst viel des Codes zu überprüfen. Durch verschiedene Varianten von *assert* können wir auch auf das manuelle lesen (des Outputs) und das vergleichen von Sollwert automatisieren.
+Weiterer Vorteil ist, dass die Tests immer mehr werden und wenn neue Funktionalitäten dazukommen ich immer noch die Sicherheit habe, dass die alte Funktionalität nicht darunter leidet.
+In Java ist JUnit weit verbreitet.
 
 ```java
 import static org.junit.jupiter.api.Assertions.*;
