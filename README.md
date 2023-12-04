@@ -47,10 +47,14 @@ lang: "de-AT"
     - [Projekt Setup](#projekt-setup)
     - [Ausführen](#ausführen)
   - [SceneBuilder - JavaFX](#scenebuilder---javafx)
-- [Datenstrukturen](#datenstrukturen)
 - [Bitflags](#bitflags)
+- [Datenstrukturen](#datenstrukturen)
   - [Linked List](#linked-list)
+  - [Doubly Linked List](#doubly-linked-list)
   - [ArrayList](#arraylist-1)
+  - [Stack](#stack)
+- [Generics](#generics)
+  - [Bounded Generics](#bounded-generics)
   - [Tests mit JUnit](#tests-mit-junit)
 
 
@@ -1696,6 +1700,73 @@ public class MyArraylistInteger {
 	}
 }
 ```
+
+## Stack
+
+ähnlich ll
+
+# Generics
+
+Generics dienen dazu Klassen oder Funktionen für mehrere Datentypen zu definieren.
+Um beispielsweise eine LinkedList für mehr Datentypen als *int* zu definieren, müssten wir die Node und auch die LinkedList jeweils neu definieren. Als Datentypen dürfen nur Objektdatentypen(alles was eine Klasse ist bzw. von Objekt erbt) verwendet werden. Zb. *Integer* statt *int*. Es werden keine primitiven Datentypen erlaubt.
+
+```java
+class Node {
+  Node next;
+  int value; // dieser Wert soll nicht fixiert auf int sein.
+}
+```
+
+Um nicht jeweils eine Klasse Node und LinkedList für alle Datentypen zu schreiben, wurden *Generics* definiert.
+
+```java
+class Node<E> {
+  Node next;
+  E value; // E wird von außen definiert und hier "eingesetzt"
+}
+```
+
+Die Node muss dann von außen mit einem Datentyp als "Argument" erstellt werden.
+
+```java
+Node<Float> n = new Node<Float>(3.4f);
+```
+
+Wir kennen diese Notation, wenn wir eine *ArrayList* verwendet haben.
+
+Wie oben erwähnt können auch Funktionen/Methoden generic definiert werden:
+
+```java
+public <T> T returnFirst(T[] a) {   
+    return a[0];
+}
+```
+
+## Bounded Generics
+
+Um einzuschränken welche Datentypen für die Generics verwendet werden können, können wir das Keyword *extends* verwenden. 
+
+```java
+class Node<E extends Number> {
+  Node next;
+  E value; 
+}
+```
+
+Das bedeutet, dass der Datentyp welcher für diese Node verwendet werden kann vom Typ Number ist, oder davon (indirekt) erbt oder das Interface implementiert.
+Es kann hier beispielsweise kein *String* verwendet werden.
+
+Wenn beispielsweise eine Anforderung an unsere Datentypen ist, dass sie verglichen werden müssen, können wir beispielsweise das Interface *Comparable* verwenden. [Comparable Docu](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
+
+```java
+class Node<E extends Comparable> {
+  Node next;
+  E value; 
+}
+```
+
+Wie wir in der Dokumentation sehen können, haben alle gängigen (numerischen) Typen dieses Interface implementiert, was zur Folge hat, dass wir die Funktion *compareTo(T o)* verwerden können (diese ist im *Comparable*-Interface definiert).
+
 
 ## Tests mit JUnit
 
