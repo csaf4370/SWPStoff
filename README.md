@@ -52,7 +52,8 @@ lang: "de-AT"
   - [Linked List](#linked-list)
   - [Doubly Linked List](#doubly-linked-list)
   - [ArrayList](#arraylist-1)
-  - [Stack](#stack)
+  - [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
+  - [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
 - [Generics](#generics)
   - [Bounded Generics](#bounded-generics)
   - [Tests mit JUnit](#tests-mit-junit)
@@ -1701,9 +1702,146 @@ public class MyArraylistInteger {
 }
 ```
 
-## Stack
+## Stack (LIFO) - Last In First Out
 
-ähnlich ll
+Der Stack ist ähnlich einer LinkedList. Der Unterschied besteht darin dass Elemente immer vorne hinzugefügt werden. Sie werden auf den Stapel gelegt.
+Diese Operation wird *push* genannt. Eine weitere Eigenheit des Stacks ist, dass nur das oberste (erste)- Element genommen werden kann (Operatin *pop*).
+Im Prinzip können wir uns einen Stack wie eine LinkedList vorstellen, bei der neue Elemente immer an Position 0 eigefügt werden. Und wenn wir ein
+Elemt *pop*en wird es wieder von Position 0 genommen.
+Weiters kann beim Stapel das oberste Element angesehen (peek) werden.
+
+```java
+public class Node {
+
+	private int value;
+	private Node next;
+
+	public Node(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public Node getNext() {
+		return this.next;
+	}
+}
+```
+
+```java
+public class MyStack {
+	
+	private Node head;
+	
+	public void push(int value) {
+		if (head == null) {
+			head = new Node(value);
+			return;
+		} else {
+      Node n = new Node(value);
+      n.setNext(head);
+      this.head = n;
+    }
+	}
+	
+	public int peek() {
+    if (head == null) {
+			return -1;
+		} else {
+      return head.getValue();
+	}
+	
+	public int pop() {
+		if (head !== null) {
+      int headVal = head.getValue();
+			head = head.getNext();
+			return headVal;
+		} else {
+      return -1;
+    }
+}
+```
+
+## Queue (FIFO) - First In First Out
+
+Die Queue ist ähnlich einer LinkedList. Elemente werden immer hinten hinzugefügt (*add*). Und Elemente werden immer von vorne weggenommen (*poll/remove*). Gleich wie der Stack kann auch auf das erste Element geschaut werden (*peek*) ohne es zu entfernen.
+
+
+```java
+public class Node {
+
+	private int value;
+	private Node next;
+
+	public Node(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public Node getNext() {
+		return this.next;
+	}
+}
+```
+
+```java
+public class MyQueue {
+	
+	private Node head;
+	
+	public void add(int value) {
+		if (head == null) {
+			head = new Node(value);
+			return;
+		}
+		Node current = head;
+		
+		while (current.getNext() != null) {
+			current = current.getNext();
+		}
+		// current is the last node without a next
+		current.setNext(new Node(value));
+	}
+	
+	public int peek() {
+    if (head == null) {
+			return -1;
+		} else {
+      return head.getValue();
+	}
+	
+	public int poll() {
+		if (head !== null) {
+      int headVal = head.getValue();
+			head = head.getNext();
+			return headVal;
+		} else {
+      return -1;
+    }
+}
+```
+
 
 # Generics
 
