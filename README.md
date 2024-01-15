@@ -54,6 +54,8 @@ lang: "de-AT"
   - [ArrayList](#arraylist-1)
   - [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
   - [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
+- [Rekursion](#rekursion)
+  - [Endrekursion](#endrekursion)
 - [Generics](#generics)
   - [Bounded Generics](#bounded-generics)
   - [Tests mit JUnit](#tests-mit-junit)
@@ -1842,6 +1844,46 @@ public class MyQueue {
 }
 ```
 
+# Rekursion
+
+Rekursion wird verwendet um eine bestimmte Art von Problemlösungen umzusetzen.
+Rekursion besteht aus folgenden Teilen:
+
+- Abbruchbedingung(en)
+- Rekursionsvortschritt (Aufruf von sich selber mit angepassten Parametern)
+
+```
+IS coole isch bei da Rekursion - dass man lei in aufbau herausfinden muss und die rekursion ääähh das Ergebnis selber rausfindet.
+```
+```
+Das Faszinierende an der Rekursion ist, dass man lediglich den Aufbau verstehen muss, und die Rekursion findet dann das Ergebnis eigenständig heraus."
+```
+
+```java
+// Berechnung Fakultät: 5! = 5 x 4 x 3 x 2 x 1
+public static int faculty(int i){
+  // Abbruchbedingung
+  if (i == 0 || i == 1) {
+    return 1;
+  }
+  // Recursionsvortschritt
+  return i*faculty(i-1);
+}
+
+// Berechnung Paskalsches Dreieck siehe https://de.wikipedia.org/wiki/Pascalsches_Dreieck
+public static int pasD(int zeile, int spalte){
+  // Abbruchbedingung
+  if (zeile == spalte || spalte == 0 ){
+    return 1;
+  } 
+  // Recursionsvortschritt
+  return pasD(zeile - 1, spalte) + pasD(zeile - 1, spalte -1);
+}
+```
+
+## Endrekursion
+
+tbc
 
 # Generics
 
