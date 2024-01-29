@@ -56,6 +56,7 @@ lang: "de-AT"
   - [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
 - [Rekursion](#rekursion)
   - [Endrekursion](#endrekursion)
+    - [Beispiel add bei FIFO - Queue](#beispiel-add-bei-fifo---queue)
 - [Generics](#generics)
   - [Bounded Generics](#bounded-generics)
   - [Tests mit JUnit](#tests-mit-junit)
@@ -1883,7 +1884,67 @@ public static int pasD(int zeile, int spalte){
 
 ## Endrekursion
 
-tbc
+Recursionsergebnis wird in Aufrufen "mitgeschliffen" - Das Ergebnis ist falls die Abbruchbedingung zutrifft verfügbar. Funktionale Sprachen optimieren oft auf Endrekursion.
+
+```java
+// public facing (Diese Funktion wird von Benutzern verwendet)
+public static int fac(int val){
+  return this.facEndRec(val, 1);
+}
+
+// Nur zur internen Verwendung bestimmt.
+private static int facEndRec(int val, int result){
+  if (val == 0){
+    return result;
+  }
+  return facEndRec(val-1,val*result);
+}
+```
+
+### Beispiel add bei FIFO - Queue
+
+```java
+public class RecQueue {
+  private Node head;
+
+  public void add(int value) {
+    this.addInternal(value, this.head);
+  }
+
+  private void addInternal(int value, Node n) {
+    if (n == null) {
+      this.head = new Node(value);
+      return;
+    }
+    if (n.next == null) {
+      n.next = new Node(value);
+      return;
+    }
+    addInternal(value, n.next);
+  }
+
+  public void print() {
+    Node c = this.head;
+    while (c.next != null) {
+      System.out.println(c.value);
+      c = c.next;
+    }
+    System.out.println(c.value);
+  }
+
+  public static void main(String[] args) {
+    RecQueue r = new RecQueue();
+    r.add(10);
+    r.add(20);
+    r.add(30);
+    r.add(40);
+    r.add(50);
+    r.add(60);
+    r.print();
+  }
+}
+
+```
 
 # Generics
 
