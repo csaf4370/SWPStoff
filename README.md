@@ -8,58 +8,61 @@ lang: "de-AT"
 ## Table of Contents
 
 - [SWPStoff](#swpstoff)
-  - [Table of Contents](#table-of-contents)
+	- [Table of Contents](#table-of-contents)
 - [coding guidelines](#coding-guidelines)
-  - [CamelCase](#camelcase)
+	- [CamelCase](#camelcase)
 - [String Formatierung mit `printf`](#string-formatierung-mit-printf)
 - [Enums](#enums)
-  - [switch-case Anweisung](#switch-case-anweisung)
+	- [switch-case Anweisung](#switch-case-anweisung)
 - [forEach Schleife](#foreach-schleife)
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
-  - [Konstruktor](#konstruktor)
-    - [Standardkonstruktor](#standardkonstruktor)
-  - [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
-  - [Sichtbarkeit](#sichtbarkeit)
-  - [Kapselung](#kapselung)
-  - [Überladen von Funktionen](#überladen-von-funktionen)
-  - [Keyword *static*](#keyword-static)
-  - [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
-  - [ArrayList](#arraylist)
-  - [Vererbung](#vererbung)
-    - [*super*-Keyword](#super-keyword)
-    - [Keyword *abstract*](#keyword-abstract)
-    - [Annotation *@Override*](#annotation-override)
-    - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
-    - [Interfaces - Schnittstellen](#interfaces---schnittstellen)
-  - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
+	- [Konstruktor](#konstruktor)
+		- [Standardkonstruktor](#standardkonstruktor)
+	- [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
+	- [Sichtbarkeit](#sichtbarkeit)
+	- [Kapselung](#kapselung)
+	- [Überladen von Funktionen](#überladen-von-funktionen)
+	- [Keyword *static*](#keyword-static)
+	- [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
+	- [ArrayList](#arraylist)
+	- [Vererbung](#vererbung)
+		- [*super*-Keyword](#super-keyword)
+		- [Keyword *abstract*](#keyword-abstract)
+		- [Annotation *@Override*](#annotation-override)
+		- [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
+		- [Interfaces - Schnittstellen](#interfaces---schnittstellen)
+	- [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
-  - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
-  - [Thanks](#thanks)
-    - [Thanks after DRY](#thanks-after-dry)
+	- [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
+	- [Thanks](#thanks)
+		- [Thanks after DRY](#thanks-after-dry)
 - [git basics](#git-basics)
-    - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
-    - [Ignorieren von Dateien](#ignorieren-von-dateien)
+		- [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
+		- [Ignorieren von Dateien](#ignorieren-von-dateien)
 - [Exceptions](#exceptions)
-  - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
-    - [Programm Argumente](#programm-argumente)
+	- [Ein ganzes Beispiel](#ein-ganzes-beispiel)
+		- [Programm Argumente](#programm-argumente)
 - [JavaFX](#javafx)
-  - [Maven](#maven)
-    - [Projekt Setup](#projekt-setup)
-    - [Ausführen](#ausführen)
-  - [SceneBuilder - JavaFX](#scenebuilder---javafx)
+	- [Maven](#maven)
+		- [Projekt Setup](#projekt-setup)
+		- [Ausführen](#ausführen)
+	- [SceneBuilder - JavaFX](#scenebuilder---javafx)
 - [Bitflags](#bitflags)
 - [Datenstrukturen](#datenstrukturen)
-  - [Linked List](#linked-list)
-  - [Doubly Linked List](#doubly-linked-list)
-  - [ArrayList](#arraylist-1)
-  - [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
-  - [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
+	- [Linked List](#linked-list)
+	- [Doubly Linked List](#doubly-linked-list)
+	- [ArrayList](#arraylist-1)
+	- [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
+	- [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
+	- [Binary Search Tree (BST)](#binary-search-tree-bst)
+	- [Set](#set)
+	- [Map](#map)
 - [Rekursion](#rekursion)
-  - [Endrekursion](#endrekursion)
-    - [Beispiel add bei FIFO - Queue](#beispiel-add-bei-fifo---queue)
+	- [Endrekursion](#endrekursion)
+		- [Beispiel add bei FIFO - Queue](#beispiel-add-bei-fifo---queue)
 - [Generics](#generics)
-  - [Bounded Generics](#bounded-generics)
-  - [Tests mit JUnit](#tests-mit-junit)
+	- [Bounded Generics](#bounded-generics)
+	- [Tests mit JUnit](#tests-mit-junit)
 
 
 # coding guidelines
@@ -1844,6 +1847,421 @@ public class MyQueue {
     }
 }
 ```
+
+## Binary Search Tree (BST)
+
+Ist eine Datenstruktur, welche effizient eine große Menge an Zahlen durchsuchen kann.
+Daten werden in einer Baumstruktur abgespeichert.
+Jeder Verzweigungspunkt(Node) hat maximal 2 Kinder (left und right) und einen Wert(value).
+
+Beim durchsuchen des Baumes, wird durch jede Verzweigung, der verbleibenden Suchraumes um die Hälfte reduziert.
+
+Funktionen des BST:
+- add
+- get
+- delete
+
+```java
+// Node
+public class Node {
+	int value;
+	Node left;
+	Node right;
+
+	public Node(int value) {
+		this.value = value;
+	}
+
+	public boolean isLeaf() {
+		if (this.left == null && this.right == null) {
+			return true;
+		}
+		return false;
+	}
+
+	public int getNrOfChilds(){
+		int ret = 0;
+		if (this.left != null){
+			ret++;
+		}
+		if (this.right != null){
+			ret++;
+		}
+		return ret;
+
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public Node getLeft() {
+		return left;
+	}
+
+	public void setLeft(Node left) {
+		this.left = left;
+	}
+
+	public Node getRight() {
+		return right;
+	}
+
+	public void setRight(Node right) {
+		this.right = right;
+	}
+
+	public void swapValue(Node other){
+		int tmp = this.value;
+		this.value = other.getValue();
+		other.setValue(tmp);
+	}
+}
+```
+
+```java
+// BST
+public class BST {
+	Node root;
+
+	public void add(int value) {
+		Node newNode = new Node(value);
+		if (root == null) {
+			this.root = newNode;
+			return;
+		}
+		Node current = this.root;
+		Node parent = null;
+		while (current != null) {
+			if (value == current.value) {
+				return;
+			}
+			if (value < current.getValue()) {
+				parent = current;
+				current = current.getLeft();
+			} else {
+				parent = current;
+				current = current.getRight();
+			}
+		}
+		if (value > parent.getValue()) {
+			parent.setRight(newNode);
+		} else {
+			parent.setLeft(newNode);
+		}
+	}
+
+	public Node get(int value) {
+		Node current = this.root;
+		while (current != null) {
+			if (value == current.getValue()) {
+				return current;
+			}
+			if (value > current.getValue()) {
+				current = current.getRight();
+			} else {
+				current = current.getLeft();
+			}
+		}
+		return null;
+	}
+
+	public Node getParrent(int value) {
+		Node current = this.root;
+		Node parrent = null;
+		while (current != null) {
+			if (value == current.getValue()) {
+				return parrent;
+			}
+			if (value > current.getValue()) {
+				parrent = current;
+				current = current.getRight();
+			} else {
+				parrent = current;
+				current = current.getLeft();
+			}
+		}
+		return parrent;
+	}
+
+	private void deleteNode(Node nodeToBeDeleted, Node parent){
+		System.out.println("recursion called");
+		// Abbruchbedingungen
+		// node is leaf
+		if (nodeToBeDeleted.isLeaf()) {
+			if (parent.getValue() > nodeToBeDeleted.getValue()) {
+				parent.setLeft(null);
+			} else {
+				parent.setRight(null);
+			}
+			return;
+		}
+		// node has 1 child
+		if (nodeToBeDeleted.getNrOfChilds() == 1) {
+			Node childOfNode = null;
+			if (nodeToBeDeleted.getLeft() != null) {
+				childOfNode = nodeToBeDeleted.getLeft();
+			} else {
+				childOfNode = nodeToBeDeleted.getRight();
+			}
+			if (parent.getValue() > nodeToBeDeleted.getValue()) {
+				parent.setLeft(childOfNode);
+			} else {
+				parent.setRight(childOfNode);
+			}
+			return;
+		}
+
+		// Recusionsfortschritt
+		// node has 2 child
+		// 1. find biggest node left of node
+		Node nodeToSwap = nodeToBeDeleted.getLeft();
+		Node nodeToSwapParent = null;
+		while (nodeToSwap.getRight() != null){
+			nodeToSwapParent = nodeToSwap;
+			nodeToSwap = nodeToSwap.getRight();
+		}
+		//swap values
+		nodeToBeDeleted.swapValue(nodeToSwap);
+		deleteNode(nodeToSwap, nodeToSwapParent);
+	}
+
+	// user facing
+	public void delete(int value) {
+		Node nodeToBeDeleted = this.get(value);
+		Node parent = this.getParrent(value);
+
+		deleteNode(nodeToBeDeleted, parent);
+	}
+
+	public static void main(String[] args){
+		BST bst = new BST();
+		bst.add(10);
+		bst.add(50);
+		bst.add(20);
+		bst.add(30);
+		bst.delete(50);
+	}
+}
+```
+
+alternative Implementierung(Florian)
+
+```java
+public class BinarySearchTree {
+	private TreeNode root;
+	
+	private static class TreeNode {
+		int value;
+		TreeNode left, right;
+
+		public TreeNode(int value) {
+			this.value = value;
+			left = right = null;
+		}
+	}
+
+	public BinarySearchTree() {
+		root = null;
+	}
+
+	public void insert(int value) {
+		root = insertNode(root, value);
+	}
+
+	public boolean search(int key) {
+		return searchNode(root, key);
+	}
+	
+	public void delete(int key) {
+		root = deleteNode(root, key);
+	}
+	
+    public void printAll() {
+        print2D(this.root, 0);
+    }
+   
+	public void balance() {
+		ArrayList<TreeNode> nodes = new ArrayList<TreeNode>();
+		storeNodes(this.root, nodes);
+		this.root = buildTree(nodes, 0, nodes.size() - 1);
+	}
+
+	private TreeNode insertNode(TreeNode root, int value) {
+		if (root == null) {
+			root = new TreeNode(value);
+			return root;
+		}
+
+		if (value < root.value) {
+			root.left = insertNode(root.left, value);
+		} else if (value > root.value) {
+			root.right = insertNode(root.right, value);
+		}
+
+		return root;
+	}
+	
+	private TreeNode buildTree(ArrayList<TreeNode> nodes, int start, int end) {
+		if (start > end) {
+			return null;
+		}
+
+		int mid = (start + end) / 2;
+		TreeNode root = nodes.get(mid);
+
+		root.left = this.buildTree(nodes, start, mid - 1);
+		root.right = this.buildTree(nodes, mid + 1, end);
+		
+		return root;
+	}
+	
+	private void storeNodes(TreeNode root, ArrayList<TreeNode> nodes) {
+		if (root == null) {
+			return;
+		}
+		
+		storeNodes(root.left, nodes);
+		nodes.add(root);
+		storeNodes(root.right, nodes);
+	}
+	
+	private boolean searchNode(TreeNode root, int key) {
+		if (root == null || root.value == key) {
+			return root != null;
+        }
+
+        if (key < root.value) {
+            return searchNode(root.left, key);
+        } else {
+            return searchNode(root.right, key);
+        }
+	}
+
+	private TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) {
+            return root;
+        }
+
+        if (key < root.value) {
+            root.left = deleteNode(root.left, key);
+        } else if (key > root.value) {
+            root.right = deleteNode(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            root.value = minValue(root.right);
+            root.right = deleteNode(root.right, root.value);
+        }
+
+        return root;
+    }
+
+	private int minValue(TreeNode root) {
+        int minValue = root.value;
+        while (root.left != null) {
+            minValue = root.left.value;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+	private void print2D(TreeNode root, int space) {
+        if (root == null)
+            return;
+
+        space += 10;
+
+        print2D(root.right, space);
+        System.out.print("\n");
+
+        for (int i = 10; i < space; i++)
+            System.out.print(" ");
+        System.out.print(root.value + "\n");
+
+        print2D(root.left, space);
+    }
+
+	public static void main(String[] args) {
+		var tree = new BinarySearchTree();
+		tree.insert(10);
+		tree.insert(7);
+		tree.insert(3);
+		tree.insert(12);
+		tree.insert(11);
+		tree.insert(8);
+		tree.insert(15);
+		tree.insert(20);
+		tree.insert(19);
+		tree.insert(5);
+		tree.insert(9);
+		tree.printAll();
+		tree.delete(7);
+		System.out.println("--------------------------------------------------");
+		tree.printAll();
+		tree.balance();
+		tree.printAll();
+	}
+}
+```
+
+## Set
+
+Ist eine Datenstruktur, welche einen bestimmten Wert nur einmal zulässt.
+
+Ein Set kann mit verschiedenen dahinterliegenden Datenstrukturen programmiert werden, in unseren Beispiel wird eine ArrayList verwendet.
+
+```java
+import java.util.ArrayList;
+
+public class Set<T>{
+	ArrayList<T> values = new ArrayList<>();
+
+	public boolean add(T val){
+		if (!this.values.contains(val)){
+			this.values.add(val);
+			return true;
+		}
+		return false;
+	}
+
+	public String toString(){
+		return this.values.toString();
+	}
+
+	public static void main(String[] args){
+		Set s = new Set<Integer>();
+		s.add(55);
+		s.add(4);
+		s.add(10);
+		s.add(4); // should not add another 4
+		System.out.println(s);
+		Set names = new Set<String>();
+		names.add("Sepp");
+		names.add("Martin");
+		names.add("Sepp");
+		names.add("Josef");
+		System.out.println(names);
+	}
+}
+```
+
+## Map
+
+In einer Map wird auf Daten immer über einen Key zugegriffen, dieser liefert den Value zurück.
+In einer Map kann der Key und der Value beliebig definiert werden.
+
+Bei einer HashMap wird der Key (intern) gehasht und der Zugriff so verbessert.
+
+siehe https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
 
 # Rekursion
 
