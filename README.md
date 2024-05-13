@@ -59,9 +59,10 @@ lang: "de-AT"
 	- [Map](#map)
 - [Algorithmen](#algorithmen)
 	- [Sortieralgorithmen](#sortieralgorithmen)
+		- [Eigenschaften](#eigenschaften)
+			- [Bestimmung Komplexität](#bestimmung-komplexität)
 		- [Bubblesort](#bubblesort)
 		- [Insertionsort](#insertionsort)
-		- [Insertionsort](#insertionsort-1)
 	- [Divide and Conquer](#divide-and-conquer)
 	- [MergeSort](#mergesort)
 - [Java Argumenten Logik](#java-argumenten-logik)
@@ -2289,11 +2290,50 @@ Dienen dazu Zahlen in Datenstrukturen (zb. Array) in einer bestimmten Reihenfolg
 Bsp.: [7,2,5,4] -> (sortiert) -> [2,4,5,7]
 ```  
 
+### Eigenschaften
+
+https://en.wikipedia.org/wiki/Sorting_algorithm
+
+- Stabilität: Wenn die Reihenfolge gleicher Elememte nach der sortiertung erhalten ist, spricht man von einem spabilen SA,
+anderfalls von einem instabilen.
+- Speicherbedarf: Wieviel zusätzlichen Speicher der Alogirithmus benötigt, neben den n-Elementen.
+- Geschwindigkeit (Komplexität): Wie schnell erfolgt die Sortierung im:
+  - besten Fall
+  - mittleren Fall
+  - schlechtesten Fall
+  Wird in Abhängigkeit von *n* angegeben. Wobei folgende Komplexitätsklassen relevant sind:
+  - O(1) zB. Arrayzugriff auf bestimmtes Element, HashMap Zugriff
+  - O(log n) zB. Binärsuche, oder Suche im BST
+  - O(n) zB. Suche nach Elment im unsortiertem Array
+  - O(n * log n) zB: MergeSort in allen Fällen
+  - O(n^2) zB: BubbleSort, SelectionSort,...
+  - O(n!)
+
+#### Bestimmung Komplexität
+
+```java
+public static void insertionSort(ArrayList<Integer> a) { // a enthällt n Elemete
+  for (int i = 1; i < a.size(); i++) { // Schleife über n-Elemente
+    int j = i - 1;
+    int key = a.get(i);
+    while (j >= 0 && a.get(j) > key) { // n mal
+      a.set(j + 1, a.get(j));
+      j = j - 1;
+    }
+    a.set(j + 1, key);
+  }
+}
+```
+
+```java
+for( int i = 0; i < a.size()/2; i++) // tbc.
+```
+
 ### Bubblesort
 
 Daten werden sortiert indem die größten Elemente aufsteigen wie Luftblasen im Wasser.
 
-```java
+`kk``java
 public static void bubbleSort(int[] a){
   for (int i=0; i< a.length; i++){
     for (jnt j=0; j < a.length-1; j++){
