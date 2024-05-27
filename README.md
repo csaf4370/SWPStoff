@@ -2333,7 +2333,7 @@ for( int i = 0; i < a.size()/2; i++) // tbc.
 
 Daten werden sortiert indem die größten Elemente aufsteigen wie Luftblasen im Wasser.
 
-`kk``java
+```java
 public static void bubbleSort(int[] a){
   for (int i=0; i< a.length; i++){
     for (jnt j=0; j < a.length-1; j++){
@@ -2351,11 +2351,12 @@ public static void bubbleSort(int[] a){
 
 ### Insertionsort
 
+Elemente werden der Reihe nach verglichen und wenn der Richtige Platz gefunden wurde getauscht.
+
 Given an unsorted array(a): Another array is used as the sorted array (s).
 
 - select the first number out of the array
 - compare it with each elements in s and insert it into the appropriate position
-
 
 e.g.: 
 
@@ -2366,24 +2367,6 @@ e.g.:
 [4,7,23,6] -> [4,7,23] // insert 23 after 7: after comparing it to 4 and 7
 [4,7,23,6] -> [4,6,7,23] // insert 6 after 4: after comparing it to 4 and 7
 ```
-
-```java
-public static void insertionSort(ArrayList<Integer> a){
-  ArrayList<Integer> result = new ArrayList<>();
-  for( int i=0; i < a.size(); i++){
-    int j = i -1;
-    // for( int j=0; j < a.size() - 1 - i; j++){
-      if ( a.get(i) > a.get(j) ) {
-        result.add(a.get(j));
-      }
-    // }
-  }
-}
-```
-
-### Insertionsort
-
-Elemente werden der Reihe nach verglichen und wenn der Richtige Platz gefunden wurde getauscht.
 
 ```java
 // in place
