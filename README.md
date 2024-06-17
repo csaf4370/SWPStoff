@@ -823,11 +823,15 @@ Interfaces könnte man als Verträge verstehen, welche implementierende Klassen 
 
 ## UML - unified modeling language (class diagram)
 
+[https://en.wikipedia.org/wiki/Class_diagram](https://en.wikipedia.org/wiki/Class_diagram)
+
 Wird verwendet um eine einheitliche "Sprache" zu definieren, welche uns erlaubt programmiersprachenunabhängig Klassen und ihre Beziehungen zu beschreiben.
 
 ![Beispiel Vererbung](diagrams/inheritance.png)
 
 Hier wird eine abstrakte Klasse Kreatur definiert. Die Klasse Mensch erbt von ihr und die Klasse mein erzeugt ein Objekt der Klasse Mensch.
+
+
 
 # Zufallszahlen (Random)
 
