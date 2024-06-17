@@ -72,6 +72,8 @@ lang: "de-AT"
 - [Generics](#generics)
 	- [Bounded Generics](#bounded-generics)
 	- [Tests mit JUnit](#tests-mit-junit)
+- [Design Patterns](#design-patterns)
+	- [Oberserver Pattern](#oberserver-pattern)
 
 
 # coding guidelines
@@ -2816,3 +2818,30 @@ class TestMyArraylistInteger {
 	}
 }
 ```
+
+# Design Patterns
+
+Sind Entwurfsmuster, welche als Lösung für häufig autretende Probleme herangezogen werden.
+
+Sie werden in folgende Kategorien unterteilt:
+
+- Creational Pattern: Dienen zum Erstellen von Objekten
+- Structural Pattern: Dienen dazu Klassen in eine Struktur zu bringen
+- Behavioural Pattern: Dienen dazu bestimmte Verhalten erzeugen zu können.
+
+## Oberserver Pattern
+
+Fällt unter die Behavioural Patterns und wird verwendet um Änderungen verfolgen zu können.
+
+Prinzipiell wird zwischen Pull- und Push-Nachrichten unterschieden, wobei:
+
+- **Pull**: Der Client fragt (in bestimmten Intervall) beim Server, ob es Änderungen gibt.
+- **Push**: Der Server informiert den Client, dass Änderungen vorliegen.
+
+Es gibt Mischformen, bei denen der Server den Client informiert, dass Änderungen vorliegen und der Client dann nur die gewünschten Daten abfragt.
+
+![https://upload.wikimedia.org/wikipedia/commons/0/01/W3sDesign_Observer_Design_Pattern_UML.jpg](https://upload.wikimedia.org/wikipedia/commons/0/01/W3sDesign_Observer_Design_Pattern_UML.jpg)
+
+In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. Es existieren auch einfachere Implementierungen wie beispielsweise:
+
+![https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png)
