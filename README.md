@@ -2733,7 +2733,7 @@ Um nicht jeweils eine Klasse Node und LinkedList für alle Datentypen zu schreib
 
 ```java
 class Node<E> {
-  Node next;
+  Node<E> next;
   E value; // E wird von außen definiert und hier "eingesetzt"
 }
 ```
@@ -2760,7 +2760,7 @@ Um einzuschränken welche Datentypen für die Generics verwendet werden können,
 
 ```java
 class Node<E extends Number> {
-  Node next;
+  Node<E> next;
   E value; 
 }
 ```
@@ -2772,7 +2772,7 @@ Wenn beispielsweise eine Anforderung an unsere Datentypen ist, dass sie verglich
 
 ```java
 class Node<E extends Comparable> {
-  Node next;
+  Node<E> next;
   E value; 
 }
 ```
