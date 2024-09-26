@@ -2717,6 +2717,46 @@ public class RecQueue {
 
 ```
 
+### Beispiel: Suchen einer Datei von einem Verzeichnis aus
+
+```java
+import java.io.File;
+import java.util.ArrayList;
+
+public class RecursiveFileSearchArray{
+
+  /// returns Path of found File, if not found return empty Array 
+  public static ArrayList<String> search(String path, String fileName) {
+    System.out.println("searching in" + path);
+    ArrayList<String> filesFound = new ArrayList<>();
+    // list all files in dir
+    File p = new File(path);
+    for(File f : p.listFiles()){
+      if (f.isFile()) {
+        if (f.getName().equals(fileName)){
+           filesFound.add(f.getAbsolutePath());
+        }
+      } else { // is a directory
+        ArrayList<String> res = search(f.getAbsolutePath(),fileName);
+        if (!res.isEmpty()){
+          filesFound.addAll(res);
+        }
+      }
+    }
+    return filesFound;
+  }
+
+  public static void main(String[] args){
+    ArrayList<String> res = search("/home/marcom/htl", "Main.java");
+    if (res.isEmpty()){
+      System.out.println("File NOT found");
+    } else {
+      System.out.println("File(s) found at: "+ res);
+    }
+  }
+}
+```
+
 # Generics
 
 Generics dienen dazu Klassen oder Funktionen für mehrere Datentypen zu definieren.
