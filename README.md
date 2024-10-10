@@ -2895,6 +2895,8 @@ In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. 
 
 ## Installation von nvm, npm und vueJs
 
+### nvm - Node Version Manager
+
 - in Windows:
 
 [https://github.com/coreybutler/nvm-windows/releases](nvm-windows) github
@@ -2902,5 +2904,41 @@ In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. 
 - in Linux/Mac/Windows WSL
 
 Installation laut [https://github.com/nvm-sh/nvm](github-nvm)folgen
+
+
+### npm - Node Package Manager
+
+```
+  nvm install 20
+```
+
+### Install VueJS
+
+```
+  npm create vue@latest
+```
+
+
+select following options:
+
+✔ Project name: … mein-projekt
+
+✔ Add TypeScript? … No / ***Yes***
+
+✔ Add JSX Support? … ***No*** / Yes
+
+✔ Add Vue Router for Single Page Application development? … No / ***Yes***
+
+✔ Add Pinia for state management? … No / ***Yes***
+
+✔ Add Vitest for Unit Testing? … ***No*** / Yes
+
+✔ Add an End-to-End Testing Solution? › ***No***
+
+✔ Add ESLint for code quality? … No / ***Yes***
+
+✔ Add Prettier for code formatting? … No / ***Yes***
+
+✔ Add Vue DevTools 7 extension for debugging? (experimental) … No / ***Yes***
 
 
