@@ -2889,3 +2889,18 @@ Es gibt Mischformen, bei denen der Server den Client informiert, dass Änderunge
 In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. Es existieren auch einfachere Implementierungen wie beispielsweise:
 
 ![https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png)
+
+
+# VueJS
+
+## Installation von nvm, npm und vueJs
+
+- in Windows:
+
+[https://github.com/coreybutler/nvm-windows/releases](nvm-windows) github
+
+- in Linux/Mac/Windows WSL
+
+Installation laut [https://github.com/nvm-sh/nvm](github-nvm)folgen
+
+
