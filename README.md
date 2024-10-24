@@ -8,73 +8,81 @@ lang: "de-AT"
 ## Table of Contents
 
 - [SWPStoff](#swpstoff)
-	- [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
 - [coding guidelines](#coding-guidelines)
-	- [CamelCase](#camelcase)
+  - [CamelCase](#camelcase)
 - [String Formatierung mit `printf`](#string-formatierung-mit-printf)
 - [Enums](#enums)
-	- [switch-case Anweisung](#switch-case-anweisung)
+  - [switch-case Anweisung](#switch-case-anweisung)
 - [forEach Schleife](#foreach-schleife)
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
-	- [Konstruktor](#konstruktor)
-		- [Standardkonstruktor](#standardkonstruktor)
-	- [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
-	- [Sichtbarkeit](#sichtbarkeit)
-	- [Kapselung](#kapselung)
-	- [Überladen von Funktionen](#überladen-von-funktionen)
-	- [Keyword *static*](#keyword-static)
-	- [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
-	- [ArrayList](#arraylist)
-	- [Vererbung](#vererbung)
-		- [*super*-Keyword](#super-keyword)
-		- [Keyword *abstract*](#keyword-abstract)
-		- [Annotation *@Override*](#annotation-override)
-		- [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
-		- [Interfaces - Schnittstellen](#interfaces---schnittstellen)
-	- [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
+  - [Konstruktor](#konstruktor)
+    - [Standardkonstruktor](#standardkonstruktor)
+  - [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
+  - [Sichtbarkeit](#sichtbarkeit)
+  - [Kapselung](#kapselung)
+  - [Überladen von Funktionen](#überladen-von-funktionen)
+  - [Keyword _static_](#keyword-static)
+  - [DRY - Don't Repeat Yourself](#dry---dont-repeat-yourself)
+  - [ArrayList](#arraylist)
+  - [Vererbung](#vererbung)
+    - [_super_-Keyword](#super-keyword)
+    - [Keyword _abstract_](#keyword-abstract)
+    - [Annotation _@Override_](#annotation-override)
+    - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
+    - [Interfaces - Schnittstellen](#interfaces---schnittstellen)
+  - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
-	- [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
-	- [Thanks](#thanks)
-		- [Thanks after DRY](#thanks-after-dry)
+  - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
+  - [Thanks](#thanks)
+    - [Thanks after DRY](#thanks-after-dry)
 - [git basics](#git-basics)
-		- [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
-		- [Ignorieren von Dateien](#ignorieren-von-dateien)
+  - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
+  - [Ignorieren von Dateien](#ignorieren-von-dateien)
 - [Exceptions](#exceptions)
-	- [Ein ganzes Beispiel](#ein-ganzes-beispiel)
-		- [Programm Argumente](#programm-argumente)
+  - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
+    - [Programm Argumente](#programm-argumente)
 - [JavaFX](#javafx)
-	- [Maven](#maven)
-		- [Projekt Setup](#projekt-setup)
-		- [Ausführen](#ausführen)
-	- [SceneBuilder - JavaFX](#scenebuilder---javafx)
+  - [Maven](#maven)
+    - [Projekt Setup](#projekt-setup)
+    - [Ausführen](#ausführen)
+  - [SceneBuilder - JavaFX](#scenebuilder---javafx)
 - [Bitflags](#bitflags)
 - [Datenstrukturen](#datenstrukturen)
-	- [Linked List](#linked-list)
-	- [Doubly Linked List](#doubly-linked-list)
-	- [ArrayList](#arraylist-1)
-	- [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
-	- [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
-	- [Binary Search Tree (BST)](#binary-search-tree-bst)
-	- [Set](#set)
-	- [Map](#map)
+  - [Linked List](#linked-list)
+  - [Doubly Linked List](#doubly-linked-list)
+  - [ArrayList](#arraylist-1)
+  - [Stack (LIFO) - Last In First Out](#stack-lifo---last-in-first-out)
+  - [Queue (FIFO) - First In First Out](#queue-fifo---first-in-first-out)
+  - [Binary Search Tree (BST)](#binary-search-tree-bst)
+  - [Set](#set)
+  - [Map](#map)
 - [Algorithmen](#algorithmen)
-	- [Sortieralgorithmen](#sortieralgorithmen)
-		- [Eigenschaften](#eigenschaften)
-			- [Bestimmung Komplexität](#bestimmung-komplexität)
-		- [Bubblesort](#bubblesort)
-		- [Insertionsort](#insertionsort)
-	- [Divide and Conquer](#divide-and-conquer)
-	- [MergeSort](#mergesort)
+  - [Sortieralgorithmen](#sortieralgorithmen)
+    - [Eigenschaften](#eigenschaften)
+      - [Bestimmung Komplexität](#bestimmung-komplexität)
+    - [Bubblesort](#bubblesort)
+    - [Insertionsort](#insertionsort)
+  - [Divide and Conquer](#divide-and-conquer)
+  - [MergeSort](#mergesort)
 - [Java Argumenten Logik](#java-argumenten-logik)
 - [Rekursion](#rekursion)
-	- [Endrekursion](#endrekursion)
-		- [Beispiel add bei FIFO - Queue](#beispiel-add-bei-fifo---queue)
+  - [Endrekursion](#endrekursion)
+    - [Beispiel add bei FIFO - Queue](#beispiel-add-bei-fifo---queue)
+    - [Beispiel: Suchen einer Datei von einem Verzeichnis aus](#beispiel-suchen-einer-datei-von-einem-verzeichnis-aus)
 - [Generics](#generics)
-	- [Bounded Generics](#bounded-generics)
-	- [Tests mit JUnit](#tests-mit-junit)
+  - [Bounded Generics](#bounded-generics)
+  - [Tests mit JUnit](#tests-mit-junit)
 - [Design Patterns](#design-patterns)
-	- [Oberserver Pattern](#oberserver-pattern)
-
+  - [Oberserver Pattern](#oberserver-pattern)
+- [VueJS](#vuejs)
+  - [Installation von nvm, npm und vueJs](#installation-von-nvm-npm-und-vuejs)
+    - [nvm - Node Version Manager](#nvm---node-version-manager)
+    - [npm - Node Package Manager](#npm---node-package-manager)
+    - [Install VueJS / Create a Project](#install-vuejs--create-a-project)
+    - [Component](#component)
+      - [Reaktivität](#reaktivität)
+      - [Properties](#properties)
 
 # coding guidelines
 
@@ -95,17 +103,17 @@ Alle Typen in CamelCase starten mit:
 
 # String Formatierung mit `printf`
 
-Alternativ zu der Ausgabe auf der Konsole zu ```println``` gibt es die Funktion ```printf```.
-Sie ermöglicht das Schreiben eines kompletten Strings mit *Platzhaltern*.
+Alternativ zu der Ausgabe auf der Konsole zu `println` gibt es die Funktion `printf`.
+Sie ermöglicht das Schreiben eines kompletten Strings mit _Platzhaltern_.
 
 ```java
 public void print() {
-		System.out.println("Schüler: " + this.vName + " " + this.nName);
-		System.out.printf("Schüler: %s %s", this.vName, this.nName);
-	}
+  System.out.println("Schüler: " + this.vName + " " + this.nName);
+  System.out.printf("Schüler: %s %s", this.vName, this.nName);
+ }
 ```
 
-Auffällig sind die *Ersetzungsmarken* im String. In unserem Beispiel verwenden wir ```%s```, um
+Auffällig sind die _Ersetzungsmarken_ im String. In unserem Beispiel verwenden wir `%s`, um
 einen String auszugeben.
 
 Die häufig verwendeten sind:
@@ -141,14 +149,14 @@ Weiters können Enums mit zusätzlichen Attributen ergänzt werden.
 public enum Artikel {
   MAUS(324454),
   LAPTOP(4334);
-  
+
   // wird verwendet um die Nummer des Enums zu speichern
   private int nummer;
-  
+
   Artikel(int i) {
     nummer = i;
   }
-  
+
   public int getNummer() {
     return this.nummer;
   }
@@ -164,11 +172,11 @@ public enum Artikel {
       return MAUS;
     }
   }
-  
+
   public static void main(String[] args) {
     Artikel a = MAUS; // entspricht logisch: MAUS(324454)
     System.out.println(a.getNummer());
-    
+
     Artikel a2 = LAPTOP; // entspricht logisch: LAPTOP(4334)
     System.out.println(a2.getNummer());
 
@@ -212,7 +220,7 @@ Falls das **break** vergessen wird, fällt die Auswertung durch => darunter lieg
 
 # forEach Schleife
 
-Ist eine Kurzform der normalen for-Schleife und kann verwendet werden, wenn die Zählvariable (meist *i*) nicht gebraucht wird.
+Ist eine Kurzform der normalen for-Schleife und kann verwendet werden, wenn die Zählvariable (meist _i_) nicht gebraucht wird.
 
 ```java
 // Tiere ist eine Klasse mit name als Attribut
@@ -229,7 +237,6 @@ public static void printHundeRasse(ArrayList<Tier> tiere) {
   }
 }
 ```
-
 
 # Objektorientierte Programmierung
 
@@ -261,7 +268,7 @@ class Person {
 }
 ```
 
-Klasse *Person* mit 2 Eigenschaften (firstName, lastName).
+Klasse _Person_ mit 2 Eigenschaften (firstName, lastName).
 
 ## Konstruktor
 
@@ -292,7 +299,7 @@ class Person {
 ## toString() Methoden - Ausgabe eines Objektes
 
 Wenn man versucht ein Objekt einer selbst-definierten Klasse auszugeben, wird man meist mit einer Ausgabe à la.
-```Auto@677327b6``` überrascht. Um die Ausgabe zu verbessern, ist es möglich in der jeweiligen Klasse eine *toString()*-Methode zu erstellen, welche einen String zurück, welche das Objekt beschreibt.
+`Auto@677327b6` überrascht. Um die Ausgabe zu verbessern, ist es möglich in der jeweiligen Klasse eine _toString()_-Methode zu erstellen, welche einen String zurück, welche das Objekt beschreibt.
 
 ```java
 class Auto{
@@ -316,7 +323,6 @@ class Auto{
 }
 ```
 
-
 ## Sichtbarkeit
 
 Definiert, wer von wo auf das Element zugreifen kann.
@@ -329,7 +335,7 @@ Es gibt folgende Sichtbarkeiten:
 
 ## Kapselung
 
-Wird verwendet, um Eigenschaften einer Klasse mithilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens *privat*. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte ausgelesen bzw. gesetzt werden.
+Wird verwendet, um Eigenschaften einer Klasse mithilfe der Sichtbarkeit zu verbergen. Eigenschaften einer Klasse sind demnach meistens _privat_. Zugriff von Außen wird über Funktionen geregelt (Getter und Setter). Wenn diese angeboten werden, können von außen Werte ausgelesen bzw. gesetzt werden.
 
 ```java
 class Person{
@@ -377,11 +383,11 @@ class Person{
   }
 
   public static void main(String[] args) {
-    Person p1 = new Person(); 
+    Person p1 = new Person();
     // Konstruktor 1 || age=12, fname="unbestimmt"
-    Person p2 = new Person(18); 
+    Person p2 = new Person(18);
     // Konstruktor 2 || age=18, fname="Sepp"
-    Person p3 = new Person(17, "Martin"); 
+    Person p3 = new Person(17, "Martin");
     // Konstruktor 3 || age=17, fname="Martin"
   }
 
@@ -402,7 +408,7 @@ class Person{
 }
 ```
 
-## Keyword *static*
+## Keyword _static_
 
 Wird verwendet, um am "Bauplan" der Klasse, Funktionen und Eigenschaften zu definieren, welche ohne Objekt verwendet werden können. Alle Objekte der Klasse können auf statische Funktionen und Variablen zugreifen. Statische Variablen gibt es nur einmal (alle sehen den gleichen Wert).
 
@@ -504,7 +510,7 @@ public static void einPaarZahlen(){
 
 ## ArrayList
 
-Wird benötigt, um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet. **Wichtig**: eine ArrayList kann nur Objektdatentypen (keine primitiven Datentypen) speichern. Java stellt für genau diesen Zweck *Wrapperklassen* zur Verfügung. *Integer* beinhaltet einen *int*, oder *Float* beinhaltet einen *float*, usw.
+Wird benötigt, um Arrays zu erzeugen, welche zur Laufzeit erweitert werden können. Wird auch als dynamischer Array bezeichnet. **Wichtig**: eine ArrayList kann nur Objektdatentypen (keine primitiven Datentypen) speichern. Java stellt für genau diesen Zweck _Wrapperklassen_ zur Verfügung. _Integer_ beinhaltet einen _int_, oder _Float_ beinhaltet einen _float_, usw.
 
 ```java
 import java.util.ArrayList;
@@ -557,13 +563,13 @@ public class Main {
 
 ## Vererbung
 
-Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden, um Fehler zu vermeiden und dem *DRY*-Prinzip zu folgen.
-Um von Klassen erben zu können, wird das keyword *extends* verwendet.
+Wird verwendet um Code besser strukturieren zu können. Öfter verwendete Attribute und Methoden können in einer Klasse zusammengefasst werden, um Fehler zu vermeiden und dem _DRY_-Prinzip zu folgen.
+Um von Klassen erben zu können, wird das keyword _extends_ verwendet.
 
-### *super*-Keyword
+### _super_-Keyword
 
-*super* ruft den Konstruktor der vererbten Klasse auf.
-Falls eine Methode der Vaterklasse aufgerufen werden soll, obwohl die aktuelle Klasse die Methode überschrieben hat, kann man mit 
+_super_ ruft den Konstruktor der vererbten Klasse auf.
+Falls eine Methode der Vaterklasse aufgerufen werden soll, obwohl die aktuelle Klasse die Methode überschrieben hat, kann man mit
 
 ```java
 super.methodenName(...)
@@ -574,21 +580,21 @@ die ursprüngliche Methode aufrufen.
 ```java
 \\ in Tier.java
 public abstract class Tier {
-	
-	private String name;
-	private String gebTag;
-	
-	public String getName() {
-		return name;
-	}
-	public String getGebTag() {
-		return gebTag;
-	}
-	
-	public Tier(String name, String gebTag) {
-		this.name = name;
-		this.gebTag = gebTag;
-	}
+
+ private String name;
+ private String gebTag;
+
+ public String getName() {
+  return name;
+ }
+ public String getGebTag() {
+  return gebTag;
+ }
+
+ public Tier(String name, String gebTag) {
+  this.name = name;
+  this.gebTag = gebTag;
+ }
 
   public String gibLaut(){
     return "tierGeräusch";
@@ -597,17 +603,17 @@ public abstract class Tier {
 
 \\in Hund.java
 public class Hund extends Tier {
-	
-	private String rasse;
-	
-	public Hund(String name, String gebTag, String rasse) {
-		super(name, gebTag); // Aufruf des Konstruktors der Vaterklasse
-		this.rasse = rasse;
-	}
 
-	public String getRasse() {
-		return rasse;
-	}
+ private String rasse;
+
+ public Hund(String name, String gebTag, String rasse) {
+  super(name, gebTag); // Aufruf des Konstruktors der Vaterklasse
+  this.rasse = rasse;
+ }
+
+ public String getRasse() {
+  return rasse;
+ }
 
   @Override
   public String gibLaut(){
@@ -630,85 +636,85 @@ public class Main {
 
 ```
 
-### Keyword *abstract*
+### Keyword _abstract_
 
 Markiert die Klasse, dass sie nicht instanziiert werden kann(es kann kein Objekt dieser Klasse erzeugt werden).
 
-### Annotation *@Override*
+### Annotation _@Override_
 
-Steht über einer Funktion, welche überschrieben werden soll. Es kann auch ohne *@Override* überschrieben werden. *@Override* erstellt einen Vertrag, dass genau die Signatur der Funktion entsprechen muss. Ohne diesem Keyword, läuft man Gefahr, dass wenn die Signatur einer Methode der Vaterklasse sich verändert, ich die Methode nur überlade und nicht überschreibe.
+Steht über einer Funktion, welche überschrieben werden soll. Es kann auch ohne _@Override_ überschrieben werden. _@Override_ erstellt einen Vertrag, dass genau die Signatur der Funktion entsprechen muss. Ohne diesem Keyword, läuft man Gefahr, dass wenn die Signatur einer Methode der Vaterklasse sich verändert, ich die Methode nur überlade und nicht überschreibe.
 
 ```java
 // Fahrzeug.java
 // Erstellen einer Klasse welche vererbt werden soll. - abstract
 public abstract class Fahrzeug {
 
-	private int ps;
-	private int baujahr;
-	private double currentVelocity;
-	
-	public Fahrzeug(int ps, int baujahr) {
-		this.ps = ps;
-		this.baujahr = baujahr;
-		this.currentVelocity = 0.0;
-	}
-	
-	public void accelerate() {
-		this.currentVelocity += this.ps/10.0;
-	}
+ private int ps;
+ private int baujahr;
+ private double currentVelocity;
 
-	public int getPs() {
-		return ps;
-	}
+ public Fahrzeug(int ps, int baujahr) {
+  this.ps = ps;
+  this.baujahr = baujahr;
+  this.currentVelocity = 0.0;
+ }
 
-	public int getBaujahr() {
-		return baujahr;
-	}
+ public void accelerate() {
+  this.currentVelocity += this.ps/10.0;
+ }
 
-	public double getCurrentVelocity() {
-		return currentVelocity;
-	}
-	
-	protected void setCurrentVelocity(double v) {
-		this.currentVelocity = v;
-	}
+ public int getPs() {
+  return ps;
+ }
+
+ public int getBaujahr() {
+  return baujahr;
+ }
+
+ public double getCurrentVelocity() {
+  return currentVelocity;
+ }
+
+ protected void setCurrentVelocity(double v) {
+  this.currentVelocity = v;
+ }
 }
 
 // Auto.java
 // Subklasse (Klasse die von Vaterklasse erbt)
 public class Auto extends Fahrzeug{
-	
-	private String marke;
 
-	public Auto(int ps, int baujahr, String marke) {
-		super(ps, baujahr);
-		this.marke = marke;
-	}
+ private String marke;
 
-	public String getMarke() {
-		return marke;
-	}
+ public Auto(int ps, int baujahr, String marke) {
+  super(ps, baujahr);
+  this.marke = marke;
+ }
+
+ public String getMarke() {
+  return marke;
+ }
 }
 
 // Traktor.java
 // erbt ebenfalls von Fahrzeug
 public class Traktor extends Fahrzeug {
-	private double zugKraft;
-	
-	public Traktor(int ps, int baujahr, double zugKraft) {
-		super(ps, baujahr);
-		this.zugKraft = zugKraft;
-	}
+ private double zugKraft;
 
-	public double getZugKraft() {
-		return zugKraft;
-	}
-	
-	@Override
-	public void accelerate() {
-		this.setCurrentVelocity( this.getCurrentVelocity() + this.getPs()/40.0);
-//		this.currentVelocity += this.getPs()/40.0;
-	}
+ public Traktor(int ps, int baujahr, double zugKraft) {
+  super(ps, baujahr);
+  this.zugKraft = zugKraft;
+ }
+
+ public double getZugKraft() {
+  return zugKraft;
+ }
+
+ @Override
+ public void accelerate() {
+  this.setCurrentVelocity( this.getCurrentVelocity() + this.getPs()/40.0);
+//  this.currentVelocity += this.getPs()/40.0;
+ }
 
 }
 
@@ -716,7 +722,7 @@ public class Traktor extends Fahrzeug {
 
 ### instanceof - überprüfen der Klasse bzw. der Vaterklasse
 
-Wird verwendet, um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse ***gecastet*** werden kann, also ob die Klasse des Objekts dem gecasteten entspricht bzw. in der Vererbungshirarchie anzutreffen ist.
+Wird verwendet, um während der Laufzeit zu überprüfen ob, das Objekt in eine bestimmte Klasse **_gecastet_** werden kann, also ob die Klasse des Objekts dem gecasteten entspricht bzw. in der Vererbungshirarchie anzutreffen ist.
 
 ```java
 // in Tier.java
@@ -724,8 +730,8 @@ public abstract class Tier{
   protected String name;
   protected String geburtsDatum;
 
-  public getGeburtsDatum() { 
-    return this.geburtsDatum; 
+  public getGeburtsDatum() {
+    return this.geburtsDatum;
   }
 
   public String getName(){
@@ -765,52 +771,52 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static void printHundeRasse(ArrayList<Tier> tiere) {
-		for (Tier t : tiere) { // forEach loop
-			if (t instanceof Hund) {
-				Hund h = (Hund) t; // cast (umwandlung) zu Hund
-				System.out.println(h.getRasse());
-			} else {
-				System.out.println("leider keine Rasse vorhanden (kein Hund)");
-			}
-		}
+ public static void printHundeRasse(ArrayList<Tier> tiere) {
+  for (Tier t : tiere) { // forEach loop
+   if (t instanceof Hund) {
+    Hund h = (Hund) t; // cast (umwandlung) zu Hund
+    System.out.println(h.getRasse());
+   } else {
+    System.out.println("leider keine Rasse vorhanden (kein Hund)");
+   }
+  }
 
-		// alternative 
-		for (int i = 0; i < tiere.size(); i++) {
-			Tier t = tiere.get(i);
-			if (t instanceof Hund) {
-				Hund h = (Hund) t; // cast (umwandlung) zu Hund
-				System.out.println(h.getRasse());
-			} else {
-				System.out.println("leider keine Rasse vorhanden (kein Hund)");
-			}
-		}
-	}
+  // alternative
+  for (int i = 0; i < tiere.size(); i++) {
+   Tier t = tiere.get(i);
+   if (t instanceof Hund) {
+    Hund h = (Hund) t; // cast (umwandlung) zu Hund
+    System.out.println(h.getRasse());
+   } else {
+    System.out.println("leider keine Rasse vorhanden (kein Hund)");
+   }
+  }
+ }
 
-	public static void main(String[] args) {
-		ArrayList<Katze> katzen = new ArrayList<Katze>();
-		Katze schmusi = new Katze("Schmusi", "10.10.2010");
-		katzen.add(schmusi);
+ public static void main(String[] args) {
+  ArrayList<Katze> katzen = new ArrayList<Katze>();
+  Katze schmusi = new Katze("Schmusi", "10.10.2010");
+  katzen.add(schmusi);
 
-		ArrayList<Hund> hunde = new ArrayList<Hund>();
-		Hund kratzi = new Hund("Kratzi", "10.10.2010", "Rotweiler");
-		hunde.add(kratzi);
+  ArrayList<Hund> hunde = new ArrayList<Hund>();
+  Hund kratzi = new Hund("Kratzi", "10.10.2010", "Rotweiler");
+  hunde.add(kratzi);
 
-		ArrayList<Tier> tiere = new ArrayList<Tier>();
+  ArrayList<Tier> tiere = new ArrayList<Tier>();
 
-		tiere.add(schmusi);
-		tiere.add(kratzi);
+  tiere.add(schmusi);
+  tiere.add(kratzi);
 
-		System.out.println(tiere);
+  System.out.println(tiere);
 
-		// geht nicht = abstract
-//		Tier t = new Tier("tiere=i", "1.1.1111");
+  // geht nicht = abstract
+//  Tier t = new Tier("tiere=i", "1.1.1111");
 
-		printHundeRasse(tiere);
+  printHundeRasse(tiere);
 
-		kratzi.getRasse();
+  kratzi.getRasse();
 
-	}
+ }
 
 }
 ```
@@ -831,8 +837,6 @@ Wird verwendet um eine einheitliche "Sprache" zu definieren, welche uns erlaubt 
 
 Hier wird eine abstrakte Klasse Kreatur definiert. Die Klasse Mensch erbt von ihr und die Klasse mein erzeugt ein Objekt der Klasse Mensch.
 
-
-
 # Zufallszahlen (Random)
 
 Können von System generiert werden, es gibt mehrere Möglichkeiten, diese zu erzeugen.
@@ -845,21 +849,21 @@ public class Main {
     // Erstellen eines int
     Random rand = new Random();
     int randomZahl = rand.nextInt(10); // Zahl zwischen 0 und 10 exclusive
-    
+
     Random rand = new Random();
     int bound = 1000; // wie weit - exclusive dieser Zahl
     int randomZahl = rand.nextInt(bound) + 10;
     System.out.println(randomZahl); // Zahl zwischen 10 - 1010 exclusive
-    
+
     double randDouble = rand.nextDouble();
-    System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive 
-    
+    System.out.println(randDouble); // Zahl zwischen 0.0 und 1.0 exclusive
+
     // Ziel ist es einen Double von 10.0 - 20.0 zu machen
     int randomZahl2 = rand.nextInt(9) + 10;
     double randDouble2 = rand.nextDouble();
     double res = randDouble2 + randomZahl2;
     System.out.println(res);
-    
+
     // Alternative
     double randDouble3 = rand.nextDouble()*10.0 + 10.0;
     System.out.println(randDouble3);
@@ -877,9 +881,9 @@ erstes Spiel ... Pong (start)
  int accX = 1;
  int accY = 1;
  int accSpeed = 5;
- 
+
 void setup() {
-  size(640, 360); 
+  size(640, 360);
   noStroke();
   rectMode(CENTER);
 }
@@ -887,20 +891,20 @@ void setup() {
 void draw() {
 
   fill(255, 204);
-  
+
   if (posX > 640) {
-   accX = -accSpeed; 
+   accX = -accSpeed;
   }
   if (posX <= 0) {
-   accX = +accSpeed; 
+   accX = +accSpeed;
   }
   if (posY > 360) {
-   accY = -accSpeed; 
+   accY = -accSpeed;
   }
   if (posY <= 0) {
-   accY = +accSpeed; 
+   accY = +accSpeed;
   }
-  
+
   posX = posX + accX;
   posY = posY + accY;
   circle(posX, posY, 10);
@@ -971,9 +975,9 @@ void draw() {
   float lineEndY = asin(radians(angle))*100+y+15;
   println(angle,lineEndX, lineEndY);
   line(x+15,y+15,lineEndX,lineEndY);
-  
+
   text(force,width-100, height-100);
-  
+
   if (shooting) {
     float deltaT = millis() - startTime;
     float newX = getX(deltaT/1000.0,x,angle);
@@ -1146,7 +1150,7 @@ class Bullet {
     }
   }
 }
-  
+
 ```
 
 # git basics
@@ -1157,7 +1161,7 @@ Es existiert (normalerweise) ein `remote` repository auf zb. Github und ein `lok
 
 Wenn wir ein Repository angelegt haben (zb. auf Github) können wir es mit:
 
-```git clone https://github.com/username/repositoryName``` 
+`git clone https://github.com/username/repositoryName`
 
 auf unser System clonen.
 
@@ -1165,13 +1169,13 @@ auf unser System clonen.
 
 mit `git add dateiname.endung` können wir Dateien zu den "beobachtenden" Dateien hinzufügen.
 
-mit `git commit -m"nachricht welche in de Logs erscheint"` erzeuge ich einen neuen *Busstop* welcher wie eine Version der Codebasis angesehen werden kann.
+mit `git commit -m"nachricht welche in de Logs erscheint"` erzeuge ich einen neuen _Busstop_ welcher wie eine Version der Codebasis angesehen werden kann.
 
 Durch `git push` werden die Änderungen meines Repostitories auf das `remote` Repository übertragen.
 
 Um Änderungen von `remote` Repository in mein System zu holen, wir der Befehl `git pull` verwendet.
 
-Jederzeit kann ```git status``` verwendet werden um den aktuellen Status des Repositories abzufragen.
+Jederzeit kann `git status` verwendet werden um den aktuellen Status des Repositories abzufragen.
 
 ### Ablaufdiagram eines typischen Workflows
 
@@ -1179,22 +1183,22 @@ Jederzeit kann ```git status``` verwendet werden um den aktuellen Status des Rep
 
 ### Ignorieren von Dateien
 
-um nicht benötigte Dateien (zB. Dateien, welche beim compilieren erzeugt werden) zu ignorieren können wir im Hauptverzeichnis die Datei *.gitignore* erzeugen/editieren.
+um nicht benötigte Dateien (zB. Dateien, welche beim compilieren erzeugt werden) zu ignorieren können wir im Hauptverzeichnis die Datei _.gitignore_ erzeugen/editieren.
 
 ```
 **.class
 ```
 
-ignoriert alle *.class* Dateien.
+ignoriert alle _.class_ Dateien.
 
 # Exceptions
 
 Exception entsprechen Ausnahmen, auf die der Benutzer reagieren kann.
-Viele kennen eine der folgenden: *ArrayOutOfBoundsException* oder *NullPointerException*.
+Viele kennen eine der folgenden: _ArrayOutOfBoundsException_ oder _NullPointerException_.
 Diese Ausnahmen können entweder mit:
 
 - try/catch
-- throws 
+- throws
 
 behandelt werden. Mit try/catch werden die Programmzeilen, welche
 eine Exception werden können in einen Block eingeschlossen.
@@ -1202,31 +1206,31 @@ eine Exception werden können in einen Block eingeschlossen.
 ```java
 FileWriter writer = null;
 try {
-	writer = new FileWriter("myFile.txt");
-	writer.write(myString);
-	writer.close();
-	System.out.println("Successfully wrote to the file.");
+ writer = new FileWriter("myFile.txt");
+ writer.write(myString);
+ writer.close();
+ System.out.println("Successfully wrote to the file.");
 } catch (IOException e) {
-	System.out.println("Da ist etwas schief gelaufen.");
+ System.out.println("Da ist etwas schief gelaufen.");
 }
 ```
 
 hier kann auf den Fehler direkt reagiert werden.
-Falls die Aufgabe des Fehlerbehandelns abgegeben werden soll, kann man 
-die Exception an die aufrufende Funktion weiterreichen --> *throws*
+Falls die Aufgabe des Fehlerbehandelns abgegeben werden soll, kann man
+die Exception an die aufrufende Funktion weiterreichen --> _throws_
 
 ```java
 private static void writeToFile(String what) throws IOException {
-	FileWriter writer = null;
-	writer = new FileWriter("myFile.txt");
-	writer.write(what);
-	writer.close();
-	System.out.println("huhu");
+ FileWriter writer = null;
+ writer = new FileWriter("myFile.txt");
+ writer.write(what);
+ writer.close();
+ System.out.println("huhu");
 }
 ```
 
-Exceptions erben von *Throwable*, welche eine Vaterklasse von *Error* und
-*Exception* ist. *Error* definiert Fehler, auf die nicht reagiert werden kann/soll.
+Exceptions erben von _Throwable_, welche eine Vaterklasse von _Error_ und
+_Exception_ ist. _Error_ definiert Fehler, auf die nicht reagiert werden kann/soll.
 
 Man kann Exception einfach als Klasse definieren:
 
@@ -1241,10 +1245,10 @@ diese kann dann wie folgt verwendet werden:
 
 ```java
 public static void throwMeMaybeAnException(int price) throws ToExpensiveException {
-		if (price > 10) {
-			throw new ToExpensiveException(); // hier wird die Exception erzeugt und geworfen
-		}
-	}
+  if (price > 10) {
+   throw new ToExpensiveException(); // hier wird die Exception erzeugt und geworfen
+  }
+ }
 ```
 
 ## Ein ganzes Beispiel
@@ -1262,49 +1266,49 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-	
-	public static void throwMeMaybeAnException(int price) throws ToExpensiveException {
-		if (price > 10) {
-			throw new ToExpensiveException();
-		}
-	}
-	
-	private static void writeToFile(String what) throws IOException {
-		FileWriter writer = null;
-		writer = new FileWriter("myFile.txt");
-		writer.write(what);
-		writer.close();
-		System.out.println("huhu");
-	}
-	
-	public static void main(String[] args) throws IOException {
-		String myString = "Hello, world!";
-		// Variante try catch
-		FileWriter writer = null;
-		try {
-			writer = new FileWriter("myFile.txt");
-			writer.write(myString);
-			writer.close();
-			System.out.println("Successfully wrote to the file.");
-		} catch (IOException e) {
-			System.out.println("Da ist etwas schief gelaufen.");
-		}
-		
-		// Behandlung des Fehlers
-		try {
-			throwMeMaybeAnException(11);
-			System.out.println("Yeah I have something to eat");
-		} catch (ToExpensiveException e) {
-			System.out.println("Sorry inflation!");
-		}
-		
-		try {
-			writeToFile("Servas");
-		} catch (IOException e) {
-			System.out.println("sorry my friend");
-		}
-		
-	}
+
+ public static void throwMeMaybeAnException(int price) throws ToExpensiveException {
+  if (price > 10) {
+   throw new ToExpensiveException();
+  }
+ }
+
+ private static void writeToFile(String what) throws IOException {
+  FileWriter writer = null;
+  writer = new FileWriter("myFile.txt");
+  writer.write(what);
+  writer.close();
+  System.out.println("huhu");
+ }
+
+ public static void main(String[] args) throws IOException {
+  String myString = "Hello, world!";
+  // Variante try catch
+  FileWriter writer = null;
+  try {
+   writer = new FileWriter("myFile.txt");
+   writer.write(myString);
+   writer.close();
+   System.out.println("Successfully wrote to the file.");
+  } catch (IOException e) {
+   System.out.println("Da ist etwas schief gelaufen.");
+  }
+
+  // Behandlung des Fehlers
+  try {
+   throwMeMaybeAnException(11);
+   System.out.println("Yeah I have something to eat");
+  } catch (ToExpensiveException e) {
+   System.out.println("Sorry inflation!");
+  }
+
+  try {
+   writeToFile("Servas");
+  } catch (IOException e) {
+   System.out.println("sorry my friend");
+  }
+
+ }
 
 }
 ```
@@ -1313,25 +1317,25 @@ public class Main {
 
 Um unser Programm von außen steuern zu können, gibt uns Java(und sogut wie alle anderen Programmiersprachen)
 die Möglichkeit Argument dem Programm beim Start zu übergeben.
-Die passiert über die *main*-Methode mit den Argument *String[] args*.
-Argumente können in Eclipse unter *Run Configurations...* unter *Java Applications* richtiges Programm wählen *Arguments*.
+Die passiert über die _main_-Methode mit den Argument _String[] args_.
+Argumente können in Eclipse unter _Run Configurations..._ unter _Java Applications_ richtiges Programm wählen _Arguments_.
 Die Argumente müssen bei Bedarf in den richtigen Datentyp konvertiert werden.
-Im folgenden Beispiel wird ein *int* von einem String konvertiert.
+Im folgenden Beispiel wird ein _int_ von einem String konvertiert.
 
 ```java
 public class Main {
-	public static void main(String[] args) {
-		int sum = 0;
-		for (String s : args) {
-			try {
-				int intValue = Integer.parseInt(s); // can throw NumberFormatException
-				sum += intValue;
-			} catch (NumberFormatException e) {
-				System.out.println("Not a number in argument");
-			}
-		}
-		System.out.println("Sum of all arguments: " + sum);
-	}
+ public static void main(String[] args) {
+  int sum = 0;
+  for (String s : args) {
+   try {
+    int intValue = Integer.parseInt(s); // can throw NumberFormatException
+    sum += intValue;
+   } catch (NumberFormatException e) {
+    System.out.println("Not a number in argument");
+   }
+  }
+  System.out.println("Sum of all arguments: " + sum);
+ }
 
 }
 ```
@@ -1342,7 +1346,7 @@ Um Benutzern mehr Komfort zu bieten werden meist Programm-Interaktionen mit GUIs
 Java bietet mehrere Möglichkeiten (SWT, AWT, JFace, ...), aber JavaFX wurde gewählt, da es die modernsten Oberflächen
 bauen kann.
 
-Um JavaFX verwenden zu können, müssen wir zusätzliche Bibliotheken installieren. Wir können entweder Bibliotheken selber 
+Um JavaFX verwenden zu können, müssen wir zusätzliche Bibliotheken installieren. Wir können entweder Bibliotheken selber
 herunterladen und sie in unseren Projekten dem Build-Path hinzufügen, oder wir verwenden folgende Methode.
 
 ## Maven
@@ -1356,29 +1360,29 @@ welchen Bibliotheken unser Programm abhängt. Maven erledigt dann alle schritte 
 
 Durch dieses System, können wir also in einer einfachen Textdatei, welche wir auch in unser Versionsverwaltungssystem(git) eintragen können,
 alle Abhängigkeiten einfach definieren. Wenn wir uns an einem anderen Computer befinden, übernimmt Maven wieder den Download und weitere
-Schritte damit wir direkt weiterarbeiten können. 
+Schritte damit wir direkt weiterarbeiten können.
 
 Um Maven zu installieren, wählen wir die einfache Variante und verwenden [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/release/2023-03/r/eclipse-ide-enterprise-java-and-web-developers)
 
 ### Projekt Setup
 
-Um ein Maven Projekt zu erzeugen, wählen *Neues Maven Projekt*, im folgenden Screen einfach next und bei Filter geben wir `javafx` ein. Wir wählen in der List darunter dann das Element `com.gluonhq`-`gluonfx-archetype-javafx` mit der Version 0.0.3.
-Im folgenden Fenster geben wir unter `Group ID` den gewünschten Paketnamen an und unter `Artifact Id` den gewünschten Projektnamen. 
-Nach `Finish` und einem Enter im Consolenfenster indem `Y: : ` steht, sollten wir auf der linken Seite das neue Projekt sehen.
+Um ein Maven Projekt zu erzeugen, wählen _Neues Maven Projekt_, im folgenden Screen einfach next und bei Filter geben wir `javafx` ein. Wir wählen in der List darunter dann das Element `com.gluonhq`-`gluonfx-archetype-javafx` mit der Version 0.0.3.
+Im folgenden Fenster geben wir unter `Group ID` den gewünschten Paketnamen an und unter `Artifact Id` den gewünschten Projektnamen.
+Nach `Finish` und einem Enter im Consolenfenster indem `Y: :` steht, sollten wir auf der linken Seite das neue Projekt sehen.
 
-### Ausführen 
+### Ausführen
 
-Um das Maven Projekt zu starten, gehen wir über das Projektkontextmenü unter `Run As` -> `Maven build`. Darin schreiben wir unter Goals: `clean javafx:run` 
+Um das Maven Projekt zu starten, gehen wir über das Projektkontextmenü unter `Run As` -> `Maven build`. Darin schreiben wir unter Goals: `clean javafx:run`
 
 ## SceneBuilder - JavaFX
 
 Um da Programm besser aufteilen zu können, und Fehler zu vermeiden werden wird das MVC (Model, View, Controller)- Muster verwendet:
 
-- Model: Datenspeicher des Programms 
+- Model: Datenspeicher des Programms
 - View: JavaFX GUI
 - Controller: Klassen für das reagieren auf Ereignisse (zb. ActionEvent)
 
-Um eine GUI mit JavaFX mit einem SceneBuilder erzeugen zu können, brauchen wir als erstes das Programm: 
+Um eine GUI mit JavaFX mit einem SceneBuilder erzeugen zu können, brauchen wir als erstes das Programm:
 
 [SceneBuilder download](https://gluonhq.com/products/scene-builder/#download)
 
@@ -1391,7 +1395,7 @@ Um die diese Scene verwenden zu können muss:
 - Die fxml-Datei in den resources Folder gelegt werden:
   ![Tree View in Eclipse](javafx-tree.png)
 - ergänzen der pom.xml unter `<dependencies>`um folgende Zeilen:
-  
+
   ```xml
   <dependencies>
     ...
@@ -1412,7 +1416,7 @@ Um die diese Scene verwenden zu können muss:
       root = FXMLLoader.load(getClass().getResource("main.fxml"));
     } catch (IOException e) {
       System.out.println("could not load main.fxml");
-          
+
       e.printStackTrace();
     }
     Scene scene = new Scene(root, 640, 480);
@@ -1424,7 +1428,6 @@ Um die diese Scene verwenden zu können muss:
 
 Um auf Events reagieren zu können ... fbc...
 
-
 # Bitflags
 
 Werden häufig in C oder C++ Code effizient zu programmieren. Häufig in Kombination mit Microcontrollern um bestimmte Register zu setzen. In java wenig häufig verwerndet.
@@ -1434,59 +1437,59 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
-		ArrayList<Integer> numbers = new ArrayList<>();
-		ArrayList<Integer> fizz = new ArrayList<>();
-		ArrayList<Integer> buzz = new ArrayList<>();
-		ArrayList<Integer> fizzBuzz = new ArrayList<>();
-		
-		System.out.println("Zahl plz");
-		Scanner scan = new Scanner(System.in);
-		int to = scan.nextInt();
-		
-		System.out.println("Bitshift");
-		int flag = 1 <<2;
-		System.out.println(flag);
-		
-		if ((to & flag) > 0) {
-			System.out.println("YES");
-		}
-		
-		for (int i = 1; i <= to; i++) {
-			
-			int res = 0;
-			int modFizz = i % 3;
-			int modBuzz = i % 5;
-			
-			if (modFizz == 0) {
-				res = 1;
-			}
-			
-			if (modBuzz == 0) {
-				res += 2;
-			}
-			
-			if ((res & 3) == 0) {
-				numbers.add(i);
-			}
-			
-			if ((res & 1) == 1) {
-				fizz.add(i);
-			}
-			if ((res & 2) == 2) {
-				buzz.add(i);
-			}
-			
-			if ((res & 3) == 3) {// 3 ist binaer 11{
-				fizzBuzz.add(i);
-			}
+ public static void main(String[] args) {
+  ArrayList<Integer> numbers = new ArrayList<>();
+  ArrayList<Integer> fizz = new ArrayList<>();
+  ArrayList<Integer> buzz = new ArrayList<>();
+  ArrayList<Integer> fizzBuzz = new ArrayList<>();
 
-		}
-		System.out.println("numbers: " + numbers);
-		System.out.println("fizz: " + fizz);
-		System.out.println("buzz: " + buzz);
-		System.out.println("fizzBuzz: " + fizzBuzz);
-	}
+  System.out.println("Zahl plz");
+  Scanner scan = new Scanner(System.in);
+  int to = scan.nextInt();
+
+  System.out.println("Bitshift");
+  int flag = 1 <<2;
+  System.out.println(flag);
+
+  if ((to & flag) > 0) {
+   System.out.println("YES");
+  }
+
+  for (int i = 1; i <= to; i++) {
+
+   int res = 0;
+   int modFizz = i % 3;
+   int modBuzz = i % 5;
+
+   if (modFizz == 0) {
+    res = 1;
+   }
+
+   if (modBuzz == 0) {
+    res += 2;
+   }
+
+   if ((res & 3) == 0) {
+    numbers.add(i);
+   }
+
+   if ((res & 1) == 1) {
+    fizz.add(i);
+   }
+   if ((res & 2) == 2) {
+    buzz.add(i);
+   }
+
+   if ((res & 3) == 3) {// 3 ist binaer 11{
+    fizzBuzz.add(i);
+   }
+
+  }
+  System.out.println("numbers: " + numbers);
+  System.out.println("fizz: " + fizz);
+  System.out.println("buzz: " + buzz);
+  System.out.println("fizzBuzz: " + fizzBuzz);
+ }
 }
 ```
 
@@ -1497,7 +1500,7 @@ Datenstrukturen dienen dazu Daten abzuspeichern. Es gibt viele verschiedene mit 
 ## Linked List
 
 Eine der einfachsten Datenstrukturen ist die Linked List. Man kann sich eine Linked List wie eine Kette vorstellen, an die wir beliebig Glieder hinzufügen können. Das löschen eines Gliedes erfordert, dass das vorhergehende Element auf das nachfolgende (des zu löschenden Elements) umgegebogen werden muss.
-Es wird jeweils eine Node in die Liste eingegügt, welche einen Wert und den Zeiger (next) auf das nächste Element besitzt. Die Liste beinhaltet immer einen Zeiger (head) welcher auf das erste Element zeigt. 
+Es wird jeweils eine Node in die Liste eingegügt, welche einen Wert und den Zeiger (next) auf das nächste Element besitzt. Die Liste beinhaltet immer einen Zeiger (head) welcher auf das erste Element zeigt.
 Von diesem Element werden alle Operationen ausgeführt.
 Bei einer Linked List zeigt eine Node immer nur zu der nächsten Node.
 
@@ -1506,67 +1509,67 @@ Linked Lists werden sehr selten verwendet, dienen aber aber gute Basisi für wei
 ```java
 public class Node {
 
-	private int value;
-	private Node next;
+ private int value;
+ private Node next;
 
-	public Node(int value) {
-		this.value = value;
-		// next is automatically null
-	}
+ public Node(int value) {
+  this.value = value;
+  // next is automatically null
+ }
 
-	public int getValue() {
-		return value;
-	}
+ public int getValue() {
+  return value;
+ }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+ public void setValue(int value) {
+  this.value = value;
+ }
 
-	public void setNext(Node next) {
-		this.next = next;
-	}
+ public void setNext(Node next) {
+  this.next = next;
+ }
 
-	public Node getNext() {
-		return this.next;
-	}
+ public Node getNext() {
+  return this.next;
+ }
 }
 ```
 
 ```java
 public class MyLinkedList {
-	
-	private Node head;
-	
-	public void add(int value) {
-		if (head == null) {
-			head = new Node(value);
-			return;
-		}
-		Node current = head;
-		
-		while (current.getNext() != null) {
-			current = current.getNext();
-		}
-		// current is the last node without a next
-		current.setNext(new Node(value));
-	}
-	
-	public int get(int pos) {
-		Node current = head;
-		for( int i =0; i < pos; i++) {
-			current = current.getNext();
-		}
-		return current.getValue();
-	}
-	
-	public void del(int pos) {
-		if (pos < 0) {
-			throw new IndexOutOfBoundsException();
-		}
-		if (pos == 0) {
-			head = head.getNext();
-			return;
-		}
+
+ private Node head;
+
+ public void add(int value) {
+  if (head == null) {
+   head = new Node(value);
+   return;
+  }
+  Node current = head;
+
+  while (current.getNext() != null) {
+   current = current.getNext();
+  }
+  // current is the last node without a next
+  current.setNext(new Node(value));
+ }
+
+ public int get(int pos) {
+  Node current = head;
+  for( int i =0; i < pos; i++) {
+   current = current.getNext();
+  }
+  return current.getValue();
+ }
+
+ public void del(int pos) {
+  if (pos < 0) {
+   throw new IndexOutOfBoundsException();
+  }
+  if (pos == 0) {
+   head = head.getNext();
+   return;
+  }
 
     Node current = this.head;
     for (int i = 0; i < pos-1; i++) {
@@ -1577,92 +1580,92 @@ public class MyLinkedList {
     }
     // we are no on Node before the Node we want to delete
     current.setNext(current.getNext().getNext());
-	}
+ }
 }
 ```
 
 ## Doubly Linked List
 
 Bei der Doubly Linked List wird der Node ein weiteres Attribut hinzugefügt - der Zeiger zur vorigen Node.
-Das ermöglicht uns, dass wir uns nicht nur in eine Richtung bewegen können, sonderen auch zurück gehen können. Nachteil ist, dass mehr Daten (2x Pointer) pro Datenwert, den ich abspeichern will, gebraucht wird. Die Doubly Linked List hat zusätzlich zu dem *head*-Pointer auch einen *tail*-Pointer welcher uns das traversieren (durchgehen) der Daten von hinten ermöglicht.
+Das ermöglicht uns, dass wir uns nicht nur in eine Richtung bewegen können, sonderen auch zurück gehen können. Nachteil ist, dass mehr Daten (2x Pointer) pro Datenwert, den ich abspeichern will, gebraucht wird. Die Doubly Linked List hat zusätzlich zu dem _head_-Pointer auch einen _tail_-Pointer welcher uns das traversieren (durchgehen) der Daten von hinten ermöglicht.
 
 ```java
 public class Node {
 
-	private int value;
-	private Node next;
+ private int value;
+ private Node next;
   private Node prev;
 
-	public Node(int value) {
-		this.value = value;
-		// next is automatically null
+ public Node(int value) {
+  this.value = value;
+  // next is automatically null
     // prev is automatically null
-	}
+ }
 
-	public int getValue() {
-		return value;
-	}
+ public int getValue() {
+  return value;
+ }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+ public void setValue(int value) {
+  this.value = value;
+ }
 
-	public void setNext(Node next) {
-		this.next = next;
-	}
+ public void setNext(Node next) {
+  this.next = next;
+ }
 
-	public Node getNext() {
-		return this.next;
-	}
+ public Node getNext() {
+  return this.next;
+ }
 
   public void setPrev(Node prev) {
-		this.prev = prev;
-	}
+  this.prev = prev;
+ }
 
-	public Node getPrev() {
-		return this.prev;
-	}
+ public Node getPrev() {
+  return this.prev;
+ }
 }
 ```
 
 ```java
 public class MyDoublyLinkedList {
-	
-	private Node head;
+
+ private Node head;
   private Node tail;
-	
-	public void add(int value) {
-		if (head == null) {
-			head = new Node(value);
+
+ public void add(int value) {
+  if (head == null) {
+   head = new Node(value);
       tail = head;
-			return;
-		}
-		Node current = head;
-		
-		while (current.getNext() != null) {
-			current = current.getNext();
-		}
-		// current is the last node without a next
-		current.setNext(new Node(value));
+   return;
+  }
+  Node current = head;
+
+  while (current.getNext() != null) {
+   current = current.getNext();
+  }
+  // current is the last node without a next
+  current.setNext(new Node(value));
     tail = current.getNext();
-	}
-	
-	public int get(int pos) {
-		Node current = head;
-		for( int i =0; i < pos; i++) {
-			current = current.getNext();
-		}
-		return current.getValue();
-	}
-	
-	public void del(int pos) {
-		if (pos < 0) {
-			throw new IndexOutOfBoundsException();
-		}
-		if (pos == 0) {
-			head = head.getNext();
-			return;
-		}
+ }
+
+ public int get(int pos) {
+  Node current = head;
+  for( int i =0; i < pos; i++) {
+   current = current.getNext();
+  }
+  return current.getValue();
+ }
+
+ public void del(int pos) {
+  if (pos < 0) {
+   throw new IndexOutOfBoundsException();
+  }
+  if (pos == 0) {
+   head = head.getNext();
+   return;
+  }
 
     Node current = this.head;
     for (int i = 0; i < pos-1; i++) {
@@ -1675,7 +1678,7 @@ public class MyDoublyLinkedList {
     Node afterToDelte = current.getNext().getNext();
     current.setNext(afterToDelte);
     afterToDelte.setPrev(current);
-	}
+ }
 }
 ```
 
@@ -1685,48 +1688,48 @@ Schon oft verwendet, bauen wir hier unsere eigene Variante. Im Grunde wird ein n
 
 ```java
 public class MyArraylistInteger {
-	int capacity = 8;
-	int[] data = new int[capacity];
-	int index = 0;
+ int capacity = 8;
+ int[] data = new int[capacity];
+ int index = 0;
 
-	public void add(int val) {
-		if (index + 1 > capacity) {
-			this.capacity *= 2;
-			int[] data2 = new int[this.capacity];
-			for (int i = 0; i < data.length; i++) {
-				data2[i] = this.data[i];
-			}
-			this.data=data2;
-		}
-		this.data[index++] = val;
-	}
-	
-	public int get(int index) {
-		return this.data[index];
-	}
+ public void add(int val) {
+  if (index + 1 > capacity) {
+   this.capacity *= 2;
+   int[] data2 = new int[this.capacity];
+   for (int i = 0; i < data.length; i++) {
+    data2[i] = this.data[i];
+   }
+   this.data=data2;
+  }
+  this.data[index++] = val;
+ }
 
-	public int getCapacity() {
-		return capacity;
-	}
+ public int get(int index) {
+  return this.data[index];
+ }
 
-	public int getIndex() {
-		return index;
-	}
+ public int getCapacity() {
+  return capacity;
+ }
 
-	public static void main(String[] args) {
-		MyArraylistInteger mal = new MyArraylistInteger();
-		mal.add(3);
-		mal.add(7);
-		mal.add(10);
-		System.out.println(mal.get(2));
-	}
+ public int getIndex() {
+  return index;
+ }
+
+ public static void main(String[] args) {
+  MyArraylistInteger mal = new MyArraylistInteger();
+  mal.add(3);
+  mal.add(7);
+  mal.add(10);
+  System.out.println(mal.get(2));
+ }
 }
 ```
 
 ## Stack (LIFO) - Last In First Out
 
 Der Stack ist ähnlich einer LinkedList. Der Unterschied besteht darin dass Elemente immer vorne hinzugefügt werden. Sie werden auf den Stapel gelegt.
-Diese Operation wird *push* genannt. Eine weitere Eigenheit des Stacks ist, dass nur das oberste (erste)- Element genommen werden kann (Operatin *pop*).
+Diese Operation wird _push_ genannt. Eine weitere Eigenheit des Stacks ist, dass nur das oberste (erste)- Element genommen werden kann (Operatin _pop_).
 Im Prinzip können wir uns einen Stack wie eine LinkedList vorstellen, bei der neue Elemente immer an Position 0 eigefügt werden. Und wenn wir ein
 Elemt *pop*en wird es wieder von Position 0 genommen.
 Weiters kann beim Stapel das oberste Element angesehen (peek) werden.
@@ -1734,60 +1737,60 @@ Weiters kann beim Stapel das oberste Element angesehen (peek) werden.
 ```java
 public class Node {
 
-	private int value;
-	private Node next;
+ private int value;
+ private Node next;
 
-	public Node(int value) {
-		this.value = value;
-	}
+ public Node(int value) {
+  this.value = value;
+ }
 
-	public int getValue() {
-		return value;
-	}
+ public int getValue() {
+  return value;
+ }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+ public void setValue(int value) {
+  this.value = value;
+ }
 
-	public void setNext(Node next) {
-		this.next = next;
-	}
+ public void setNext(Node next) {
+  this.next = next;
+ }
 
-	public Node getNext() {
-		return this.next;
-	}
+ public Node getNext() {
+  return this.next;
+ }
 }
 ```
 
 ```java
 public class MyStack {
-	
-	private Node head;
-	
-	public void push(int value) {
-		if (head == null) {
-			head = new Node(value);
-			return;
-		} else {
+
+ private Node head;
+
+ public void push(int value) {
+  if (head == null) {
+   head = new Node(value);
+   return;
+  } else {
       Node n = new Node(value);
       n.setNext(head);
       this.head = n;
     }
-	}
-	
-	public int peek() {
+ }
+
+ public int peek() {
     if (head == null) {
-			return -1;
-		} else {
+   return -1;
+  } else {
       return head.getValue();
-	}
-	
-	public int pop() {
-		if (head !== null) {
+ }
+
+ public int pop() {
+  if (head !== null) {
       int headVal = head.getValue();
-			head = head.getNext();
-			return headVal;
-		} else {
+   head = head.getNext();
+   return headVal;
+  } else {
       return -1;
     }
 }
@@ -1795,69 +1798,68 @@ public class MyStack {
 
 ## Queue (FIFO) - First In First Out
 
-Die Queue ist ähnlich einer LinkedList. Elemente werden immer hinten hinzugefügt (*add*). Und Elemente werden immer von vorne weggenommen (*poll/remove*). Gleich wie der Stack kann auch auf das erste Element geschaut werden (*peek*) ohne es zu entfernen.
-
+Die Queue ist ähnlich einer LinkedList. Elemente werden immer hinten hinzugefügt (_add_). Und Elemente werden immer von vorne weggenommen (_poll/remove_). Gleich wie der Stack kann auch auf das erste Element geschaut werden (_peek_) ohne es zu entfernen.
 
 ```java
 public class Node {
 
-	private int value;
-	private Node next;
+ private int value;
+ private Node next;
 
-	public Node(int value) {
-		this.value = value;
-	}
+ public Node(int value) {
+  this.value = value;
+ }
 
-	public int getValue() {
-		return value;
-	}
+ public int getValue() {
+  return value;
+ }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+ public void setValue(int value) {
+  this.value = value;
+ }
 
-	public void setNext(Node next) {
-		this.next = next;
-	}
+ public void setNext(Node next) {
+  this.next = next;
+ }
 
-	public Node getNext() {
-		return this.next;
-	}
+ public Node getNext() {
+  return this.next;
+ }
 }
 ```
 
 ```java
 public class MyQueue {
-	
-	private Node head;
-	
-	public void add(int value) {
-		if (head == null) {
-			head = new Node(value);
-			return;
-		}
-		Node current = head;
-		
-		while (current.getNext() != null) {
-			current = current.getNext();
-		}
-		// current is the last node without a next
-		current.setNext(new Node(value));
-	}
-	
-	public int peek() {
+
+ private Node head;
+
+ public void add(int value) {
+  if (head == null) {
+   head = new Node(value);
+   return;
+  }
+  Node current = head;
+
+  while (current.getNext() != null) {
+   current = current.getNext();
+  }
+  // current is the last node without a next
+  current.setNext(new Node(value));
+ }
+
+ public int peek() {
     if (head == null) {
-			return -1;
-		} else {
+   return -1;
+  } else {
       return head.getValue();
-	}
-	
-	public int poll() {
-		if (head !== null) {
+ }
+
+ public int poll() {
+  if (head !== null) {
       int headVal = head.getValue();
-			head = head.getNext();
-			return headVal;
-		} else {
+   head = head.getNext();
+   return headVal;
+  } else {
       return -1;
     }
 }
@@ -1872,6 +1874,7 @@ Jeder Verzweigungspunkt(Node) hat maximal 2 Kinder (left und right) und einen We
 Beim durchsuchen des Baumes, wird durch jede Verzweigung, der verbleibenden Suchraumes um die Hälfte reduziert.
 
 Funktionen des BST:
+
 - add
 - get
 - delete
@@ -1879,188 +1882,188 @@ Funktionen des BST:
 ```java
 // Node
 public class Node {
-	int value;
-	Node left;
-	Node right;
+ int value;
+ Node left;
+ Node right;
 
-	public Node(int value) {
-		this.value = value;
-	}
+ public Node(int value) {
+  this.value = value;
+ }
 
-	public boolean isLeaf() {
-		if (this.left == null && this.right == null) {
-			return true;
-		}
-		return false;
-	}
+ public boolean isLeaf() {
+  if (this.left == null && this.right == null) {
+   return true;
+  }
+  return false;
+ }
 
-	public int getNrOfChilds(){
-		int ret = 0;
-		if (this.left != null){
-			ret++;
-		}
-		if (this.right != null){
-			ret++;
-		}
-		return ret;
+ public int getNrOfChilds(){
+  int ret = 0;
+  if (this.left != null){
+   ret++;
+  }
+  if (this.right != null){
+   ret++;
+  }
+  return ret;
 
-	}
+ }
 
-	public int getValue() {
-		return value;
-	}
+ public int getValue() {
+  return value;
+ }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+ public void setValue(int value) {
+  this.value = value;
+ }
 
-	public Node getLeft() {
-		return left;
-	}
+ public Node getLeft() {
+  return left;
+ }
 
-	public void setLeft(Node left) {
-		this.left = left;
-	}
+ public void setLeft(Node left) {
+  this.left = left;
+ }
 
-	public Node getRight() {
-		return right;
-	}
+ public Node getRight() {
+  return right;
+ }
 
-	public void setRight(Node right) {
-		this.right = right;
-	}
+ public void setRight(Node right) {
+  this.right = right;
+ }
 
-	public void swapValue(Node other){
-		int tmp = this.value;
-		this.value = other.getValue();
-		other.setValue(tmp);
-	}
+ public void swapValue(Node other){
+  int tmp = this.value;
+  this.value = other.getValue();
+  other.setValue(tmp);
+ }
 }
 ```
 
 ```java
 // BST
 public class BST {
-	Node root;
+ Node root;
 
-	public void add(int value) {
-		Node newNode = new Node(value);
-		if (root == null) {
-			this.root = newNode;
-			return;
-		}
-		Node current = this.root;
-		Node parent = null;
-		while (current != null) {
-			if (value == current.value) {
-				return;
-			}
-			if (value < current.getValue()) {
-				parent = current;
-				current = current.getLeft();
-			} else {
-				parent = current;
-				current = current.getRight();
-			}
-		}
-		if (value > parent.getValue()) {
-			parent.setRight(newNode);
-		} else {
-			parent.setLeft(newNode);
-		}
-	}
+ public void add(int value) {
+  Node newNode = new Node(value);
+  if (root == null) {
+   this.root = newNode;
+   return;
+  }
+  Node current = this.root;
+  Node parent = null;
+  while (current != null) {
+   if (value == current.value) {
+    return;
+   }
+   if (value < current.getValue()) {
+    parent = current;
+    current = current.getLeft();
+   } else {
+    parent = current;
+    current = current.getRight();
+   }
+  }
+  if (value > parent.getValue()) {
+   parent.setRight(newNode);
+  } else {
+   parent.setLeft(newNode);
+  }
+ }
 
-	public Node get(int value) {
-		Node current = this.root;
-		while (current != null) {
-			if (value == current.getValue()) {
-				return current;
-			}
-			if (value > current.getValue()) {
-				current = current.getRight();
-			} else {
-				current = current.getLeft();
-			}
-		}
-		return null;
-	}
+ public Node get(int value) {
+  Node current = this.root;
+  while (current != null) {
+   if (value == current.getValue()) {
+    return current;
+   }
+   if (value > current.getValue()) {
+    current = current.getRight();
+   } else {
+    current = current.getLeft();
+   }
+  }
+  return null;
+ }
 
-	public Node getParrent(int value) {
-		Node current = this.root;
-		Node parrent = null;
-		while (current != null) {
-			if (value == current.getValue()) {
-				return parrent;
-			}
-			if (value > current.getValue()) {
-				parrent = current;
-				current = current.getRight();
-			} else {
-				parrent = current;
-				current = current.getLeft();
-			}
-		}
-		return parrent;
-	}
+ public Node getParrent(int value) {
+  Node current = this.root;
+  Node parrent = null;
+  while (current != null) {
+   if (value == current.getValue()) {
+    return parrent;
+   }
+   if (value > current.getValue()) {
+    parrent = current;
+    current = current.getRight();
+   } else {
+    parrent = current;
+    current = current.getLeft();
+   }
+  }
+  return parrent;
+ }
 
-	private void deleteNode(Node nodeToBeDeleted, Node parent){
-		System.out.println("recursion called");
-		// Abbruchbedingungen
-		// node is leaf
-		if (nodeToBeDeleted.isLeaf()) {
-			if (parent.getValue() > nodeToBeDeleted.getValue()) {
-				parent.setLeft(null);
-			} else {
-				parent.setRight(null);
-			}
-			return;
-		}
-		// node has 1 child
-		if (nodeToBeDeleted.getNrOfChilds() == 1) {
-			Node childOfNode = null;
-			if (nodeToBeDeleted.getLeft() != null) {
-				childOfNode = nodeToBeDeleted.getLeft();
-			} else {
-				childOfNode = nodeToBeDeleted.getRight();
-			}
-			if (parent.getValue() > nodeToBeDeleted.getValue()) {
-				parent.setLeft(childOfNode);
-			} else {
-				parent.setRight(childOfNode);
-			}
-			return;
-		}
+ private void deleteNode(Node nodeToBeDeleted, Node parent){
+  System.out.println("recursion called");
+  // Abbruchbedingungen
+  // node is leaf
+  if (nodeToBeDeleted.isLeaf()) {
+   if (parent.getValue() > nodeToBeDeleted.getValue()) {
+    parent.setLeft(null);
+   } else {
+    parent.setRight(null);
+   }
+   return;
+  }
+  // node has 1 child
+  if (nodeToBeDeleted.getNrOfChilds() == 1) {
+   Node childOfNode = null;
+   if (nodeToBeDeleted.getLeft() != null) {
+    childOfNode = nodeToBeDeleted.getLeft();
+   } else {
+    childOfNode = nodeToBeDeleted.getRight();
+   }
+   if (parent.getValue() > nodeToBeDeleted.getValue()) {
+    parent.setLeft(childOfNode);
+   } else {
+    parent.setRight(childOfNode);
+   }
+   return;
+  }
 
-		// Recusionsfortschritt
-		// node has 2 child
-		// 1. find biggest node left of node
-		Node nodeToSwap = nodeToBeDeleted.getLeft();
-		Node nodeToSwapParent = null;
-		while (nodeToSwap.getRight() != null){
-			nodeToSwapParent = nodeToSwap;
-			nodeToSwap = nodeToSwap.getRight();
-		}
-		//swap values
-		nodeToBeDeleted.swapValue(nodeToSwap);
-		deleteNode(nodeToSwap, nodeToSwapParent);
-	}
+  // Recusionsfortschritt
+  // node has 2 child
+  // 1. find biggest node left of node
+  Node nodeToSwap = nodeToBeDeleted.getLeft();
+  Node nodeToSwapParent = null;
+  while (nodeToSwap.getRight() != null){
+   nodeToSwapParent = nodeToSwap;
+   nodeToSwap = nodeToSwap.getRight();
+  }
+  //swap values
+  nodeToBeDeleted.swapValue(nodeToSwap);
+  deleteNode(nodeToSwap, nodeToSwapParent);
+ }
 
-	// user facing
-	public void delete(int value) {
-		Node nodeToBeDeleted = this.get(value);
-		Node parent = this.getParrent(value);
+ // user facing
+ public void delete(int value) {
+  Node nodeToBeDeleted = this.get(value);
+  Node parent = this.getParrent(value);
 
-		deleteNode(nodeToBeDeleted, parent);
-	}
+  deleteNode(nodeToBeDeleted, parent);
+ }
 
-	public static void main(String[] args){
-		BST bst = new BST();
-		bst.add(10);
-		bst.add(50);
-		bst.add(20);
-		bst.add(30);
-		bst.delete(50);
-	}
+ public static void main(String[] args){
+  BST bst = new BST();
+  bst.add(10);
+  bst.add(50);
+  bst.add(20);
+  bst.add(30);
+  bst.delete(50);
+ }
 }
 ```
 
@@ -2068,86 +2071,86 @@ alternative Implementierung(Florian)
 
 ```java
 public class BinarySearchTree {
-	private TreeNode root;
-	
-	private static class TreeNode {
-		int value;
-		TreeNode left, right;
+ private TreeNode root;
 
-		public TreeNode(int value) {
-			this.value = value;
-			left = right = null;
-		}
-	}
+ private static class TreeNode {
+  int value;
+  TreeNode left, right;
 
-	public BinarySearchTree() {
-		root = null;
-	}
+  public TreeNode(int value) {
+   this.value = value;
+   left = right = null;
+  }
+ }
 
-	public void insert(int value) {
-		root = insertNode(root, value);
-	}
+ public BinarySearchTree() {
+  root = null;
+ }
 
-	public boolean search(int key) {
-		return searchNode(root, key);
-	}
-	
-	public void delete(int key) {
-		root = deleteNode(root, key);
-	}
-	
+ public void insert(int value) {
+  root = insertNode(root, value);
+ }
+
+ public boolean search(int key) {
+  return searchNode(root, key);
+ }
+
+ public void delete(int key) {
+  root = deleteNode(root, key);
+ }
+
     public void printAll() {
         print2D(this.root, 0);
     }
-   
-	public void balance() {
-		ArrayList<TreeNode> nodes = new ArrayList<TreeNode>();
-		storeNodes(this.root, nodes);
-		this.root = buildTree(nodes, 0, nodes.size() - 1);
-	}
 
-	private TreeNode insertNode(TreeNode root, int value) {
-		if (root == null) {
-			root = new TreeNode(value);
-			return root;
-		}
+ public void balance() {
+  ArrayList<TreeNode> nodes = new ArrayList<TreeNode>();
+  storeNodes(this.root, nodes);
+  this.root = buildTree(nodes, 0, nodes.size() - 1);
+ }
 
-		if (value < root.value) {
-			root.left = insertNode(root.left, value);
-		} else if (value > root.value) {
-			root.right = insertNode(root.right, value);
-		}
+ private TreeNode insertNode(TreeNode root, int value) {
+  if (root == null) {
+   root = new TreeNode(value);
+   return root;
+  }
 
-		return root;
-	}
-	
-	private TreeNode buildTree(ArrayList<TreeNode> nodes, int start, int end) {
-		if (start > end) {
-			return null;
-		}
+  if (value < root.value) {
+   root.left = insertNode(root.left, value);
+  } else if (value > root.value) {
+   root.right = insertNode(root.right, value);
+  }
 
-		int mid = (start + end) / 2;
-		TreeNode root = nodes.get(mid);
+  return root;
+ }
 
-		root.left = this.buildTree(nodes, start, mid - 1);
-		root.right = this.buildTree(nodes, mid + 1, end);
-		
-		return root;
-	}
-	
-	private void storeNodes(TreeNode root, ArrayList<TreeNode> nodes) {
-		if (root == null) {
-			return;
-		}
-		
-		storeNodes(root.left, nodes);
-		nodes.add(root);
-		storeNodes(root.right, nodes);
-	}
-	
-	private boolean searchNode(TreeNode root, int key) {
-		if (root == null || root.value == key) {
-			return root != null;
+ private TreeNode buildTree(ArrayList<TreeNode> nodes, int start, int end) {
+  if (start > end) {
+   return null;
+  }
+
+  int mid = (start + end) / 2;
+  TreeNode root = nodes.get(mid);
+
+  root.left = this.buildTree(nodes, start, mid - 1);
+  root.right = this.buildTree(nodes, mid + 1, end);
+
+  return root;
+ }
+
+ private void storeNodes(TreeNode root, ArrayList<TreeNode> nodes) {
+  if (root == null) {
+   return;
+  }
+
+  storeNodes(root.left, nodes);
+  nodes.add(root);
+  storeNodes(root.right, nodes);
+ }
+
+ private boolean searchNode(TreeNode root, int key) {
+  if (root == null || root.value == key) {
+   return root != null;
         }
 
         if (key < root.value) {
@@ -2155,9 +2158,9 @@ public class BinarySearchTree {
         } else {
             return searchNode(root.right, key);
         }
-	}
+ }
 
-	private TreeNode deleteNode(TreeNode root, int key) {
+ private TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return root;
         }
@@ -2180,7 +2183,7 @@ public class BinarySearchTree {
         return root;
     }
 
-	private int minValue(TreeNode root) {
+ private int minValue(TreeNode root) {
         int minValue = root.value;
         while (root.left != null) {
             minValue = root.left.value;
@@ -2189,7 +2192,7 @@ public class BinarySearchTree {
         return minValue;
     }
 
-	private void print2D(TreeNode root, int space) {
+ private void print2D(TreeNode root, int space) {
         if (root == null)
             return;
 
@@ -2205,26 +2208,26 @@ public class BinarySearchTree {
         print2D(root.left, space);
     }
 
-	public static void main(String[] args) {
-		var tree = new BinarySearchTree();
-		tree.insert(10);
-		tree.insert(7);
-		tree.insert(3);
-		tree.insert(12);
-		tree.insert(11);
-		tree.insert(8);
-		tree.insert(15);
-		tree.insert(20);
-		tree.insert(19);
-		tree.insert(5);
-		tree.insert(9);
-		tree.printAll();
-		tree.delete(7);
-		System.out.println("--------------------------------------------------");
-		tree.printAll();
-		tree.balance();
-		tree.printAll();
-	}
+ public static void main(String[] args) {
+  var tree = new BinarySearchTree();
+  tree.insert(10);
+  tree.insert(7);
+  tree.insert(3);
+  tree.insert(12);
+  tree.insert(11);
+  tree.insert(8);
+  tree.insert(15);
+  tree.insert(20);
+  tree.insert(19);
+  tree.insert(5);
+  tree.insert(9);
+  tree.printAll();
+  tree.delete(7);
+  System.out.println("--------------------------------------------------");
+  tree.printAll();
+  tree.balance();
+  tree.printAll();
+ }
 }
 ```
 
@@ -2238,34 +2241,34 @@ Ein Set kann mit verschiedenen dahinterliegenden Datenstrukturen programmiert we
 import java.util.ArrayList;
 
 public class Set<T>{
-	ArrayList<T> values = new ArrayList<>();
+ ArrayList<T> values = new ArrayList<>();
 
-	public boolean add(T val){
-		if (!this.values.contains(val)){
-			this.values.add(val);
-			return true;
-		}
-		return false;
-	}
+ public boolean add(T val){
+  if (!this.values.contains(val)){
+   this.values.add(val);
+   return true;
+  }
+  return false;
+ }
 
-	public String toString(){
-		return this.values.toString();
-	}
+ public String toString(){
+  return this.values.toString();
+ }
 
-	public static void main(String[] args){
-		Set s = new Set<Integer>();
-		s.add(55);
-		s.add(4);
-		s.add(10);
-		s.add(4); // should not add another 4
-		System.out.println(s);
-		Set names = new Set<String>();
-		names.add("Sepp");
-		names.add("Martin");
-		names.add("Sepp");
-		names.add("Josef");
-		System.out.println(names);
-	}
+ public static void main(String[] args){
+  Set s = new Set<Integer>();
+  s.add(55);
+  s.add(4);
+  s.add(10);
+  s.add(4); // should not add another 4
+  System.out.println(s);
+  Set names = new Set<String>();
+  names.add("Sepp");
+  names.add("Martin");
+  names.add("Sepp");
+  names.add("Josef");
+  System.out.println(names);
+ }
 }
 ```
 
@@ -2276,17 +2279,17 @@ In einer Map kann der Key und der Value beliebig definiert werden.
 
 Bei einer HashMap wird der Key (intern) gehasht und der Zugriff so verbessert.
 
-siehe https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+siehe <https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html>
 
 # Algorithmen
 
 Algorithmen dienen dazu, Input zu verarbeiten und den gewünschten Output zu produzieren.
 Sie sollen folgende Eigenschaften besitzen:
 
-  - deterministisch: Für gleiche Inputs sollen immer die gleichen Outputs erstellt werden. 
-  Bsp.: Beim sortieren von Zahlen, soll der Output immer in der gleichen Reihenfolge passieren. Egal wie oft ich 
+- deterministisch: Für gleiche Inputs sollen immer die gleichen Outputs erstellt werden.
+  Bsp.: Beim sortieren von Zahlen, soll der Output immer in der gleichen Reihenfolge passieren. Egal wie oft ich
   den Algorithmus aufrufe, der Output mit dem gleichen Input ist immer der selbe.
-  - terministisch: durch alle Verzweigungstrukturen soll, der Algorithmus ein Ende finden.
+- terministisch: durch alle Verzweigungstrukturen soll, der Algorithmus ein Ende finden.
 
 ## Sortieralgorithmen
 
@@ -2294,24 +2297,24 @@ Dienen dazu Zahlen in Datenstrukturen (zb. Array) in einer bestimmten Reihenfolg
 
 ```shell
 Bsp.: [7,2,5,4] -> (sortiert) -> [2,4,5,7]
-```  
+```
 
 ### Eigenschaften
 
-https://en.wikipedia.org/wiki/Sorting_algorithm
+<https://en.wikipedia.org/wiki/Sorting_algorithm>
 
 - Stabilität: Wenn die Reihenfolge gleicher Elememte nach der sortiertung erhalten ist, spricht man von einem spabilen SA,
-anderfalls von einem instabilen.
+  anderfalls von einem instabilen.
 - Speicherbedarf: Wieviel zusätzlichen Speicher der Alogirithmus benötigt, neben den n-Elementen.
 - Geschwindigkeit (Komplexität): Wie schnell erfolgt die Sortierung im:
   - besten Fall
   - mittleren Fall
   - schlechtesten Fall
-  Wird in Abhängigkeit von *n* angegeben. Wobei folgende Komplexitätsklassen relevant sind:
+    Wird in Abhängigkeit von _n_ angegeben. Wobei folgende Komplexitätsklassen relevant sind:
   - O(1) zB. Arrayzugriff auf bestimmtes Element, HashMap Zugriff
   - O(log n) zB. Binärsuche, oder Suche im BST
   - O(n) zB. Suche nach Element im unsortiertem Array
-  - O(n * log n) zB: MergeSort in allen Fällen
+  - O(n \* log n) zB: MergeSort in allen Fällen
   - O(n^2) zB: BubbleSort, SelectionSort,...
   - O(n!)
 
@@ -2333,11 +2336,11 @@ public static void insertionSort(ArrayList<Integer> a) { // a enthällt n Elemet
 
 ```java
 for( int i = 0; i < a.size()/2; i++) { // outer loop is n/2
-	if ( i % 2 == 0){ // in 1/2 of cases
-		for (int j = 0; j < i; j++){ // max. n/2
-			//do something
-		}
-	}
+ if ( i % 2 == 0){ // in 1/2 of cases
+  for (int j = 0; j < i; j++){ // max. n/2
+   //do something
+  }
+ }
 }
 // results in: approx. (n/2)*(1/2*n/2) ==> n^2/8 ==> O(n^2)
 ```
@@ -2346,10 +2349,10 @@ for( int i = 0; i < a.size()/2; i++) { // outer loop is n/2
 // example presented by Patrik
 // n^2
 for( int i = 0; i < a.size()*a.size(); i ++){
-	// skip odd numbers => /2
-	while( i % 2 == 0 ){
-		i++; // O(1)
-	}
+ // skip odd numbers => /2
+ while( i % 2 == 0 ){
+  i++; // O(1)
+ }
 }
 // results in n^2/2 ==> O(n^2)
 ```
@@ -2358,10 +2361,10 @@ for( int i = 0; i < a.size()*a.size(); i ++){
 // example presented by Patrik
 // n^2
 for( int i = 0; i < a.size()*a.size(); i ++){
-	// skip odd numbers => /2
-	while( i % 2 == 0 ){
-		i++; // O(1)
-	}
+ // skip odd numbers => /2
+ while( i % 2 == 0 ){
+  i++; // O(1)
+ }
 }
 // results in n^2/2 ==> O(n^2)
 ```
@@ -2369,10 +2372,10 @@ for( int i = 0; i < a.size()*a.size(); i ++){
 ```java
 // in jedem Aufruf wird a um 1 reduziert bis a <= 1 ==> O(a) ==> O(n)
 public static int fac(int a, int res){
-	if (a <=1) {
-		return res;
-	}
-	return fac(a-1,res*a);
+ if (a <=1) {
+  return res;
+ }
+ return fac(a-1,res*a);
 }
 ```
 
@@ -2457,12 +2460,12 @@ Given an unsorted array(a): Another array is used as the sorted array (s).
 - select the first number out of the array
 - compare it with each elements in s and insert it into the appropriate position
 
-e.g.: 
+e.g.:
 
 ```bash
 [4,7,23,6] -> [] // pick 4
 [4,7,23,6] -> [4] // insert 4 into sorted array
-[4,7,23,6] -> [4,7] // insert 7 after 4, after comparison 
+[4,7,23,6] -> [4,7] // insert 7 after 4, after comparison
 [4,7,23,6] -> [4,7,23] // insert 23 after 7: after comparing it to 4 and 7
 [4,7,23,6] -> [4,6,7,23] // insert 6 after 4: after comparing it to 4 and 7
 ```
@@ -2515,52 +2518,53 @@ Ist ein Sortieralgorithmus der den Ausgangsarray als erstes in einzel Elemente z
 
 ```java
 public static void mergeSort(int[] array) {
-	if (array.length > 1) {
-		int mid = (array.length / 2);
-		int[] left = new int[mid];
-		int[] right = new int[array.length - mid];
+ if (array.length > 1) {
+  int mid = (array.length / 2);
+  int[] left = new int[mid];
+  int[] right = new int[array.length - mid];
 
-		for (int i = 0; i < mid; i++) {
-			left[i] = array[i];
-		}
+  for (int i = 0; i < mid; i++) {
+   left[i] = array[i];
+  }
 
-		for (int i = mid; i < array.length; i++) {
-			right[i - mid] = array[i];
-		}
+  for (int i = mid; i < array.length; i++) {
+   right[i - mid] = array[i];
+  }
 
-		mergeSort(left);
-		mergeSort(right);
+  mergeSort(left);
+  mergeSort(right);
 
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		while (i < left.length && j < right.length) {
-			if (left[i] < right[j]) {
-				array[k] = left[i];
-				i++;
-			} else {
-				array[k] = right[j];
-				j++;
-			}
-			k++;
-		}
-		while (i < left.length) {
-			array[k] = left[i];
-			i++;
-			k++;
-		}
-		while (j < right.length) {
-			array[k] = right[j];
-			j++;
-			k++;
-		}
-	}
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  while (i < left.length && j < right.length) {
+   if (left[i] < right[j]) {
+    array[k] = left[i];
+    i++;
+   } else {
+    array[k] = right[j];
+    j++;
+   }
+   k++;
+  }
+  while (i < left.length) {
+   array[k] = left[i];
+   i++;
+   k++;
+  }
+  while (j < right.length) {
+   array[k] = right[j];
+   j++;
+   k++;
+  }
+ }
 }
 ```
+
 # Java Argumenten Logik
 
 Argumente in Java haben ihre Eigenheiten. Da Java keine Referenezen (&) oder
-Pointer(*) unterstützt, werden interne Details ausgeblendet.
+Pointer(\*) unterstützt, werden interne Details ausgeblendet.
 
 ```java
 public class Main{
@@ -2609,7 +2613,7 @@ public class Main{
   public static void whatHappensStringArray(String[] s, String[] b){
     s = b;
   }
-  
+
   // Die Referenz auf den Integer a wird kopiert und diese Funktion hat keinen Effekt
   public static void whatHappensInteger(Integer a, Integer b){
     a = b;
@@ -2627,6 +2631,7 @@ Rekursion besteht aus folgenden Teilen:
 ```
 IS coole isch bei da Rekursion - dass man lei in aufbau herausfinden muss und die rekursion ääähh das Ergebnis selber rausfindet.
 ```
+
 ```
 Das Faszinierende an der Rekursion ist, dass man lediglich den Aufbau verstehen muss, und die Rekursion findet dann das Ergebnis eigenständig heraus."
 ```
@@ -2647,7 +2652,7 @@ public static int pasD(int zeile, int spalte){
   // Abbruchbedingung
   if (zeile == spalte || spalte == 0 ){
     return 1;
-  } 
+  }
   // Recursionsvortschritt
   return pasD(zeile - 1, spalte) + pasD(zeile - 1, spalte -1);
 }
@@ -2725,7 +2730,7 @@ import java.util.ArrayList;
 
 public class RecursiveFileSearchArray{
 
-  /// returns Path of found File, if not found return empty Array 
+  /// returns Path of found File, if not found return empty Array
   public static ArrayList<String> search(String path, String fileName) {
     System.out.println("searching in" + path);
     ArrayList<String> filesFound = new ArrayList<>();
@@ -2760,7 +2765,7 @@ public class RecursiveFileSearchArray{
 # Generics
 
 Generics dienen dazu Klassen oder Funktionen für mehrere Datentypen zu definieren.
-Um beispielsweise eine LinkedList für mehr Datentypen als *int* zu definieren, müssten wir die Node und auch die LinkedList jeweils neu definieren. Als Datentypen dürfen nur Objektdatentypen(alles was eine Klasse ist bzw. von Objekt erbt) verwendet werden. Zb. *Integer* statt *int*. Es werden keine primitiven Datentypen erlaubt.
+Um beispielsweise eine LinkedList für mehr Datentypen als _int_ zu definieren, müssten wir die Node und auch die LinkedList jeweils neu definieren. Als Datentypen dürfen nur Objektdatentypen(alles was eine Klasse ist bzw. von Objekt erbt) verwendet werden. Zb. _Integer_ statt _int_. Es werden keine primitiven Datentypen erlaubt.
 
 ```java
 class Node {
@@ -2769,7 +2774,7 @@ class Node {
 }
 ```
 
-Um nicht jeweils eine Klasse Node und LinkedList für alle Datentypen zu schreiben, wurden *Generics* definiert.
+Um nicht jeweils eine Klasse Node und LinkedList für alle Datentypen zu schreiben, wurden _Generics_ definiert.
 
 ```java
 class Node<E> {
@@ -2784,45 +2789,44 @@ Die Node muss dann von außen mit einem Datentyp als "Argument" erstellt werden.
 Node<Float> n = new Node<Float>(3.4f);
 ```
 
-Wir kennen diese Notation, wenn wir eine *ArrayList* verwendet haben.
+Wir kennen diese Notation, wenn wir eine _ArrayList_ verwendet haben.
 
 Wie oben erwähnt können auch Funktionen/Methoden generic definiert werden:
 
 ```java
-public <T> T returnFirst(T[] a) {   
+public <T> T returnFirst(T[] a) {
     return a[0];
 }
 ```
 
 ## Bounded Generics
 
-Um einzuschränken welche Datentypen für die Generics verwendet werden können, können wir das Keyword *extends* verwenden. 
+Um einzuschränken welche Datentypen für die Generics verwendet werden können, können wir das Keyword _extends_ verwenden.
 
 ```java
 class Node<E extends Number> {
   Node<E> next;
-  E value; 
+  E value;
 }
 ```
 
 Das bedeutet, dass der Datentyp welcher für diese Node verwendet werden kann vom Typ Number ist, oder davon (indirekt) erbt oder das Interface implementiert.
-Es kann hier beispielsweise kein *String* verwendet werden.
+Es kann hier beispielsweise kein _String_ verwendet werden.
 
-Wenn beispielsweise eine Anforderung an unsere Datentypen ist, dass sie verglichen werden müssen, können wir beispielsweise das Interface *Comparable* verwenden. [Comparable Docu](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
+Wenn beispielsweise eine Anforderung an unsere Datentypen ist, dass sie verglichen werden müssen, können wir beispielsweise das Interface _Comparable_ verwenden. [Comparable Docu](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
 
 ```java
 class Node<E extends Comparable> {
   Node<E> next;
-  E value; 
+  E value;
 }
 ```
 
-Wie wir in der Dokumentation sehen können, haben alle gängigen (numerischen) Typen dieses Interface implementiert, was zur Folge hat, dass wir die Funktion *compareTo(T o)* verwerden können (diese ist im *Comparable*-Interface definiert).
-
+Wie wir in der Dokumentation sehen können, haben alle gängigen (numerischen) Typen dieses Interface implementiert, was zur Folge hat, dass wir die Funktion _compareTo(T o)_ verwerden können (diese ist im _Comparable_-Interface definiert).
 
 ## Tests mit JUnit
 
-Um nicht die *main*-Methode verwednen zu müssen um unsere Programme zu testen, haben sich Test-Frameworks etabliert. Sie dienen dazu möglichst viel des Codes zu überprüfen. Durch verschiedene Varianten von *assert* können wir auch auf das manuelle lesen (des Outputs) und das vergleichen von Sollwert automatisieren.
+Um nicht die _main_-Methode verwednen zu müssen um unsere Programme zu testen, haben sich Test-Frameworks etabliert. Sie dienen dazu möglichst viel des Codes zu überprüfen. Durch verschiedene Varianten von _assert_ können wir auch auf das manuelle lesen (des Outputs) und das vergleichen von Sollwert automatisieren.
 Weiterer Vorteil ist, dass die Tests immer mehr werden und wenn neue Funktionalitäten dazukommen ich immer noch die Sicherheit habe, dass die alte Funktionalität nicht darunter leidet.
 In Java ist JUnit weit verbreitet.
 
@@ -2831,35 +2835,35 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class TestMyArraylistInteger {
-	MyArraylistInteger mal = new MyArraylistInteger();
+ MyArraylistInteger mal = new MyArraylistInteger();
 
-	@Test
-	void add_get_same_value() {
-		mal.add(3);
-		assertEquals(mal.get(0), 3);
-	}
+ @Test
+ void add_get_same_value() {
+  mal.add(3);
+  assertEquals(mal.get(0), 3);
+ }
 
-	@Test
-	void add_get_same_value2() {
-		mal.add(4);
-		assertEquals(mal.get(0), 4);
-	}
-	
-	@Test
-	void add_over_capacity_increases_capacity() {
-		int oldCap = mal.getCapacity();
-		for (int i = 0; i < 9; i++) {
-			mal.add(i);
-		}
-		int newCap = mal.getCapacity();
-		assertEquals((oldCap < newCap), true);
-	}
-	
-	void printArray() {
-		for (int i = 0; i < mal.getIndex(); i++) {
-			System.out.println(mal.get(i));
-		}
-	}
+ @Test
+ void add_get_same_value2() {
+  mal.add(4);
+  assertEquals(mal.get(0), 4);
+ }
+
+ @Test
+ void add_over_capacity_increases_capacity() {
+  int oldCap = mal.getCapacity();
+  for (int i = 0; i < 9; i++) {
+   mal.add(i);
+  }
+  int newCap = mal.getCapacity();
+  assertEquals((oldCap < newCap), true);
+ }
+
+ void printArray() {
+  for (int i = 0; i < mal.getIndex(); i++) {
+   System.out.println(mal.get(i));
+  }
+ }
 }
 ```
 
@@ -2890,7 +2894,6 @@ In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. 
 
 ![https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Observer_w_update.svg/750px-Observer_w_update.svg.png)
 
-
 # VueJS
 
 ## Installation von nvm, npm und vueJs
@@ -2905,40 +2908,121 @@ In diesem Beispiel in das Subject allgemein gehalten und entspricht dem Server. 
 
 Installation laut [https://github.com/nvm-sh/nvm](github-nvm)folgen
 
-
 ### npm - Node Package Manager
 
-```
+```bash
   nvm install 20
+  nvm use 20
 ```
 
-### Install VueJS
+### Install VueJS / Create a Project
 
-```
+```bash
   npm create vue@latest
 ```
-
 
 select following options:
 
 ✔ Project name: … mein-projekt
 
-✔ Add TypeScript? … No / ***Yes***
+✔ Add TypeScript? … No / **_Yes_**
 
-✔ Add JSX Support? … ***No*** / Yes
+✔ Add JSX Support? … **_No_** / Yes
 
-✔ Add Vue Router for Single Page Application development? … No / ***Yes***
+✔ Add Vue Router for Single Page Application development? … No / **_Yes_**
 
-✔ Add Pinia for state management? … No / ***Yes***
+✔ Add Pinia for state management? … No / **_Yes_**
 
-✔ Add Vitest for Unit Testing? … ***No*** / Yes
+✔ Add Vitest for Unit Testing? … **_No_** / Yes
 
-✔ Add an End-to-End Testing Solution? › ***No***
+✔ Add an End-to-End Testing Solution? › **_No_**
 
-✔ Add ESLint for code quality? … No / ***Yes***
+✔ Add ESLint for code quality? … No / **_Yes_**
 
-✔ Add Prettier for code formatting? … No / ***Yes***
+✔ Add Prettier for code formatting? … No / **_Yes_**
 
-✔ Add Vue DevTools 7 extension for debugging? (experimental) … No / ***Yes***
+✔ Add Vue DevTools 7 extension for debugging? (experimental) … No / **_Yes_**
 
+### Component
 
+Eine Komponente in Vue kann man sich vorstellen, wie eine Java-Klasse. Es definiert ein Konstrukt,
+welches folgende Eigenschaften haben kann:
+
+- HTML Struktur (template)
+- Programmierblock (script)
+- Styling (style)
+
+Die HTML- Struktur definiert, wie diese Komponente dargestellt wird und schlussendlich im DOM eingebaut wird.
+Der Programmierblock, dient dazu die Komponente auf verschiedene Sachen reagieren kann.
+
+```html
+<script setup lang="ts">
+  const props = defineProps<{
+    counter: number;
+  }>();
+
+  function return42() {
+    return 42;
+  }
+</script>
+
+<template>
+  <div class="danger">count: {{ counter }}</div>
+  message: {{ msg }}
+</template>
+
+<style scoped>
+  .danger {
+    background-color: red;
+  }
+</style>
+```
+
+In allen Beispielen hier, wird die Composition-API von Vue verwendet. Die Options-API ist immer noch
+verwendbar, aber die Composition-API wird empfohlen.
+
+Im obingen Beispiel wird im script- Bereich _setup_ und _lang="ts"_ verwendet. Diese dienen dazu, dass wir nicht
+expliziet die _setup_-Funktion aufrufen müssen und alle imports können direkt im _template_-Bereich ohne weiteres
+verwendet werden.
+Mit _lang="ts"_ wird die script-Sprache auf Typescript gesetzt.
+
+#### Reaktivität
+
+Wenn sich Daten ändern soll sich die UI auch automatisch mitverändern. Dies passiert mit der Reaktivtät, welche überprüft
+ob sich Daten geändert haben und bei Bedarf die UI neu aufbaut bzw. anders anzeigt.
+
+```html
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const count = ref(0)
+```
+
+#### Properties
+
+Dienden dazu, Coponenten zu parametrisieren.
+Properties können reaktiv sein.
+
+```html
+// In TestComponente.vue
+<script setup lang="ts">
+  const props = defineProps<{
+    counter: number;
+  }>();
+</script>
+```
+
+sie werden wie folgt verwendet:
+
+```html
+<script setup lang="ts">
+  import TestComponente from '@/components/TestComponente.vue'
+  const props = defineProps<{
+    counter: number;
+  }>();
+</script>
+
+<template>
+  <TestComponente :counter="5">
+</template>
+```
