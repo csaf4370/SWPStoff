@@ -37,8 +37,8 @@ lang: "de-AT"
   - [Thanks](#thanks)
     - [Thanks after DRY](#thanks-after-dry)
 - [git basics](#git-basics)
-  - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
-  - [Ignorieren von Dateien](#ignorieren-von-dateien)
+    - [Ablaufdiagram eines typischen Workflows](#ablaufdiagram-eines-typischen-workflows)
+    - [Ignorieren von Dateien](#ignorieren-von-dateien)
 - [Exceptions](#exceptions)
   - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
     - [Programm Argumente](#programm-argumente)
@@ -81,8 +81,14 @@ lang: "de-AT"
     - [npm - Node Package Manager](#npm---node-package-manager)
     - [Install VueJS / Create a Project](#install-vuejs--create-a-project)
     - [Component](#component)
-      - [Reaktivität](#reaktivität)
-      - [Properties](#properties)
+    - [Reaktivität](#reaktivität)
+    - [Properties](#properties)
+    - [useTemplateRef](#usetemplateref)
+    - [Events](#events)
+    - [Computed Properties](#computed-properties)
+    - [defineExpose](#defineexpose)
+    - [Conditional Rendering](#conditional-rendering)
+    - [List Rendering](#list-rendering)
 
 # coding guidelines
 
@@ -2986,25 +2992,30 @@ expliziet die _setup_-Funktion aufrufen müssen und alle imports können direkt 
 verwendet werden.
 Mit _lang="ts"_ wird die script-Sprache auf Typescript gesetzt.
 
-#### Reaktivität
+### Reaktivität
 
-Wenn sich Daten ändern soll sich die UI auch automatisch mitverändern. Dies passiert mit der Reaktivtät, welche überprüft
-ob sich Daten geändert haben und bei Bedarf die UI neu aufbaut bzw. anders anzeigt.
+Reaktivität in Vue bedeutet, dass sich die Benutzeroberfläche (UI) automatisch anpasst, wenn sich die zugrundeliegenden Daten ändern. Vue überwacht die Daten und sorgt bei Änderungen dafür, dass die UI neu aufgebaut oder angepasst wird.
+
+Beispiel:
 
 ```html
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const count = ref(0)
+const count = ref(0);
+</script>
 ```
 
-#### Properties
+Hier verwenden wir `ref`, um eine reaktive Variable `count` zu definieren, deren Änderungen automatisch in der UI reflektiert werden.
 
-Dienden dazu, Coponenten zu parametrisieren.
-Properties können reaktiv sein.
+### Properties
+
+Properties, oder "Props", ermöglichen es, Komponenten zu parametrisieren und mit Daten zu versehen. Props können ebenfalls reaktiv sein.
+
+Beispiel:
 
 ```html
-// In TestComponente.vue
+<!-- In TestComponent.vue -->
 <script setup lang="ts">
   const props = defineProps<{
     counter: number;
@@ -3012,17 +3023,144 @@ Properties können reaktiv sein.
 </script>
 ```
 
-sie werden wie folgt verwendet:
+Die Komponente kann wie folgt verwendet werden:
 
 ```html
-<script setup lang="ts">
-  import TestComponente from '@/components/TestComponente.vue'
-  const props = defineProps<{
-    counter: number;
-  }>();
-</script>
-
 <template>
-  <TestComponente :counter="5">
+  <TestComponent :counter=5/>
 </template>
+
+<script setup lang="ts">
+import TestComponent from '@/components/TestComponent.vue';
+</script>
+```
+
+### useTemplateRef
+
+`useTemplateRef` ist eine Methode, um auf ein bestimmtes DOM-Element oder eine Komponente im Template zuzugreifen. Dies ist hilfreich, wenn man direkt mit dem DOM interagieren möchte.
+
+Beispiel:
+
+```html
+<template>
+  <input ref="myInput" />
+</template>
+
+<script setup lang="ts">
+import { useTemplateRef, onMounted } from 'vue';
+
+const myInput = useTemplateRef('myInput');
+
+onMounted(() => {
+  myInput.value.focus();
+});
+</script>
+```
+
+### Events
+
+Events ermöglichen die Kommunikation zwischen Komponenten. Eine Kind-Komponente kann ein Event an die Eltern-Komponente senden.
+
+Beispiel:
+
+```html
+<!-- Kind-Komponente -->
+<template>
+  <button @click="emit('increment')">Erhöhen</button>
+</template>
+<script setup lang="ts">
+  const emit = defineEmits(['increment'])
+</script>
+```
+
+In der Eltern-Komponente kann das Event wie folgt abgehört werden:
+
+```html
+<template>
+  <ChildComponent @increment="handleIncrement" />
+</template>
+
+<script setup lang="ts">
+import ChildComponent from './ChildComponent.vue';
+
+const handleIncrement = () => {
+  console.log('Increment-Event wurde empfangen');
+};
+</script>
+```
+
+### Computed Properties
+
+Mit computed properties kann man Daten berechnen, die von anderen reaktiven Daten abhängen. Computed properties sind effizient, da sie nur neu berechnet werden, wenn sich die zugrunde liegenden Daten ändern.
+
+Beispiel:
+
+```html
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+
+const count = ref(2);
+const doubled = computed(() => count.value * 2);
+</script>
+```
+
+### defineExpose
+
+`defineExpose` ermöglicht es, bestimmte Methoden oder Variablen aus einer Komponente nach außen hin verfügbar zu machen, sodass andere Komponenten darauf zugreifen können.
+
+Beispiel:
+
+```html
+<script setup lang="ts">
+function someFunction() {
+  console.log('Funktion aufgerufen');
+}
+
+defineExpose({
+  someFunction,
+});
+</script>
+```
+
+### Conditional Rendering
+
+Mit Bedingtem Rendering kann man Teile der UI abhängig von bestimmten Bedingungen anzeigen oder ausblenden.
+
+Beispiel:
+
+```html
+<template>
+  <p v-if="isVisible">Ich bin sichtbar</p>
+  <p v-else>Ich bin nicht sichtbar</p>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const isVisible = ref(true);
+</script>
+```
+
+### List Rendering
+
+List Rendering erlaubt es, eine Liste von Elementen basierend auf einem Array oder einer Liste zu rendern.
+
+Beispiel:
+
+```html
+<template>
+  <ul>
+    <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+  </ul>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 3, name: 'Item 3' },
+]);
+</script>
 ```
