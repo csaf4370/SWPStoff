@@ -89,6 +89,9 @@ lang: "de-AT"
     - [defineExpose](#defineexpose)
     - [Conditional Rendering](#conditional-rendering)
     - [List Rendering](#list-rendering)
+- [Local Restful Server Test Setup](#local-restful-server-test-setup)
+  - [docker-compose](#docker-compose)
+    - [show ip of postgres Server](#show-ip-of-postgres-server)
 
 # coding guidelines
 
