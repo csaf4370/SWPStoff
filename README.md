@@ -3168,6 +3168,54 @@ const items = ref([
 </script>
 ```
 
+### watcher
+
+In Vue.js werden Watcher verwendet, um auf Änderungen von Daten oder Berechnungen zu reagieren und daraufhin bestimmte Aktionen auszuführen. Sie sind hilfreich, wenn man auf Datenänderungen hören und darauf basierende Logik implementieren möchte, die nicht direkt in einer Methode oder einer berechneten Eigenschaft (computed property) abgedeckt ist.
+
+```vue
+<template>
+  <div>
+    <input v-model="name" placeholder="Gib deinen Namen ein" />
+    <p>{{ message }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      message: 'Willkommen!',
+    };
+  },
+  watch: {
+    // Überwacht die Änderung der 'name'-Eigenschaft
+    name(newVal, oldVal) {
+      if (newVal) {
+        this.message = `Hallo, ${newVal}!`;
+      } else {
+        this.message = 'Willkommen!';
+      }
+      console.log(`Name geändert von ${oldVal} zu ${newVal}`);
+    },
+  },
+};
+</script>
+```
+
+Erklärung:
+
+- v-model: Bindet die Eingabe des Nutzers direkt an die name-Eigenschaft.
+- Watcher name: Wird aufgerufen, wenn sich der Wert der Eigenschaft name ändert.
+  - newVal: Der neue Wert der überwachten Eigenschaft.
+  - oldVal: Der vorherige Wert der überwachten Eigenschaft.
+- Logik im Watcher: Aktualisiert die Nachricht dynamisch basierend auf der Eingabe des Nutzers.
+
+Watcher sind ideal für:
+
+- Asynchrone Datenaufrufe: Reagieren auf Datenänderungen, um z. B. Daten vom Server zu laden.
+- Seiteneffekte: Änderungen triggern z. B. Animationen, Logs oder andere Aktionen.
+
 
 # Local Restful Server Test Setup
 
