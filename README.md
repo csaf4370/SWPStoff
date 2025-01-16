@@ -3194,6 +3194,8 @@ services:
 
   db:
     image: postgres
+    ports:
+      - "5432:5432"
     networks:
       - back-tier
     environment:
