@@ -89,8 +89,14 @@ lang: "de-AT"
     - [defineExpose](#defineexpose)
     - [Conditional Rendering](#conditional-rendering)
     - [List Rendering](#list-rendering)
+    - [watcher](#watcher)
 - [Local Restful Server Test Setup](#local-restful-server-test-setup)
   - [docker-compose](#docker-compose)
+    - [Vorteile:](#vorteile)
+    - [Beispiel `docker-compose.yaml`:](#beispiel-docker-composeyaml)
+    - [Erklärung des Beispiels:](#erklärung-des-beispiels)
+    - [Wichtige Befehle:](#wichtige-befehle)
+    - [docker-compose für unseren Test-Server](#docker-compose-für-unseren-test-server)
     - [show ip of postgres Server](#show-ip-of-postgres-server)
 
 # coding guidelines
@@ -3180,24 +3186,29 @@ In Vue.js werden Watcher verwendet, um auf Änderungen von Daten oder Berechnung
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { ref, watch } from 'vue';
+
 export default {
-  data() {
-    return {
-      name: '',
-      message: 'Willkommen!',
-    };
-  },
-  watch: {
-    // Überwacht die Änderung der 'name'-Eigenschaft
-    name(newVal, oldVal) {
+  setup() {
+    // Reactive state
+    const name = ref<string>('');
+    const message = ref<string>('Willkommen!');
+
+    // Watcher to observe changes in 'name'
+    watch(name, (newVal, oldVal) => {
       if (newVal) {
-        this.message = `Hallo, ${newVal}!`;
+        message.value = `Hallo, ${newVal}!`;
       } else {
-        this.message = 'Willkommen!';
+        message.value = 'Willkommen!';
       }
       console.log(`Name geändert von ${oldVal} zu ${newVal}`);
-    },
+    });
+
+    return {
+      name,
+      message,
+    };
   },
 };
 </script>
@@ -3220,6 +3231,57 @@ Watcher sind ideal für:
 # Local Restful Server Test Setup
 
 ## docker-compose
+**Docker Compose** ist ein Tool, das es ermöglicht, mehrere Docker-Container gleichzeitig zu definieren, zu starten und zu verwalten. Es verwendet eine **`docker-compose.yml`-Datei**, um die Konfiguration der Container, Netzwerke und Volumes festzulegen.
+
+### Vorteile:
+1. **Einfaches Management**: Mehrere Container können mit einem einzigen Befehl (`docker-compose up`) gestartet, gestoppt oder aktualisiert werden.
+2. **Deklarative Konfiguration**: Alle Einstellungen (z. B. Ports, Umgebungsvariablen, Volumes) werden in einer YAML-Datei zentralisiert.
+3. **Netzwerke und Verknüpfungen**: Compose erstellt automatisch Netzwerke, damit Container einfach miteinander kommunizieren können.
+
+### Beispiel `docker-compose.yaml`:
+```yaml
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+  app:
+    build:
+      context: ./app
+    volumes:
+      - ./app:/app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+```
+
+### Erklärung des Beispiels:
+1. **Version**: Gibt die Docker-Compose-Spezifikation an.
+2. **Services**: Definiert die Container:
+   - **`web`**: Startet einen NGINX-Container und bindet ihn an Port 8080 des Hosts.
+   - **`app`**: Startet eine App mit einem benutzerdefinierten Build.
+   - **`db`**: Startet eine PostgreSQL-Datenbank mit konfigurierten Umgebungsvariablen.
+3. **Volumes**: Bindet Host-Verzeichnisse an Container-Verzeichnisse.
+4. **`depends_on`**: Stellt sicher, dass `db` vor `app` gestartet wird.
+
+### Wichtige Befehle:
+- **`docker-compose up`**: Startet alle Container.
+- **`docker-compose down`**: Stoppt und entfernt Container, Netzwerke und Volumes.
+- **`docker-compose logs`**: Zeigt Logs aller Container.
+- **`docker-compose ps`**: Listet die laufenden Container auf.
+
+Docker Compose ist ideal für die Entwicklung und das Testen von Multi-Container-Anwendungen!****
+
+### docker-compose für unseren Test-Server
 
 ```yaml
 # in docker-compose.yaml
@@ -3243,7 +3305,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5432:5432"
+      - "5432:5432" -- allow access to db, dont use in production
     networks:
       - back-tier
     environment:
@@ -3291,4 +3353,19 @@ grant insert,update,delete on api.todos to web_anon;
 
 create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
+```
+
+Rest server should now run under: <http://localhost:3000>
+
+You can now:
+
+- insert (POST)
+- update (PATCH)
+- get (GET)
+- delete (DELETE)
+
+all resources. e.g: update todo with id=3
+
+```bash
+curl -X PATCH -d '{"done":true}' -H "Content-Type: application/json" localhost:3000/todos?id=eq.3
 ```
