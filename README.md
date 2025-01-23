@@ -3305,7 +3305,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5432:5432" -- allow access to db, dont use in production
+      - "5432:5432" 
     networks:
       - back-tier
     environment:
