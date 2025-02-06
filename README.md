@@ -3317,11 +3317,11 @@ networks:
 ```
 
 ```shell
-# in directory of docer-compose.yaml file
+# in directory of docker-compose.yaml file
 docker-compose up
 ```
 
-### show ip of postgres Server
+### Show IP of postgres Server
 
 ```shell
 docker network inspect dc_back-tier
