@@ -311,6 +311,28 @@ class Person {
 }
 ```
 
+### Konstruktor mit Argumenten
+
+
+```java
+class Person {
+  private String firstName; // Default für String = ""
+  private boolean test; // Default für boolean = false
+
+  // Konstruktor mit Argumenten
+  public Person(String firstName, boolean test) {
+    this.firstName = firstName;
+    this.test = test;
+  }
+
+  public static void main(String[] args) {
+    // Verwendung des Argumenten-Konstruktors
+    Person p = new Person("Martin", true);
+    // p.firstName entspricht "Martin"
+    // p.test entspricht true
+  }
+}
+```
 ## toString() Methoden - Ausgabe eines Objektes
 
 Wenn man versucht ein Objekt einer selbst-definierten Klasse auszugeben, wird man meist mit einer Ausgabe à la.
@@ -836,11 +858,59 @@ public class Main {
 }
 ```
 
-### Interfaces - Schnittstellen
+### Interfaces - Schnittstellen | Vertrag
 
-Durch die "Einschränkung", dass Java keine Mehrfachvererbung erlaubt, anders als andere Sprachen wie zb. C++, bedient sich Java eines Konzepts namens Interfaces. Diese dienen der Beschreibung was die Klasse erfüllen muss. Daher wird im Interface definiert, dass bestimmte Methoden überschrieben werden müssen. Es können beliebig viele Interfaces implementiert (nicht extended - wie bei (abstrakten) Klassen) werden.
+Durch die "Einschränkung", dass Java keine Mehrfachvererbung erlaubt, anders als andere Sprachen wie zb. C++, bedient sich Java eines Konzepts namens Interfaces. Diese dienen der Beschreibung was die Klasse erfüllen muss (wie ein Vertrag). Daher wird im Interface definiert, dass bestimmte Methoden überschrieben werden müssen. Es können beliebig viele Interfaces implementiert (nicht extended - wie bei (abstrakten) Klassen) werden.
 
-Interfaces könnte man als Verträge verstehen, welche implementierende Klassen erfüllen.
+Interfaces kann man als Verträge verstehen, welche implementierende Klassen erfüllen müssen.
+
+```java
+// in IFahrAmWasser.java
+public interface IFahrAmWasser{
+  // alle Funktionen müssen von der imlementieren Klasse überschrieben werden
+  public void fahrAmWasser(); 
+  public void honk(boolean superLaut);
+}
+
+// in Amphibien.java
+public class Amphibien implements IFahrAmWasser{
+  
+  public void honk(boolean superL){
+    if (superL){
+      System.out.println("LAUT HONK");
+    } else {
+       System.out.println("honk");
+     }
+  }
+
+  public void fahrAmWasser(){
+    System.out.println("brruuumm");
+  }
+}
+
+// in Main.java
+public class Main {
+
+  // Alle Klassen die IFahrAmWasser erfüllen können verwendet werden
+  public static void fahrW(IFahrAmWasser i){
+    i.fahrAmWasser();
+    i.honk(false);
+    i.fahren();
+  }
+  
+  public static void main(String[] args) {
+  	Amphibien a = new Amphibien();
+  	a.honk(true);
+  	Boot b = new Boot();
+  	b.fahrAmWasser();
+
+  	fahrW(a);
+  	fahrW(b);
+
+  	IFahrAmWasser i = new Amphibien();
+  }
+}
+```
 
 ## UML - unified modeling language (class diagram)
 
