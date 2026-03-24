@@ -1511,7 +1511,78 @@ Um die diese Scene verwenden zu können muss:
   }
   ```
 
-Um auf Events reagieren zu können ... fbc...
+## Elemente mit Code anlegen
+
+wir können JavaFX auch ohne xml bauen, indem wir die Elemente mit Code erstellen und miteinander verbinden:
+
+In diesem Beispiel erstellen wir das Spiel numberguesser (Erraten der Nummer im Bereeich 1 - 100).
+```java
+package at.ac.htlinn.numberguesser2;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Random;
+
+public class HelloApplication extends Application {
+
+    private int randomNumber = 0;
+    private Label l = new Label("Rate die Zahl!");
+    private TextField tf = new TextField("");
+    private Button btn = new Button("rate!");
+    private Button btnNochmal = new Button("Nochmal!");
+
+    private void resetGame(){
+        Random rand = new Random();
+        randomNumber = rand.nextInt(100) + 1;
+        System.out.println(randomNumber);
+        l.setText("Rate die Zahl");
+        btn.setDisable(false);
+        btnNochmal.setVisible(false);
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        resetGame();
+
+        btn.setOnAction( e -> {
+            String fieldText =tf.getText();
+            int guessedNumber = Integer.parseInt(fieldText);
+            System.out.println(guessedNumber);
+
+            if (guessedNumber > randomNumber){
+                l.setText("Zu hoch!");
+            } else if (guessedNumber < randomNumber) {
+                l.setText("Zu klein!");
+            } else {
+                l.setText("Du bist ein Wahnsinn!");
+                btn.setDisable(true);
+                btnNochmal.setVisible(true);
+            }
+        });
+
+        btnNochmal.setOnAction( e -> {
+                resetGame();
+           });
+
+        VBox vBox = new VBox(l, tf, btn, btnNochmal);
+
+        Scene scene = new Scene(vBox, 320, 240);
+        stage.setTitle("Numberguesser!");
+        stage.setScene(scene);
+        stage.show();
+    }
+}
+```
 
 # Bitflags
 
