@@ -1286,7 +1286,7 @@ Diese Ausnahmen können entweder mit:
 - throws
 
 behandelt werden. Mit try/catch werden die Programmzeilen, welche
-eine Exception werden können in einen Block eingeschlossen.
+eine Exception werfen können in einen Block eingeschlossen.
 
 ```java
 FileWriter writer = null;
