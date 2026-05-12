@@ -18,6 +18,7 @@ lang: "de-AT"
 - [Objektorientierte Programmierung](#objektorientierte-programmierung)
   - [Konstruktor](#konstruktor)
     - [Standardkonstruktor](#standardkonstruktor)
+    - [Konstruktor mit Argumenten](#konstruktor-mit-argumenten)
   - [toString() Methoden - Ausgabe eines Objektes](#tostring-methoden---ausgabe-eines-objektes)
   - [Sichtbarkeit](#sichtbarkeit)
   - [Kapselung](#kapselung)
@@ -30,7 +31,7 @@ lang: "de-AT"
     - [Keyword _abstract_](#keyword-abstract)
     - [Annotation _@Override_](#annotation-override)
     - [instanceof - überprüfen der Klasse bzw. der Vaterklasse](#instanceof---überprüfen-der-klasse-bzw-der-vaterklasse)
-    - [Interfaces - Schnittstellen](#interfaces---schnittstellen)
+    - [Interfaces - Schnittstellen | Vertrag](#interfaces---schnittstellen--vertrag)
   - [UML - unified modeling language (class diagram)](#uml---unified-modeling-language-class-diagram)
 - [Zufallszahlen (Random)](#zufallszahlen-random)
   - [Spieleprogrammierung mit Processing](#spieleprogrammierung-mit-processing)
@@ -42,11 +43,13 @@ lang: "de-AT"
 - [Exceptions](#exceptions)
   - [Ein ganzes Beispiel](#ein-ganzes-beispiel)
     - [Programm Argumente](#programm-argumente)
+- [Lambda Expressions](#lambda-expressions)
 - [JavaFX](#javafx)
   - [Maven](#maven)
     - [Projekt Setup](#projekt-setup)
     - [Ausführen](#ausführen)
   - [SceneBuilder - JavaFX](#scenebuilder---javafx)
+  - [Elemente mit Code anlegen](#elemente-mit-code-anlegen)
 - [Bitflags](#bitflags)
 - [Datenstrukturen](#datenstrukturen)
   - [Linked List](#linked-list)
@@ -97,7 +100,7 @@ lang: "de-AT"
     - [Erklärung des Beispiels:](#erklärung-des-beispiels)
     - [Wichtige Befehle:](#wichtige-befehle)
     - [docker-compose für unseren Test-Server](#docker-compose-für-unseren-test-server)
-    - [show ip of postgres Server](#show-ip-of-postgres-server)
+    - [Show IP of postgres Server](#show-ip-of-postgres-server)
 
 # coding guidelines
 
@@ -1424,6 +1427,56 @@ public class Main {
 
 }
 ```
+
+# Lambda Expressions
+
+Lambda Ausdrücke ermöglichen einen funktionale- Art und Weise um anonyme Funktionen zu erstellen. Sie werden hauptsächlich
+verwendet um die Schreibarbeit abzukürzen.
+
+Syntax:
+
+```java
+(parameter1, parameter2) -> expression
+```
+
+Um Beispielsweise ein Interface to implementieren ist normalerweise eine (anonyme) Klasse notwendig, mit der Lamda Expression 
+wird die Schreibarbeit abgekürzt:
+
+```java
+interface Add{
+  int addition(int a, int b);
+}
+```
+um diesen Interface zu verwenden, braucht man normalweise Code wie diesen:
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Add a = new Add() {
+      public int addition(int a, int b) {
+        return a + b;
+      }
+    }; 
+    System.out.println(a.addition(3,7));
+  }
+}
+```
+
+mit Lambda Expressions:
+
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Add a = (int a, int b) -> {
+        return a + b;
+      }
+    System.out.println(a.addition(3,7));
+  }
+}
+```
+
+Sie werden häufig für das Implementieren von EventHandlern( [Link](https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html)) in zB. JavaFX verwendet.
 
 # JavaFX
 
